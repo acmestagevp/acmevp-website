@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer"
-import { home } from "@/constants/home"
+import { projects } from "@/constants/projects"
 import { componentMap } from "@/utils/componentMap"
 
-export default function Home() {
+export default function Projects() {
 	return (
 		<div className="">
-			{home.map((section, index) => {
+			{projects.map((section, index) => {
 				const Component = componentMap[section.component] // Use the imported map
 				if (!Component) return null
 

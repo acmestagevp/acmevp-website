@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer"
-import { home } from "@/constants/home"
+import { stage } from "@/constants/stage"
 import { componentMap } from "@/utils/componentMap"
 
-export default function Home() {
+export default function Stage() {
 	return (
 		<div className="">
-			{home.map((section, index) => {
+			{stage.map((section, index) => {
 				const Component = componentMap[section.component] // Use the imported map
 				if (!Component) return null
 
