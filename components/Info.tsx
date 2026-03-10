@@ -13,25 +13,41 @@ interface InfoProps {
 	isReversed?: boolean
 }
 
-const Info: React.FC<InfoProps> = ({ title, content, graphic, isReversed = false }) => {
+const Info: React.FC<InfoProps> = ({
+	title,
+	content,
+	graphic,
+	isReversed = false,
+}) => {
 	return (
-		<div>
-			<div>
-				<h2>{title}</h2>
+		<div className="flex flex-col lg:flex-row flex-col p-4 py-18 items-center lg:items-start lg:max-w-4xl">
+			<div
+				className={`text-center px-4 ${isReversed ? "lg:order-2" : "lg:order-1"}`}
+			>
+				<h2 className="text-center text-3xl">{title}</h2>
 				{content.map((section, index) => (
-					<div key={index}>
-						<h3>{section.list || section.title}</h3>
+					<div
+						key={index}
+						className={`text-left py-4 ${isReversed ? "lg:text-left" : "lg:text-right"}`}
+					>
+						<h3 className="text-xl">{section.list || section.title}</h3>
 						<ul>
 							{section.items.map((item, itemIndex) => (
-								<li key={itemIndex}>{item}</li>
+								<li key={itemIndex} className="list-disc list-inside text-sm">
+									{item}
+								</li>
 							))}
 						</ul>
 					</div>
 				))}
 			</div>
-			<div>
-				<Image src={graphic} alt={`${title} graphic`} width={400} height={300} />
-			</div>
+			<Image
+				className={`p-2 px-4 ${isReversed ? "lg:order-1" : "lg:order-2"}`}
+				src={graphic}
+				alt={`${title} graphic`}
+				width={256}
+				height={256}
+			/>
 		</div>
 	)
 }

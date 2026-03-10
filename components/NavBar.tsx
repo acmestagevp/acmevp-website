@@ -10,9 +10,9 @@ const NavBar = () => {
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="">
-			<ul className="">
-				<div className="">
+		<nav className="flex fixed lg:absolute h-20 z-10">
+			<ul className="flex w-screen justify-between items-center">
+				<div className="mx-4 my-2">
 					<Link className="" href={"/"}>
 						<Image
 							src="/globe.svg"
@@ -24,23 +24,32 @@ const NavBar = () => {
 						/>
 					</Link>
 				</div>
-				<div className="">
+				<div className="flex mx-4 my-2 hidden pointer-events-auto lg:inline">
 					{navItems.map(({ label, href }) => (
-						<Link className="" key={label} href={href}>
+						<Link className="mx-6" key={label} href={href}>
 							{label}
 						</Link>
 					))}
 				</div>
-				<div className="">
-					<button className="" onClick={toggleMenu} aria-label="Toggle Menu">
+				<div className="lg:hidden px-4 py-2">
+					<button
+						className="pointer-events-auto cursor-pointer text-xl"
+						onClick={toggleMenu}
+						aria-label="Toggle Menu"
+					>
 						☰
 					</button>
 				</div>
 			</ul>
 			{menuOpen && (
-				<div className="">
+				<div className="absolute top-0 right-0 pt-16 pr-5 text-right lg:hidden pointer-events-none">
 					{navItems.map(({ label, href }) => (
-						<Link key={label} href={href} className="" onClick={() => setMenuOpen(false)}>
+						<Link
+							key={label}
+							href={href}
+							className="block py-2 pointer-events-auto cursor-pointer"
+							onClick={() => setMenuOpen(false)}
+						>
 							{label}
 						</Link>
 					))}

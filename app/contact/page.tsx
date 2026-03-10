@@ -2,21 +2,23 @@ import Footer from "@/components/Footer"
 
 export default function Contact() {
 	return (
-		<div>
+		<div className="flex flex-col items-center h-[95vh] place-content-center">
 			{/* Contact Info Section */}
 			<div>
-				<h2>Contact Us</h2>
+				<h2 className="text-2xl m-4">Contact Us</h2>
 				<p>Reach out to us for any inquiries.</p>
 				<div>
-					<p>Email: acmestagevp@gmail.com</p>
-					<p>Phone: (123) 456-7890</p>
-					<p>Address: 123 Main St, City, State, ZIP</p>
+					<p>acmestagevp@gmail.com</p>
+					<p>(612) 385-0488</p>
+					<br />
+					<p>2635 S 28th Ave.</p>
+					<p>Minneapolis, MN 55406</p>
 				</div>
 			</div>
 
 			{/* Contact Form Section */}
 			<div>
-				<h2>Send a Message</h2>
+				<h2 className="text-2xl m-4">Send a Message</h2>
 				<form>
 					<div>
 						<label htmlFor="name">Name</label>

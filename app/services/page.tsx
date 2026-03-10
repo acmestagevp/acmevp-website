@@ -4,7 +4,7 @@ import { componentMap } from "@/utils/componentMap"
 
 export default function Services() {
 	return (
-		<div className="">
+		<div className="flex flex-col items-center">
 			{services.map((section, index) => {
 				const Component = componentMap[section.component] // Use the imported map
 				if (!Component) return null
@@ -15,11 +15,12 @@ export default function Services() {
 					<Component
 						key={index}
 						{...props}
-						isReversed={section.component === "Content" ? index % 2 === 1 : undefined}
+						isReversed={
+							section.component === "Content" ? index % 2 === 1 : undefined
+						}
 					/>
 				)
 			})}
-			<Footer />
 		</div>
 	)
 }

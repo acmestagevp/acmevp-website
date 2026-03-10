@@ -2,7 +2,8 @@ export const home = [
 	{
 		component: "Hero",
 		title: "Acme Virtual Production",
-		subtitle: "Revolutionizing storytelling with cutting-edge virtual production technology.",
+		subtitle:
+			"Revolutionizing storytelling with cutting-edge virtual production technology. Adding another thing here. More sentances go here and make the entire body of text longer.",
 		graphic: "/images/hero-16-9.png",
 	},
 	{

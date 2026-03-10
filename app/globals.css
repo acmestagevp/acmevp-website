@@ -28,3 +28,15 @@ body {
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom */
+
+.bg-mask {
+	-webkit-mask-image: linear-gradient(
+		to bottom,
+		black 0%,
+		black 60%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+}

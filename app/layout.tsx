@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/NavBar"
+import Footer from "@/components/Footer"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
 		template: "%s – ACME Virtual Production",
 	},
 
-	description: "A full service virtual production studio located in Minneapolis, MN.",
+	description:
+		"A full service virtual production studio located in Minneapolis, MN.",
 
 	alternates: {
 		canonical: "https://acmevp.com",
@@ -29,7 +31,8 @@ export const metadata: Metadata = {
 
 	openGraph: {
 		title: "ACME Virtual Production",
-		description: "A full service virtual production studio located in Minneapolis, MN.",
+		description:
+			"A full service virtual production studio located in Minneapolis, MN.",
 		url: "https://acmevp.com",
 		siteName: "ACME Virtual Production",
 		type: "website",
@@ -49,10 +52,14 @@ export default function RootLayout({
 					content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scaleable=no"
 				/>
 			</head>
-			<body id="body" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+			<body
+				id="body"
+				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
 				<main>
 					<NavBar />
 					{children}
+					<Footer />
 				</main>
 			</body>
 		</html>
