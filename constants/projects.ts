@@ -1,10 +1,13 @@
-export const projects = [
+export const header = [
 	{
 		component: "Header",
 		title: "Projects",
 		subtitle: "Take a look at some recent work shot here on the stage",
 		graphic: "/images/hero-16-9.png",
 	},
+]
+
+export const projects = [
 	{
 		component: "Project",
 		title: "Polica",

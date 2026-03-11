@@ -8,20 +8,22 @@ interface ProjectProps {
 	isReversed?: boolean
 }
 
-const Project: React.FC<ProjectProps> = ({ title, subtitle, graphic, isReversed = false }) => {
+const Project: React.FC<ProjectProps> = ({ title, subtitle, graphic, isReversed = true }) => {
 	return (
-		<div className="">
-			<div className={`flex-1 ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
-				<h2 className="">{title}</h2>
-				<p className="">{subtitle}</p>
+		<div className="flex w-1/3 justify-center p-8">
+			<div className="flex flex-col">
+				<div className={`${isReversed ? "lg:order-2" : "lg:order-1"}`}>
+					<h2 className="text-2xl">{title}</h2>
+					<p className="">{subtitle}</p>
+				</div>
+				<Image
+					className={`flex-1 opacity-75 hover:opacity-100 ease-in-out duration-100 ${isReversed ? "lg:order-1" : "lg:order-2"}`}
+					width={500}
+					height={500}
+					src={graphic}
+					alt={title}
+				/>
 			</div>
-			<Image
-				className={`flex-1 ${isReversed ? "lg:order-1" : "lg:order-2"}`}
-				width={500}
-				height={500}
-				src={graphic}
-				alt={title}
-			/>
 		</div>
 	)
 }

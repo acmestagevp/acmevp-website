@@ -10,8 +10,8 @@ const NavBar = () => {
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="flex fixed lg:absolute h-20 z-10">
-			<ul className="flex w-screen justify-between items-center">
+		<nav className="flex fixed h-20 z-10 bg-neutral-950">
+			<ul className="flex w-screen justify-between items-center p-4">
 				<div className="mx-4 my-2">
 					<Link className="" href={"/"}>
 						<Image
@@ -24,7 +24,7 @@ const NavBar = () => {
 						/>
 					</Link>
 				</div>
-				<div className="flex mx-4 my-2 hidden pointer-events-auto lg:inline">
+				<div className="mx-4 my-2 hidden pointer-events-auto lg:inline">
 					{navItems.map(({ label, href }) => (
 						<Link className="mx-6" key={label} href={href}>
 							{label}

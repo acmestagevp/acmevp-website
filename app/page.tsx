@@ -1,3 +1,4 @@
+import Testimonials from "@/components/Testimonials"
 import { home } from "@/constants/home"
 import { componentMap } from "@/utils/componentMap"
 
@@ -14,12 +15,11 @@ export default function Home() {
 					<Component
 						key={index}
 						{...props}
-						isReversed={
-							section.component === "Content" ? index % 2 === 1 : undefined
-						}
+						isReversed={section.component === "Content" ? index % 2 === 1 : undefined}
 					/>
 				)
 			})}
+			<Testimonials />
 		</div>
 	)
 }
