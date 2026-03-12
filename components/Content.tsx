@@ -10,7 +10,7 @@ interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({ title, subtitle, graphic, isReversed = false }) => {
 	return (
-		<div className="flex flex-col lg:flex-row flex-col p-4 py-18 items-center lg:items-start lg:max-w-4xl">
+		<div className="flex flex-col lg:flex-row p-4 py-18 items-center lg:items-start lg:max-w-4xl">
 			<div
 				className={`flex-2 text-center px-4 ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
 			>
