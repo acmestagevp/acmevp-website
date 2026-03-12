@@ -8,7 +8,7 @@ export const home = [
 	},
 	{
 		component: "Content",
-		title: "It starts with an IDEA",
+		title: "It all starts with an IDEA",
 		subtitle:
 			"We collaborate closely with our clients to understand their vision and goals, ensuring that every project we undertake is tailored to their unique needs.",
 		graphic: "/images/content-1-1.png",
