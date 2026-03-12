@@ -19,7 +19,9 @@ const Header: React.FC<HeaderProps> = ({ title, subtitle, graphic }) => {
 					alt="Acme Virtual Production"
 				/>
 				<div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/3 z-10 px-2 w-6/7 lg:w-3xl">
-					<h1 className="text-6xl text-center py-2 text-balance z-10">{title}</h1>
+					<h1 className="text-6xl text-center py-2 text-balance z-10">
+						{title}
+					</h1>
 					<p className="text-center py-2 text-balance z-10">{subtitle}</p>
 				</div>
 			</div>

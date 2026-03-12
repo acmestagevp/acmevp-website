@@ -26,10 +26,7 @@ const Info: React.FC<InfoProps> = ({
 			>
 				<h2 className="text-center text-3xl">{title}</h2>
 				{content.map((section, index) => (
-					<div
-						key={index}
-						className={`text-left py-4 ${isReversed ? "lg:text-left" : "lg:text-right"}`}
-					>
+					<div key={index} className={`text-left py-4`}>
 						<h3 className="text-xl">{section.list || section.title}</h3>
 						<ul>
 							{section.items.map((item, itemIndex) => (

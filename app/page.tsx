@@ -11,13 +11,7 @@ export default function Home() {
 
 				const { component, ...props } = section
 
-				return (
-					<Component
-						key={index}
-						{...props}
-						isReversed={section.component === "Content" ? index % 2 === 1 : undefined}
-					/>
-				)
+				return <Component key={index} {...props} isReversed={index % 2 === 1} />
 			})}
 			<Testimonials />
 		</div>

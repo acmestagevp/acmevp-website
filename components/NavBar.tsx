@@ -10,7 +10,7 @@ const NavBar = () => {
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="flex fixed h-20 z-10 bg-neutral-950">
+		<nav className="flex fixed h-20 z-40 bg-neutral-950">
 			<ul className="flex w-screen justify-between items-center p-4">
 				<div className="mx-4 my-2">
 					<Link className="" href={"/"}>
@@ -31,7 +31,7 @@ const NavBar = () => {
 						</Link>
 					))}
 				</div>
-				<div className="lg:hidden px-4 py-2">
+				<div className="lg:hidden py-2 z-50">
 					<button
 						className="pointer-events-auto cursor-pointer text-xl"
 						onClick={toggleMenu}
@@ -42,7 +42,7 @@ const NavBar = () => {
 				</div>
 			</ul>
 			{menuOpen && (
-				<div className="absolute top-0 right-0 pt-16 pr-5 text-right lg:hidden pointer-events-none">
+				<div className="absolute top-0 right-0 pt-16 px-4 text-right bg-neutral-950 lg:hidden pointer-events-none">
 					{navItems.map(({ label, href }) => (
 						<Link
 							key={label}

@@ -1,42 +1,74 @@
-import Footer from "@/components/Footer"
+import React from "react"
 
-export default function Contact() {
+const Contact = () => {
 	return (
-		<div className="flex flex-col items-center h-[95vh] place-content-center">
-			{/* Contact Info Section */}
-			<div>
-				<h2 className="text-2xl m-4">Contact Us</h2>
-				<p>Reach out to us for any inquiries.</p>
-				<div>
-					<p>acmestagevp@gmail.com</p>
-					<p>(612) 385-0488</p>
-					<br />
-					<p>2635 S 28th Ave.</p>
-					<p>Minneapolis, MN 55406</p>
+		<section className="min-h-[80vh] w-full text-white flex flex-col md:flex-row">
+			{/* Left Side: Info (40% width on desktop) */}
+			<div className="flex flex-col justify-center p-8 md:p-16 md:w-2/5 text-right">
+				<h2 className="text-3xl mb-6">Let's build your world.</h2>
+				<p className="mb-8">
+					Ready to step into the volume? Whether you're booking the 60ft wall or
+					need a full VAD environment build, our team is ready to scale with
+					you.
+				</p>
+
+				<div className="space-y-6">
+					<div>
+						<h4 className="text-sm">Location</h4>
+						<p className="text-lg">Minneapolis, MN</p>
+					</div>
+					<div>
+						<h4 className="text-sm">Email</h4>
+						<p className="text-lg">info@acmevp.com</p>
+					</div>
 				</div>
 			</div>
 
-			{/* Contact Form Section */}
-			<div>
-				<h2 className="text-2xl m-4">Send a Message</h2>
-				<form>
-					<div>
-						<label htmlFor="name">Name</label>
-						<input type="text" id="name" name="name" />
+			{/* Right Side: Form (60% width on desktop) */}
+			<div className="flex flex-col justify-center p-8 md:p-24 md:w-3/5">
+				<form className="space-y-6">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div className="flex flex-col">
+							<label className="mb-2 text-sm font-medium ">Name</label>
+							<input
+								type="text"
+								className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+							/>
+						</div>
+						<div className="flex flex-col">
+							<label className="mb-2 text-sm ">Company</label>
+							<input
+								type="text"
+								className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+							/>
+						</div>
 					</div>
-					<div>
-						<label htmlFor="email">Email</label>
-						<input type="email" id="email" name="email" />
+
+					<div className="flex flex-col">
+						<label className="mb-2 text-sm ">Project Type</label>
+						<select className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors">
+							<option>Virtual Production / LED Volume</option>
+							<option>VAD / Unreal Engine Build</option>
+							<option>Post-Production</option>
+							<option>Education / Workshop</option>
+						</select>
 					</div>
-					<div>
-						<label htmlFor="message">Message</label>
-						<textarea id="message" name="message"></textarea>
+
+					<div className="flex flex-col">
+						<label className="mb-2 text-sm ">Message</label>
+						<textarea
+							rows={4}
+							className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+						/>
 					</div>
-					<div>
-						<button type="submit">Submit</button>
-					</div>
+
+					<button className="w-full md:w-max px-12 py-4 bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-widest transition-all rounded">
+						Send Inquiry
+					</button>
 				</form>
 			</div>
-		</div>
+		</section>
 	)
 }
+
+export default Contact
