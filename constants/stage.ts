@@ -1,11 +1,5 @@
 export const stage = [
 	{
-		component: "Header",
-		title: "Stage",
-		subtitle: "The Largest Wall in Minnesota.",
-		graphic: "/images/hero-16-9.png",
-	},
-	{
 		component: "Info",
 		title: " Wall",
 		content: [

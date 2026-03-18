@@ -9,17 +9,12 @@ interface BannerProps {
 	isReversed?: boolean
 }
 
-const Content: React.FC<BannerProps> = ({
-	title,
-	href,
-	graphic,
-	isReversed = false,
-}) => {
+const Content: React.FC<BannerProps> = ({ title, href, graphic, isReversed = false }) => {
 	return (
 		<Link key={title} href={href} className="block w-full my-8">
 			<div className="relative h-[40vh] w-full overflow-hidden flex items-center justify-center">
 				<Image
-					className={`object-cover opacity-20 hover:opacity-40 ease-in-out duration-100`}
+					className={`object-cover opacity-40 hover:opacity-70 ease-in-out duration-100`}
 					fill
 					src={graphic}
 					alt={title}

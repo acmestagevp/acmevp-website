@@ -1,13 +1,6 @@
 export const home = [
 	{
-		component: "Hero",
-		title: "Acme Virtual Production",
-		subtitle:
-			"ACME Virtual Production opens the door to a new world of possibilities. Whether for high-end commercials, narrative films, or photo-realistic virtual environments, you can transport your production to the bustling streets of Tokyo, the serene beaches of Hawaii, or the rugged peaks of the Rockies — all from the heart of Minnesota.",
-		graphic: "/images/hero-16-9.png",
-	},
-	{
-		component: "Details",
+		component: "Content",
 		title: "Minnesota’s Largest LED Volume",
 		paragraphs: [
 			"ACME Virtual Production is home to the largest LED wall in Minnesota — a commanding 60-foot-wide by 16.5-foot-tall curved volume that delivers over 14 million pixels of breathtaking, photo-realistic immersion.",
@@ -22,14 +15,7 @@ export const home = [
 		content: [
 			{
 				list: "Services",
-				items: [
-					"Studio",
-					"Production",
-					"Gear",
-					"Virtual Art Department",
-					"Education",
-					"Post",
-				],
+				items: ["Studio", "Production", "Gear", "Virtual Art Department", "Education", "Post"],
 			},
 		],
 		graphic: "/images/content-1-1.png",

@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
+import Background from "@/components/Background"
+import Image from "next/image"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -22,8 +24,7 @@ export const metadata: Metadata = {
 		template: "%s – ACME Virtual Production",
 	},
 
-	description:
-		"A full service virtual production studio located in Minneapolis, MN.",
+	description: "A full service virtual production studio located in Minneapolis, MN.",
 
 	alternates: {
 		canonical: "https://acmevp.com",
@@ -31,8 +32,7 @@ export const metadata: Metadata = {
 
 	openGraph: {
 		title: "ACME Virtual Production",
-		description:
-			"A full service virtual production studio located in Minneapolis, MN.",
+		description: "A full service virtual production studio located in Minneapolis, MN.",
 		url: "https://acmevp.com",
 		siteName: "ACME Virtual Production",
 		type: "website",
@@ -54,13 +54,28 @@ export default function RootLayout({
 			</head>
 			<body
 				id="body"
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
 			>
-				<main>
+				{/* <Background /> */}
+				<div className="relative z-10 flex min-h-screen flex-col">
 					<NavBar />
-					{children}
+					<main className="">{children}</main>
 					<Footer />
-				</main>
+					<Image
+						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover"
+						src="/background/bg-footer.jpg"
+						alt="Footer Glow"
+						width={1920}
+						height={1080}
+					/>
+					<Image
+						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-10"
+						src="/background/bg-noise.png"
+						alt="Footer Noise"
+						width={1920}
+						height={1080}
+					/>
+				</div>
 			</body>
 		</html>
 	)

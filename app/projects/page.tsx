@@ -1,13 +1,20 @@
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
+import ContentWrapper from "@/components/layout/ContentWrapper"
 import Testimonials from "@/components/Testimonials"
-import { header, projects } from "@/constants/projects"
+import { projects } from "@/constants/projects"
 import { componentMap } from "@/utils/componentMap"
 
 export default function Projects() {
 	return (
 		<div className="flex flex-col">
-			<Header {...header[0]} />
+			<Header variant="half" graphic="/images/hero-16-9.png">
+				<ContentWrapper variant="narrow">
+					<div className="relative z-10 text-center pt-18">
+						<h1 className="text-3xl md:text-4xl tracking-tight">Projects</h1>
+					</div>
+				</ContentWrapper>{" "}
+			</Header>
 			<div className="flex flex-col lg:flex-row mx-8 flex-wrap items-center">
 				{projects.map((section, index) => {
 					const Component = componentMap[section.component] // Use the imported map

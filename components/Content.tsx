@@ -1,29 +1,40 @@
 import React from "react"
 import Image from "next/image"
+import { text } from "stream/consumers"
 
 interface ContentProps {
-	title: string
-	subtitle: string
 	graphic: string
+	textFlex?: string
+	imageFlex?: string
+	padding?: string
 	isReversed?: boolean
+	children?: React.ReactNode
 }
 
-const Content: React.FC<ContentProps> = ({ title, subtitle, graphic, isReversed = false }) => {
+const Content: React.FC<ContentProps> = ({
+	graphic,
+	isReversed = false,
+	textFlex = "2",
+	imageFlex = "1",
+	padding = "4",
+	children,
+}) => {
 	return (
-		<div className="flex flex-col lg:flex-row p-4 py-18 items-center lg:items-start lg:max-w-4xl">
+		<div className="flex flex-col lg:flex-row items-center">
 			<div
-				className={`flex-2 text-center px-4 ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
+				className={`flex-${textFlex} p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
 			>
-				<h2 className="text-xl p-2 text-balance">{title}</h2>
-				<p className="p-2 text-balance">{subtitle}</p>
+				{children}
 			</div>
-			<Image
-				className={`flex-1 p-2 px-4 ${isReversed ? "lg:order-1" : "lg:order-2"} opacity-75 hover:opacity-100 ease-in-out duration-100`}
-				width={256}
-				height={256}
-				src={graphic}
-				alt={title}
-			/>
+			<div className={`flex-${imageFlex} p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
+				<Image
+					className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
+					width={1080}
+					height={1080}
+					src={graphic}
+					alt={graphic}
+				/>
+			</div>
 		</div>
 	)
 }

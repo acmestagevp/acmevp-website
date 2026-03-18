@@ -13,17 +13,10 @@ interface InfoProps {
 	isReversed?: boolean
 }
 
-const Info: React.FC<InfoProps> = ({
-	title,
-	content,
-	graphic,
-	isReversed = false,
-}) => {
+const Info: React.FC<InfoProps> = ({ title, content, graphic, isReversed = false }) => {
 	return (
-		<div className="flex flex-col lg:flex-row flex-col p-4 py-18 items-center lg:items-start lg:max-w-4xl">
-			<div
-				className={`text-center px-4 ${isReversed ? "lg:order-2" : "lg:order-1"}`}
-			>
+		<div className="flex flex-col lg:flex-row p-4 py-18 items-center lg:items-start lg:max-w-4xl">
+			<div className={`text-center px-4 ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
 				<h2 className="text-center text-3xl">{title}</h2>
 				{content.map((section, index) => (
 					<div key={index} className={`text-left py-4`}>
