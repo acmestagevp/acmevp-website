@@ -29,7 +29,7 @@ export default function Stage() {
 			</Header>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png">
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png">
 						<h2 className="text-center text-3xl">Panels</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">Unilumin UpadIV 2.6</h3>
@@ -43,7 +43,7 @@ export default function Stage() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Tracking</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">Optitrack</h3>
@@ -58,7 +58,7 @@ export default function Stage() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png">
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png">
 						<h2 className="text-center text-3xl">Compute</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">Render Nodes</h3>
@@ -72,7 +72,7 @@ export default function Stage() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Media</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">Unreal Engine</h3>
@@ -93,7 +93,7 @@ export default function Stage() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png">
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png">
 						<h2 className="text-center text-3xl">Floorplan</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">Layout</h3>
@@ -108,7 +108,7 @@ export default function Stage() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="wide">
-					<Content imageFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex="[.5]" graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Amenities</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">ACME East</h3>

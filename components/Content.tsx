@@ -4,8 +4,7 @@ import { text } from "stream/consumers"
 
 interface ContentProps {
 	graphic: string
-	textFlex?: number
-	imageFlex?: number
+	textFlex?: string
 	padding?: string
 	isReversed?: boolean
 	children?: React.ReactNode
@@ -14,8 +13,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({
 	graphic,
 	isReversed = false,
-	textFlex = 1,
-	imageFlex = 1,
+	textFlex = "1",
 	padding = "4",
 	children,
 }) => {
@@ -26,7 +24,7 @@ const Content: React.FC<ContentProps> = ({
 			>
 				{children}
 			</div>
-			<div className={`flex-${imageFlex} p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
+			<div className={`flex-1 p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
 				<Image
 					className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
 					width={1080}

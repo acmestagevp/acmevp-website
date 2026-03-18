@@ -30,9 +30,9 @@ export default function Home() {
 			</Header>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={false}>
-						<h2 className="text-3xl py-2">Minnesota’s Largest LED Volume</h2>
-						<div className="text-neutral-400">
+					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={false}>
+						<h2 className="text-3xl py-2 text-center">Minnesota’s Largest LED Volume</h2>
+						<div className="text-neutral-400 text-center">
 							<p className="py-2">
 								ACME Virtual Production is home to the largest LED wall in Minnesota — a commanding
 								60-foot-wide by 16.5-foot-tall curved volume that delivers over 14 million pixels of
@@ -63,7 +63,7 @@ export default function Home() {
 			</Section>
 			<Section variant="custom" className="py-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Services</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-lg">
