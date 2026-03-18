@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({
 	}
 	return (
 		<section
-			className={`relative ${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
+			className={`relative ${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full bg-black bg-mask`}
 		>
 			{children}
 			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none`}>

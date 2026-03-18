@@ -1,9 +1,9 @@
-import Header from "@/components/Header"
+import Header from "@/components/ui/Header"
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Content from "@/components/Content"
 import Section from "@/components/layout/Section"
 
-export default function Services() {
+const Services = () => {
 	return (
 		<div className="flex flex-col items-center">
 			<Header variant="default" graphic="/images/hero-16-9.png">
@@ -74,7 +74,7 @@ export default function Services() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="pb-16">
+			{/* <Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Education</h2>
@@ -91,10 +91,10 @@ export default function Services() {
 						</div>
 					</Content>
 				</ContentWrapper>
-			</Section>
+			</Section> */}
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={false}>
+					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Post-Production</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -113,3 +113,5 @@ export default function Services() {
 		</div>
 	)
 }
+
+export default Services

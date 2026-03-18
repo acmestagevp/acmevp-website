@@ -10,16 +10,16 @@ const NavBar = () => {
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="fixed top-0 z-40 bg-neutral-950">
+		<nav className="fixed top-0 z-40 pointer-events-none">
 			<ul className="flex w-screen justify-between items-center p-4">
-				<div className="mx-4 my-2">
+				<div className="mx-4">
 					<Link className="" href={"/"}>
 						<Image
-							src="/globe.svg"
+							src="/images/ACME-Logo-White.png"
 							alt="Acme Virtual Production"
-							width={40}
-							height={10}
-							className=""
+							width={128}
+							height={50}
+							className="opacity-70 hover:opacity-100 ease-in-out duration-200 pointer-events-auto cursor-pointer"
 							onClick={() => setMenuOpen(false)}
 						/>
 					</Link>
@@ -27,7 +27,7 @@ const NavBar = () => {
 				<div className="mx-4 my-2 hidden pointer-events-auto lg:inline">
 					{navItems.map(({ label, href }) => (
 						<Link
-							className="mx-6 tracking-wide text-neutral-500 hover:text-neutral-300 ease-in-out duration-200"
+							className="mx-6 tracking-wide text-neutral-400 hover:text-neutral-200 ease-in-out duration-200"
 							key={label}
 							href={href}
 						>
@@ -46,7 +46,7 @@ const NavBar = () => {
 				</div>
 			</ul>
 			{menuOpen && (
-				<div className="absolute top-0 right-4 pt-16 px-4 text-right bg-neutral-950 lg:hidden pointer-events-none">
+				<div className="absolute top-0 right-4 pt-16 px-4 text-right bg-neutral-950/70 lg:hidden pointer-events-none">
 					{navItems.map(({ label, href }) => (
 						<Link
 							key={label}

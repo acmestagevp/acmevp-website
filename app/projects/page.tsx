@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer"
-import Header from "@/components/Header"
+import Header from "@/components/ui/Header"
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Testimonials from "@/components/Testimonials"
 import { projects } from "@/constants/projects"
@@ -13,9 +12,9 @@ export default function Projects() {
 					<div className="relative z-10 text-center pt-18">
 						<h1 className="text-3xl md:text-4xl tracking-tight">Projects</h1>
 					</div>
-				</ContentWrapper>{" "}
+				</ContentWrapper>
 			</Header>
-			<div className="flex flex-col lg:flex-row mx-8 flex-wrap items-center">
+			<div className="flex flex-col md:flex-row mx-8 flex-wrap items-center">
 				{projects.map((section, index) => {
 					const Component = componentMap[section.component] // Use the imported map
 					if (!Component) return null

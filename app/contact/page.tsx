@@ -5,10 +5,10 @@ import React from "react"
 
 const Contact = () => {
 	return (
-		<Section>
+		<Section variant="custom" className="pt-28 md:py-12">
 			<ContentWrapper variant="wide">
-				<div className="min-h-[80vh] w-full text-white flex flex-col md:flex-row">
-					<div className="flex flex-col justify-center p-8 md:p-16 md:w-2/5 text-right">
+				<div className="min-h-[70vh] w-full text-white flex flex-col md:flex-row">
+					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
 						<h2 className="text-3xl mb-6">Let's build your world.</h2>
 						<p className="mb-8">
 							Ready to step into the volume? Whether you're booking the 60ft wall or need a full VAD
@@ -17,18 +17,18 @@ const Contact = () => {
 
 						<div className="space-y-6">
 							<div>
-								<h4 className="text-sm">Location</h4>
+								<h4 className="text-sm text-neutral-400">Location</h4>
 								<p className="text-lg">Minneapolis, MN</p>
 							</div>
 							<div>
-								<h4 className="text-sm">Email</h4>
+								<h4 className="text-sm text-neutral-400">Email</h4>
 								<p className="text-lg">info@acmevp.com</p>
 							</div>
 						</div>
 					</div>
 
 					{/* Right Side: Form (60% width on desktop) */}
-					<div className="flex flex-col justify-center p-8 md:p-24 md:w-3/5">
+					<div className="flex flex-col justify-center p-8 md:p-12 md:w-3/5">
 						<form className="space-y-6">
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div className="flex flex-col">
@@ -65,7 +65,7 @@ const Contact = () => {
 								/>
 							</div>
 
-							<button className="w-full md:w-max px-12 py-4 bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-widest transition-all rounded">
+							<button className="w-full md:w-max px-12 py-4 border border-neutral-400 hover:bg-neutral-800 hover:border-neutral-200 uppercase tracking-widest transition-all rounded-lg">
 								Send Inquiry
 							</button>
 						</form>

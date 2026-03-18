@@ -1,7 +1,7 @@
 import { navItems } from "@/constants/nav"
 import Link from "next/link"
-import Section from "./layout/Section"
-import ContentWrapper from "./layout/ContentWrapper"
+import Section from "../layout/Section"
+import ContentWrapper from "../layout/ContentWrapper"
 
 const Footer = () => {
 	return (
@@ -9,15 +9,21 @@ const Footer = () => {
 			<ContentWrapper>
 				<div className="flex flex-col justify-center p-4 z-10">
 					<div className="flex flex-col py-16 lg:flex-row justify-between">
-						<div className="p-4 text-center ">
-							<p className="text-2xl">ACME Virtual Production</p>
-							<p>2635 S 28th Ave.</p>
-							<p>Minneapolis MN 55406</p>
+						<div className="p-4 text-center">
+							<p className="text-2xl m-2">ACME Virtual Production</p>
+							<p className="text-neutral-500 hover:text-neutral-400 ease-in-out duration-200">
+								2635 S 28th Ave. <br />
+								Minneapolis MN 55406
+							</p>
 						</div>
 						<div className="p-4 text-center">
-							<p className="text-2xl">Contact</p>
-							<p>info@acmevp.com</p>
-							<p>(612) 385-0488</p>
+							<p className="text-2xl m-2">Contact</p>
+							<p className="text-neutral-500 hover:text-neutral-400 ease-in-out duration-200">
+								<a href="mailto:info@acmevp.com">info@acmevp.com</a>
+							</p>
+							<p className="text-neutral-500 hover:text-neutral-400 ease-in-out duration-200">
+								<a href="tel:(612) 385-0488">(612) 385-0488</a>
+							</p>
 						</div>
 					</div>
 					<div className="flex place-content-center px-4 flex-wrap">

@@ -1,11 +1,11 @@
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Testimonials from "@/components/Testimonials"
-import { home } from "@/constants/home"
-import { componentMap } from "@/utils/componentMap"
-import Header from "@/components/Header"
+import Header from "@/components/ui/Header"
 import Section from "@/components/layout/Section"
 import Content from "@/components/Content"
-import Link from "next/link"
+import { logos } from "@/constants/logos"
+import Image from "next/image"
+import Logo from "@/components/Logo"
 
 export default function Home() {
 	return (
@@ -49,6 +49,18 @@ export default function Home() {
 					</Content>
 				</ContentWrapper>
 			</Section>
+			<Section>
+				<ContentWrapper variant="narrow">
+					<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
+						Delivering End-to-end virtual production for
+					</h2>
+					<div className="flex flex-wrap justify-center">
+						{logos.map((logo, index) => (
+							<Logo key={index} graphic={logo.graphic} alt={logo.alt} />
+						))}
+					</div>
+				</ContentWrapper>
+			</Section>
 			<Section variant="custom" className="py-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
@@ -63,7 +75,7 @@ export default function Home() {
 								<li className="">Studio</li>
 								<li className="">Gear</li>
 								<li className="">VAD</li>
-								<li className="">Education</li>
+								{/* <li className="">Education</li> */}
 								<li className="">Post</li>
 							</ul>
 						</div>
