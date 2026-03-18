@@ -1,23 +1,30 @@
 @import "tailwindcss";
 
-/* Changed Defaults to Dark Mode */
+/* ─── Design Tokens ─────────────────────────────────────────────────────────── */
 
 :root {
-	--background: #0a0a0a;
+	--background: #080808;
 	--foreground: #ededed;
+	--border: rgba(255, 255, 255, 0.08);
+	--border-hover: rgba(255, 255, 255, 0.16);
+	--surface: rgba(255, 255, 255, 0.03);
+	--surface-hover: rgba(255, 255, 255, 0.06);
+	--muted: #a1a1aa;
+	--muted-foreground: #71717a;
 }
 
-html {
-	scroll-behavior: smooth !important;
-}
-
-/* Added Marquee */
+/* ─── Theme ──────────────────────────────────────────────────────────────────── */
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
+	--color-border: var(--border);
+	--color-surface: var(--surface);
+	--color-muted: var(--muted);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
+
+	/* Marquee animation */
 	--animate-marquee: marquee 40s linear infinite;
 
 	@keyframes marquee {
@@ -28,22 +35,34 @@ html {
 			transform: translateX(calc(-1 * var(--marquee-width)));
 		}
 	}
+
+	/* Subtle fade-up for sections */
+	--animate-fade-up: fadeUp 0.6s ease forwards;
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+
+html {
+	scroll-behavior: smooth !important;
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Custom */
+/* ─── Mask Utilities ─────────────────────────────────────────────────────────── */
 
 .bg-mask {
 	-webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
@@ -53,4 +72,38 @@ body {
 .bg-mask-top {
 	-webkit-mask-image: linear-gradient(to top, black 0%, black 60%, transparent 100%);
 	mask-image: linear-gradient(to top, black 0%, black 60%, transparent 100%);
+}
+
+.bg-mask-sides {
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		black 10%,
+		black 90%,
+		transparent 100%
+	);
+	mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* ─── Subtle Grid Background ─────────────────────────────────────────────────── */
+
+.bg-grid {
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 64px 64px;
+}
+
+/* ─── Glow Utilities ─────────────────────────────────────────────────────────── */
+
+.glow-border {
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.08),
+		0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.glow-border-hover:hover {
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.16),
+		0 4px 16px rgba(0, 0, 0, 0.6);
 }

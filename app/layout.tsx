@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/ui/NavBar"
 import Footer from "@/components/ui/Footer"
-import Background from "@/components/decoration/Background"
-import Image from "next/image"
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -49,32 +47,16 @@ export default function RootLayout({
 			<head>
 				<meta
 					name="viewport"
-					content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scaleable=no"
+					content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1"
 				/>
 			</head>
 			<body
-				id="body"
-				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-[#080808] text-[#ededed]`}
 			>
-				<div className="relative z-10 flex min-h-screen flex-col">
-					{/* <Background /> */}
+				<div className="relative flex min-h-screen flex-col">
 					<NavBar />
-					<main className="">{children}</main>
+					<main className="flex-1">{children}</main>
 					<Footer />
-					<Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
-						src="/background/bg-footer.jpg"
-						alt="Footer Glow"
-						width={1920}
-						height={1080}
-					/>
-					<Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-10 bg-mask-top"
-						src="/background/bg-noise.png"
-						alt="Footer Noise"
-						width={1920}
-						height={1080}
-					/>
 				</div>
 			</body>
 		</html>

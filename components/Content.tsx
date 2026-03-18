@@ -1,5 +1,6 @@
 import React from "react"
 import Image from "next/image"
+
 interface ContentProps {
 	graphic: string
 	basis?: string
@@ -8,27 +9,25 @@ interface ContentProps {
 	children?: React.ReactNode
 }
 
-const Content: React.FC<ContentProps> = ({
-	graphic,
-	isReversed = false,
-	padding = "4",
-	children,
-}) => {
+const Content: React.FC<ContentProps> = ({ graphic, isReversed = false, children }) => {
 	return (
-		<div className="flex flex-col lg:flex-row items-center">
-			<div
-				className={`flex-1 p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
-			>
+		<div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+			{/* Text side */}
+			<div className={`flex-1 flex flex-col gap-4 ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
 				{children}
 			</div>
-			<div className={`flex-1 p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
-				<Image
-					className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
-					width={1080}
-					height={1080}
-					src={graphic}
-					alt={graphic}
-				/>
+
+			{/* Image side */}
+			<div className={`flex-1 ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
+				<div className="relative overflow-hidden rounded-xl border border-white/[0.06] glow-border">
+					<Image
+						className="w-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300"
+						width={1080}
+						height={1080}
+						src={graphic}
+						alt={graphic}
+					/>
+				</div>
 			</div>
 		</div>
 	)

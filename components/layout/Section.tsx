@@ -13,12 +13,12 @@ const Section: React.FC<SectionProps> = ({
 	...props
 }) => {
 	const variants = {
-		default: "py-16 md:py-24 lg:py-32",
+		default: "py-20 md:py-28 lg:py-36",
 		custom: "",
 	}
 
 	return (
-		<Component id={id} className={`relative ${className} ${variants[variant]}`} {...props}>
+		<Component id={id} className={`relative w-full ${variants[variant]} ${className}`} {...props}>
 			{children}
 		</Component>
 	)
