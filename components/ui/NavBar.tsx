@@ -10,8 +10,8 @@ const NavBar = () => {
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="fixed top-0 z-40 pointer-events-none">
-			<ul className="flex w-screen justify-between items-center p-4">
+		<nav className="fixed top-0 z-40 w-full pointer-events-none">
+			<ul className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
 				<div className="mx-4">
 					<Link className="" href={"/"}>
 						<Image
@@ -19,15 +19,15 @@ const NavBar = () => {
 							alt="Acme Virtual Production"
 							width={128}
 							height={50}
-							className="opacity-70 hover:opacity-100 ease-in-out duration-200 pointer-events-auto cursor-pointer"
+							className="pointer-events-auto cursor-pointer opacity-80 transition duration-300 hover:opacity-100"
 							onClick={() => setMenuOpen(false)}
 						/>
 					</Link>
 				</div>
-				<div className="mx-4 my-2 hidden pointer-events-auto lg:inline">
+				<div className="premium-panel mx-4 my-2 hidden rounded-full px-3 py-2 pointer-events-auto lg:inline">
 					{navItems.map(({ label, href }) => (
 						<Link
-							className="mx-6 tracking-wide text-neutral-400 hover:text-neutral-200 ease-in-out duration-200"
+							className="mx-4 inline-flex items-center text-xs uppercase tracking-[0.24em] text-neutral-400 transition duration-300 hover:text-white"
 							key={label}
 							href={href}
 						>
@@ -35,9 +35,9 @@ const NavBar = () => {
 						</Link>
 					))}
 				</div>
-				<div className="lg:hidden mx-4 my-2 z-50">
+				<div className="premium-panel lg:hidden mx-4 my-2 rounded-full z-50">
 					<button
-						className="pointer-events-auto cursor-pointer text-xl"
+						className="pointer-events-auto cursor-pointer px-4 py-2 text-lg text-neutral-200"
 						onClick={toggleMenu}
 						aria-label="Toggle Menu"
 					>
@@ -46,12 +46,12 @@ const NavBar = () => {
 				</div>
 			</ul>
 			{menuOpen && (
-				<div className="absolute top-0 right-4 pt-16 px-4 text-right bg-neutral-950/70 lg:hidden pointer-events-none">
+				<div className="premium-panel absolute top-4 right-4 min-w-48 rounded-3xl px-5 pb-4 pt-16 text-right lg:hidden pointer-events-none">
 					{navItems.map(({ label, href }) => (
 						<Link
 							key={label}
 							href={href}
-							className="block py-2 pointer-events-auto cursor-pointer"
+							className="block py-2 text-xs uppercase tracking-[0.24em] text-neutral-300 pointer-events-auto cursor-pointer transition duration-300 hover:text-white"
 							onClick={() => setMenuOpen(false)}
 						>
 							{label}

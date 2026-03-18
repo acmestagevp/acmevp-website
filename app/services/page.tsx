@@ -8,9 +8,12 @@ const Services = () => {
 		<div className="flex flex-col items-center">
 			<Header variant="default" graphic="/images/hero-16-9.png">
 				<ContentWrapper className="pt-64 pb-24">
-					<div className="relative z-10 text-center">
-						<h1 className="text-3xl md:text-4xl tracking-tight">Services</h1>
-						<p className="mt-6">
+					<div className="premium-panel relative z-10 rounded-[2rem] px-8 py-12 text-center md:px-12">
+						<p className="text-[10px] uppercase tracking-[0.35em] text-neutral-500">
+							End-to-end support
+						</p>
+						<h1 className="mt-4 text-3xl tracking-tight text-white md:text-4xl">Services</h1>
+						<p className="mt-6 text-sm leading-7 text-neutral-300 md:text-base">
 							Our full-service production team acts as your end-to-end partner, handling everything
 							from pre-production planning and location scouting to on-set execution and wrap. We
 							coordinate in-house crew and our trusted vendor network so you can focus on the
@@ -24,8 +27,9 @@ const Services = () => {
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={false}>
-						<h2 className="text-3xl py-2">Studio</h2>
-						<div className="text-neutral-400">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Capabilities</p>
+						<h2 className="py-2 text-3xl text-white md:text-4xl">Studio</h2>
+						<div className="text-sm leading-7 text-neutral-300 md:text-base">
 							<p className="py-2">
 								ACME Virtual Production houses Minnesota’s largest LED volume: a 60 ft × 16.5 ft
 								curved wall with over 14 million pixels, 2.6 mm Unilumin UpadIV panels, and 1,000
@@ -42,8 +46,9 @@ const Services = () => {
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
-						<h2 className="text-3xl py-2">Gear</h2>
-						<div className="text-neutral-400">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Capabilities</p>
+						<h2 className="py-2 text-3xl text-white md:text-4xl">Gear</h2>
+						<div className="text-sm leading-7 text-neutral-300 md:text-base">
 							<p className="py-2">
 								We offer direct access to premium cameras, lighting packages, grip equipment, and
 								specialized virtual production tools through our in-house inventory and
@@ -59,8 +64,9 @@ const Services = () => {
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={false}>
-						<h2 className="text-3xl py-2">Virtual Art Department</h2>
-						<div className="text-neutral-400">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Capabilities</p>
+						<h2 className="py-2 text-3xl text-white md:text-4xl">Virtual Art Department</h2>
+						<div className="text-sm leading-7 text-neutral-300 md:text-base">
 							<p className="py-2">
 								Our Virtual Art Department (VAD) team designs, builds, and operates real-time Unreal
 								Engine environments tailored to your project’s vision. From photorealistic 3D worlds
@@ -95,8 +101,9 @@ const Services = () => {
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
-						<h2 className="text-3xl py-2">Post-Production</h2>
-						<div className="text-neutral-400">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Capabilities</p>
+						<h2 className="py-2 text-3xl text-white md:text-4xl">Post-Production</h2>
+						<div className="text-sm leading-7 text-neutral-300 md:text-base">
 							<p className="py-2">
 								Our post-production team picks up right where the stage leaves off, delivering
 								seamless color grading, virtual-set extensions, final compositing, and deliverable

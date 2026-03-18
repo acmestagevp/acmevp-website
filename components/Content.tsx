@@ -11,19 +11,19 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({
 	graphic,
 	isReversed = false,
-	padding = "4",
+	padding = "6",
 	children,
 }) => {
 	return (
-		<div className="flex flex-col lg:flex-row items-center">
+		<div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
 			<div
-				className={`flex-1 p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
+				className={`premium-panel rounded-[2rem] p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
 			>
 				{children}
 			</div>
-			<div className={`flex-1 p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
+			<div className={`p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
 				<Image
-					className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
+					className="w-full rounded-[2rem] border border-white/10 object-cover opacity-80 shadow-2xl transition duration-300 hover:opacity-100"
 					width={1080}
 					height={1080}
 					src={graphic}

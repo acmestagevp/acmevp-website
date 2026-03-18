@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/ui/NavBar"
 import Footer from "@/components/ui/Footer"
-import Background from "@/components/decoration/Background"
 import Image from "next/image"
 
 const geistSans = Geist({
@@ -54,12 +53,12 @@ export default function RootLayout({
 			</head>
 			<body
 				id="body"
-				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+				className={`${geistSans.variable} ${geistMono.variable} bg-black text-neutral-100 antialiased overflow-x-hidden`}
 			>
 				<div className="relative z-10 flex min-h-screen flex-col">
 					{/* <Background /> */}
 					<NavBar />
-					<main className="">{children}</main>
+					<main className="relative isolate">{children}</main>
 					<Footer />
 					<Image
 						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"

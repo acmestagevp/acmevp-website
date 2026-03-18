@@ -4,7 +4,6 @@ import Header from "@/components/ui/Header"
 import Section from "@/components/layout/Section"
 import Content from "@/components/Content"
 import { logos } from "@/constants/logos"
-import Image from "next/image"
 import Logo from "@/components/Logo"
 
 export default function Home() {
@@ -12,9 +11,14 @@ export default function Home() {
 		<div className="flex flex-col items-center">
 			<Header variant="full" graphic="/images/hero-16-9.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center pt-112">
-						<h1 className="text-3xl md:text-4xl tracking-tight">ACME Virtual Production</h1>
-						<p className="mt-6 text-neutral-400">
+					<div className="premium-panel relative z-10 mx-auto rounded-[2rem] px-8 py-14 text-center pt-112 md:px-12 md:py-16">
+						<p className="text-[10px] uppercase tracking-[0.35em] text-neutral-400">
+							Virtual Production Studio
+						</p>
+						<h1 className="mt-4 text-4xl tracking-tight text-white md:text-5xl">
+							ACME Virtual Production
+						</h1>
+						<p className="mt-6 text-sm leading-7 text-neutral-300 md:text-base">
 							ACME Virtual Production opens the door to a new world of possibilities. Whether for
 							high-end commercials, narrative films, or photo-realistic virtual environments, you
 							can transport your production to the bustling streets of Tokyo, the serene beaches of
@@ -31,8 +35,11 @@ export default function Home() {
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={false}>
-						<h2 className="text-3xl py-2 text-center">Minnesota’s Largest LED Volume</h2>
-						<div className="text-neutral-400 text-center">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Studio</p>
+						<h2 className="py-3 text-center text-3xl text-white md:text-4xl">
+							Minnesota’s Largest LED Volume
+						</h2>
+						<div className="text-center text-sm leading-7 text-neutral-300 md:text-base">
 							<p className="py-2">
 								ACME Virtual Production is home to the largest LED wall in Minnesota — a commanding
 								60-foot-wide by 16.5-foot-tall curved volume that delivers over 14 million pixels of
@@ -51,10 +58,10 @@ export default function Home() {
 			</Section>
 			<Section>
 				<ContentWrapper variant="narrow">
-					<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
+					<h2 className="text-center text-xs uppercase tracking-[0.32em] text-neutral-500">
 						Delivering End-to-end virtual production for
 					</h2>
-					<div className="flex flex-wrap justify-center">
+					<div className="mt-8 flex flex-wrap justify-center gap-y-4 rounded-[2rem] border border-white/8 bg-white/[0.02] px-6 py-8">
 						{logos.map((logo, index) => (
 							<Logo key={index} graphic={logo.graphic} alt={logo.alt} />
 						))}
@@ -64,13 +71,14 @@ export default function Home() {
 			<Section variant="custom" className="py-16">
 				<ContentWrapper variant="wide">
 					<Content basis="" graphic="/images/content-1-1.png" isReversed={true}>
-						<h2 className="text-center text-3xl">Services</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-lg">
+						<p className="text-[10px] uppercase tracking-[0.32em] text-neutral-500">Capabilities</p>
+						<h2 className="text-center text-3xl text-white md:text-4xl">Services</h2>
+						<div className="py-4 text-center text-sm leading-7 text-neutral-300 md:text-base">
+							<h3 className="text-lg text-neutral-200">
 								All-in-one production services in the greater Minneapolis area.
 							</h3>
 							<br />
-							<ul className="list-disc list-inside">
+							<ul className="space-y-2 text-sm uppercase tracking-[0.22em] text-neutral-400">
 								<li className="">Production</li>
 								<li className="">Studio</li>
 								<li className="">Gear</li>
