@@ -7,8 +7,8 @@ const Services = () => {
 	return (
 		<div className="flex flex-col items-center">
 			<Header variant="default" graphic="/images/hero-16-9.png">
-				<ContentWrapper>
-					<div className="relative z-10 text-center pt-64">
+				<ContentWrapper className="pt-64 pb-24">
+					<div className="relative z-10 text-center">
 						<h1 className="text-3xl md:text-4xl tracking-tight">Services</h1>
 						<p className="mt-6">
 							Our full-service production team acts as your end-to-end partner, handling everything
@@ -23,7 +23,7 @@ const Services = () => {
 			</Header>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={false}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Studio</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -41,7 +41,7 @@ const Services = () => {
 			</Section>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Gear</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -58,7 +58,7 @@ const Services = () => {
 			</Section>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={false}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Virtual Art Department</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -76,7 +76,7 @@ const Services = () => {
 			</Section>
 			{/* <Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Education</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -94,7 +94,7 @@ const Services = () => {
 			</Section> */}
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Post-Production</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">

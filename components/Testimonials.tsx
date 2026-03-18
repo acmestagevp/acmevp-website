@@ -49,7 +49,7 @@ const Testimonials = () => {
 	const items = [...testimonials, ...testimonials] // duplicate for seamless loop
 
 	return (
-		<div className="w-full overflow-hidden my-32">
+		<div className="w-full overflow-hidden my-24">
 			<div ref={rowRef} className="flex w-max gap-8">
 				{items.map((testimonial, index) => (
 					<div

@@ -21,12 +21,14 @@ const Header: React.FC<HeaderProps> = ({
 	}
 	return (
 		<section
-			className={`relative ${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full bg-black bg-mask`}
+			className={`relative min-${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
 		>
 			{children}
-			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none`}>
+			<div
+				className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-black bg-mask`}
+			>
 				<Image
-					className={`w-full object-cover ${variants[variant]} bg-mask`}
+					className={`w-full object-cover ${variants[variant]}`}
 					width={1920}
 					height={1080}
 					src={graphic}

@@ -57,24 +57,24 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
 			>
 				<div className="relative z-10 flex min-h-screen flex-col">
-					<Background />
+					{/* <Background /> */}
 					<NavBar />
 					<main className="">{children}</main>
 					<Footer />
-					{/* <Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover"
+					<Image
+						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
 						src="/background/bg-footer.jpg"
 						alt="Footer Glow"
 						width={1920}
 						height={1080}
 					/>
 					<Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-10"
+						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-10 bg-mask-top"
 						src="/background/bg-noise.png"
 						alt="Footer Noise"
 						width={1920}
 						height={1080}
-					/> */}
+					/>
 				</div>
 			</body>
 		</html>

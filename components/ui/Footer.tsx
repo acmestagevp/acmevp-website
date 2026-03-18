@@ -12,8 +12,14 @@ const Footer = () => {
 						<div className="p-4 text-center">
 							<p className="text-2xl m-2">ACME Virtual Production</p>
 							<p className="text-neutral-500 hover:text-neutral-400 ease-in-out duration-200">
-								2635 S 28th Ave. <br />
-								Minneapolis MN 55406
+								<a
+									href="https://maps.app.goo.gl/bFTrkW2d8GBaKfHT6"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									2635 S 28th Ave. <br />
+									Minneapolis MN 55406
+								</a>
 							</p>
 						</div>
 						<div className="p-4 text-center">

@@ -12,9 +12,9 @@ export default function Home() {
 		<div className="flex flex-col items-center">
 			<Header variant="full" graphic="/images/hero-16-9.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center pt-128">
+					<div className="relative z-10 text-center pt-112">
 						<h1 className="text-3xl md:text-4xl tracking-tight">ACME Virtual Production</h1>
-						<p className="mt-6">
+						<p className="mt-6 text-neutral-400">
 							ACME Virtual Production opens the door to a new world of possibilities. Whether for
 							high-end commercials, narrative films, or photo-realistic virtual environments, you
 							can transport your production to the bustling streets of Tokyo, the serene beaches of
@@ -30,7 +30,7 @@ export default function Home() {
 			</Header>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={false}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Minnesota’s Largest LED Volume</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -63,7 +63,7 @@ export default function Home() {
 			</Section>
 			<Section variant="custom" className="py-16">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/content-1-1.png" isReversed={true}>
+					<Content textFlex={2} graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Services</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-lg">

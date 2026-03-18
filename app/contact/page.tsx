@@ -7,7 +7,7 @@ const Contact = () => {
 	return (
 		<Section variant="custom" className="pt-28 md:py-12">
 			<ContentWrapper variant="wide">
-				<div className="min-h-[70vh] w-full text-white flex flex-col md:flex-row">
+				<div className="min-h-[70vh] w-full flex flex-col md:flex-row">
 					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
 						<h2 className="text-3xl mb-6">Let's build your world.</h2>
 						<p className="mb-8">
@@ -15,14 +15,18 @@ const Contact = () => {
 							environment build, our team is ready to scale with you.
 						</p>
 
-						<div className="space-y-6">
-							<div>
-								<h4 className="text-sm text-neutral-400">Location</h4>
-								<p className="text-lg">Minneapolis, MN</p>
-							</div>
+						<div className="space-y-2">
 							<div>
 								<h4 className="text-sm text-neutral-400">Email</h4>
-								<p className="text-lg">info@acmevp.com</p>
+								<p className="text-lg">
+									<a href="mailto:info@acmevp.com">info@acmevp.com</a>
+								</p>
+							</div>
+							<div>
+								<h4 className="text-sm text-neutral-400">Phone</h4>
+								<p className="text-lg">
+									<a href="tel:6123850488">(612) 385-0488</a>
+								</p>
 							</div>
 						</div>
 					</div>
