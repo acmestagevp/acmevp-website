@@ -23,7 +23,7 @@ const Services = () => {
 			</Header>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={false}>
+					<Content graphic="/images/content-1-1.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Studio</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -41,7 +41,7 @@ const Services = () => {
 			</Section>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={true}>
+					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Gear</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -58,7 +58,7 @@ const Services = () => {
 			</Section>
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={false}>
+					<Content graphic="/images/content-1-1.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Virtual Art Department</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -76,7 +76,7 @@ const Services = () => {
 			</Section>
 			{/* <Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={true}>
+					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Education</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
@@ -94,7 +94,7 @@ const Services = () => {
 			</Section> */}
 			<Section variant="custom" className="pb-16">
 				<ContentWrapper variant="wide">
-					<Content textFlex="2" graphic="/images/content-1-1.png" isReversed={true}>
+					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Post-Production</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">

@@ -1,10 +1,8 @@
 import React from "react"
 import Image from "next/image"
-import { text } from "stream/consumers"
-
 interface ContentProps {
 	graphic: string
-	textFlex?: string
+	basis?: string
 	padding?: string
 	isReversed?: boolean
 	children?: React.ReactNode
@@ -13,14 +11,13 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({
 	graphic,
 	isReversed = false,
-	textFlex = "1",
 	padding = "4",
 	children,
 }) => {
 	return (
 		<div className="flex flex-col lg:flex-row items-center">
 			<div
-				className={`flex-${textFlex} p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
+				className={`flex-1 p-${padding} ${isReversed ? "lg:order-2 lg:text-left" : "lg:order-1 lg:text-right"}`}
 			>
 				{children}
 			</div>
