@@ -12,7 +12,7 @@ const Contact = () => {
 						<h2 className="text-3xl mb-6">Let's build your world.</h2>
 						<p className="mb-8">
 							Ready to step into the volume? Whether you're booking the 60ft wall or need a full VAD
-							environment build, our team is ready to scale with you.
+							environment, our team is ready to build with you.
 						</p>
 
 						<div className="space-y-2">

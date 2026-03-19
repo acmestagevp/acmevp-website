@@ -13,7 +13,7 @@ const Section: React.FC<SectionProps> = ({
 	...props
 }) => {
 	const variants = {
-		default: "py-16 md:py-24 lg:py-32",
+		default: "py-8 md:py-12 lg:py-16",
 		custom: "",
 	}
 

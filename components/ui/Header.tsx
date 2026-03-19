@@ -24,18 +24,16 @@ const Header: React.FC<HeaderProps> = ({
 			className={`relative min-${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
 		>
 			{children}
-			<div
-				className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-black bg-mask`}
-			>
+			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-mask`}>
 				<Image
-					className={`w-full object-cover ${variants[variant]}`}
+					className={`w-full -z-1 object-cover ${variants[variant]}`}
 					width={1920}
 					height={1080}
 					src={graphic}
 					alt="Acme Virtual Production"
 				/>
 			</div>
-			{variant === "full" ? (
+			{/* {variant === "full" ? (
 				<div
 					className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
 					// style={{ opacity: Math.max(0, 1 - scrollY / 200) }}
@@ -43,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({
 					<span className="text-xs text-neutral-500 tracking-widest uppercase">Scroll</span>
 					<div className="w-px h-8 bg-linear-to-b from-neutral-500 to-transparent animate-pulse" />
 				</div>
-			) : null}
+			) : null} */}
 		</section>
 	)
 }
