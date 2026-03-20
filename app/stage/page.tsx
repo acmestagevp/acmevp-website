@@ -8,8 +8,8 @@ export default function Stage() {
 	return (
 		<div className="flex flex-col items-center">
 			<Header graphic="/images/stage/wireframe-wall.png" imageOpacity={50}>
-				<ContentWrapper variant="wide" className="pt-64 pb-24 place-items-end flex-1">
-					<div className="w-3xl pt-28 pr-16 z-50">
+				<ContentWrapper variant="wide" className="pt-64 pb-24 lg:place-items-end flex-1">
+					<div className="max-w-3xl lg:pt-28 lg:pr-16 z-50">
 						<h2 className="text-center text-3xl">Our Stage</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">
