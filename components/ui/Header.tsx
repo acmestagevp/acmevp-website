@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({
 			{children}
 			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-mask`}>
 				<Image
-					className={`w-full -z-1 object-cover ${variants[variant]}`}
+					className={`w-full -z-1 object-cover ${variants[variant]} bg-mask`}
 					width={1920}
 					height={1080}
 					src={graphic}

@@ -2,6 +2,7 @@ type SectionProps = React.HTMLAttributes<HTMLElement> & {
 	variant?: "default" | "custom"
 	as?: "section" | "div" | "article"
 	id?: string
+	border?: boolean
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -9,6 +10,7 @@ const Section: React.FC<SectionProps> = ({
 	id,
 	variant = "default",
 	className = "",
+	border = false,
 	children,
 	...props
 }) => {
@@ -18,7 +20,11 @@ const Section: React.FC<SectionProps> = ({
 	}
 
 	return (
-		<Component id={id} className={`relative ${className} ${variants[variant]}`} {...props}>
+		<Component
+			id={id}
+			className={`${border ? "border-t border-neutral-800" : ""} relative ${className} ${variants[variant]}`}
+			{...props}
+		>
 			{children}
 		</Component>
 	)

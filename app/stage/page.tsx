@@ -7,9 +7,9 @@ import Section from "@/components/layout/Section"
 export default function Stage() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header graphic="/images/stage/wireframe-wall.png" imageOpacity={80}>
+			<Header graphic="/images/stage/wireframe-wall.png" imageOpacity={50}>
 				<ContentWrapper variant="wide" className="pt-64 pb-24 place-items-end flex-1">
-					<div className="w-xl pt-28 pr-16">
+					<div className="w-3xl pt-28 pr-16 z-50">
 						<h2 className="text-center text-3xl">Our Stage</h2>
 						<div className="text-center py-4 text-neutral-400">
 							<h3 className="text-xl p-4">
@@ -20,7 +20,8 @@ export default function Stage() {
 								<li className="">Height: 16.5ft</li>
 								<li className="">2.5° Curve</li>
 							</ul>
-							<h3 className="text-xl">
+							<br />
+							<h3 className="text-xl p-4">
 								More pixels mean sharper, more convincing imagery even when the camera gets close.
 							</h3>
 							<ul className="list-disc list-inside">
@@ -32,7 +33,7 @@ export default function Stage() {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content basis="50%" graphic="/images/stage/upadiv.png">
 						<h2 className="text-center text-3xl">Panels</h2>
@@ -49,7 +50,7 @@ export default function Stage() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/primex22.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Tracking</h2>
@@ -68,7 +69,7 @@ export default function Stage() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/rtx6000.png">
 						<h2 className="text-center text-3xl">Compute</h2>
@@ -85,7 +86,7 @@ export default function Stage() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/pixera.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Media</h2>
@@ -102,7 +103,7 @@ export default function Stage() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/floorplan.png">
 						<h2 className="text-center text-3xl">Floorplan</h2>
@@ -121,7 +122,7 @@ export default function Stage() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/amenities.png" isReversed={true}>
 						<h2 className="text-center text-3xl">Amenities</h2>

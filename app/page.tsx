@@ -10,12 +10,10 @@ import Logo from "@/components/Logo"
 export default function Home() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="full" graphic="/images/hero-16-9.png">
+			<Header variant="full" imageOpacity={40} graphic="/images/hero-16-9.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center pt-112">
-						<h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
-							ACME Virtual Production
-						</h1>
+					<div className="relative z-10 text-center pt-172 md:pt-212 pb-48">
+						<h1 className="text-3xl md:text-5xl font-semibold">ACME Virtual Production</h1>
 						<p className="mt-6 text-neutral-400">
 							ACME Virtual Production opens the door to a new world of possibilities. Whether for
 							high-end commercials, narrative films, or photo-realistic virtual environments, you
@@ -30,7 +28,7 @@ export default function Home() {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section variant="custom" className="pb-16">
+			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/home/stage-bts-1.png" isReversed={false}>
 						<h2 className="text-2xl py-2 text-center">Minnesota’s Largest LED Volume</h2>
@@ -50,7 +48,7 @@ export default function Home() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section>
+			<Section border>
 				<ContentWrapper variant="narrow">
 					<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
 						Trusted by
@@ -62,11 +60,11 @@ export default function Home() {
 					</div>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="py-16">
+			<Section variant="custom" className="py-16" border>
 				<ContentWrapper variant="wide">
 					<Content basis="" graphic="/images/home/stage-bts-2.jpg" isReversed={true}>
 						<h2 className="text-center text-2xl">Services</h2>
-						<div className="text-center py-4 text-neutral-400">
+						<div className="text-center py-4 text-neutral-300">
 							<h3 className="text-lg">
 								End-to-end production services in the greater Minneapolis area.
 							</h3>
@@ -83,7 +81,9 @@ export default function Home() {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Testimonials />
+			<Section border>
+				<Testimonials />
+			</Section>
 		</div>
 	)
 }

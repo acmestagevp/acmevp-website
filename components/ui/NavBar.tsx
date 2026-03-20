@@ -1,16 +1,33 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { navItems } from "@/constants/nav"
 import Link from "next/link"
 import Image from "next/image"
 
 const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const [scrolled, setScrolled] = useState(false)
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 120)
+		}
+		window.addEventListener("scroll", handleScroll, { passive: true })
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [])
+
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav className="fixed top-0 z-40 pointer-events-none">
+		<nav
+			className={`fixed top-0 z-40 pointer-events-none transition-all duration-500
+				${
+					scrolled
+						? "bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800/60"
+						: "bg-transparent border-b border-transparent"
+				}`}
+		>
 			<ul className="flex w-screen justify-between items-center p-4">
 				<div className="mx-4">
 					<Link className="" href={"/"}>

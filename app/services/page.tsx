@@ -6,11 +6,11 @@ import Section from "@/components/layout/Section"
 const Services = () => {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="default" graphic="/images/hero-16-9.png">
-				<ContentWrapper className="pt-64 pb-24">
+			<Header variant="default" imageOpacity={25} graphic="/images/services/services.jpg">
+				<ContentWrapper className="pt-56 pb-32">
 					<div className="relative z-10 text-center">
-						<h1 className="text-3xl md:text-4xl tracking-tight">Services</h1>
-						<p className="mt-6">
+						<h1 className="text-3xl md:text-4xl">Services</h1>
+						<p className="mt-6 text-neutral-300 text-balance">
 							Our full-service production team acts as your end-to-end partner, handling everything
 							from pre-production planning and location scouting to on-set execution and wrap. We
 							coordinate in-house crew and our trusted vendor network so you can focus on the
@@ -21,7 +21,7 @@ const Services = () => {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section variant="custom" className="pb-16">
+			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/studio.jpg" isReversed={false}>
 						<h2 className="text-3xl py-2">Studio</h2>
@@ -41,7 +41,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="pb-16">
+			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/gear.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Gear</h2>
@@ -60,7 +60,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="pb-16">
+			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/vad.png" isReversed={false}>
 						<h2 className="text-3xl py-2">Virtual Art Department</h2>
@@ -78,7 +78,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			{/* <Section variant="custom" className="pb-16">
+			{/* <Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Education</h2>
@@ -96,7 +96,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section> */}
-			<Section variant="custom" className="pb-16">
+			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/post.png" isReversed={true}>
 						<h2 className="text-3xl py-2">Post-Production</h2>
