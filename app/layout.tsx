@@ -62,14 +62,14 @@ export default function RootLayout({
 					<main className="">{children}</main>
 					<Footer />
 					<Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
-						src="/background/bg-footer.jpg"
+						className="absolute inset-x-0 w-screen bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
+						src="/background/bg-2.png"
 						alt="Footer Glow"
 						width={1920}
 						height={1080}
 					/>
 					<Image
-						className="absolute inset-x-0 bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-10 bg-mask-top"
+						className="absolute inset-x-0 w-screen bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-5 bg-mask-top"
 						src="/background/bg-noise.png"
 						alt="Footer Noise"
 						width={1920}

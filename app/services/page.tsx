@@ -2,6 +2,7 @@ import Header from "@/components/ui/Header"
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Content from "@/components/Content"
 import Section from "@/components/layout/Section"
+import Link from "next/link"
 
 const Services = () => {
 	return (
@@ -9,8 +10,8 @@ const Services = () => {
 			<Header variant="default" imageOpacity={25} graphic="/images/services/services.jpg">
 				<ContentWrapper className="pt-56 pb-32">
 					<div className="relative z-10 text-center">
-						<h1 className="text-3xl md:text-4xl">Services</h1>
-						<p className="mt-6 text-neutral-300 text-balance">
+						<h1 className="text-3xl md:text-5xl">Services</h1>
+						<p className="mt-6 text-neutral-400 text-balance">
 							Our full-service production team acts as your end-to-end partner, handling everything
 							from pre-production planning and location scouting to on-set execution and wrap. We
 							coordinate in-house crew and our trusted vendor network so you can focus on the
@@ -21,10 +22,12 @@ const Services = () => {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section variant="custom" className="p-12" border>
+			<Section variant="custom" className="p-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/studio.jpg" isReversed={false}>
-						<h2 className="text-3xl py-2">Studio</h2>
+						<Link href="/stage">
+							<h2 className="text-2xl py-2">Studio</h2>
+						</Link>
 						<div className="text-neutral-400">
 							<p className="py-2">
 								ACME Virtual Production houses Minnesota’s largest LED volume: a 60 ft × 16.5 ft
@@ -41,10 +44,10 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="p-12" border>
+			<Section variant="custom" className="p-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/gear.png" isReversed={true}>
-						<h2 className="text-3xl py-2">Gear</h2>
+						<h2 className="text-2xl py-2">Gear</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
 								We offer direct access to premium cameras, lighting packages, grip equipment, and
@@ -60,10 +63,10 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="p-12" border>
+			<Section variant="custom" className="p-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/vad.png" isReversed={false}>
-						<h2 className="text-3xl py-2">Virtual Art Department</h2>
+						<h2 className="text-2xl py-2">Virtual Art Department</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
 								Our in-house VAD team designs, builds, and operates custom Unreal Engine
@@ -78,10 +81,10 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			{/* <Section variant="custom" className="p-12" border>
+			{/* <Section variant="custom" className="p-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
-						<h2 className="text-3xl py-2">Education</h2>
+						<h2 className="text-2xl py-2">Education</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
 								We don’t just run the stage — we make sure your team gets the most out of it.
@@ -96,10 +99,10 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section> */}
-			<Section variant="custom" className="p-12" border>
+			<Section variant="custom" className="p-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/post.png" isReversed={true}>
-						<h2 className="text-3xl py-2">Post-Production</h2>
+						<h2 className="text-2xl py-2">Post-Production</h2>
 						<div className="text-neutral-400">
 							<p className="py-2">
 								Our post team picks up where the stage ends, delivering color grading, virtual-set

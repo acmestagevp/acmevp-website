@@ -9,8 +9,8 @@ const Contact = () => {
 			<ContentWrapper variant="wide">
 				<div className="min-h-[70vh] w-full flex flex-col md:flex-row">
 					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
-						<h2 className="text-3xl mb-6">Let's build your world.</h2>
-						<p className="mb-8">
+						<h2 className="text-2xl mb-6">Let's build your world.</h2>
+						<p className="mb-8 text-neutral-400">
 							Ready to step into the volume? Whether you're booking the 60ft wall or need a full VAD
 							environment, our team is ready to build with you.
 						</p>

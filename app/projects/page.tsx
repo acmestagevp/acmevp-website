@@ -12,8 +12,8 @@ export default function Projects() {
 		<div className="flex flex-col">
 			<Header variant="half" graphic="/images/hero-16-9.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center py-24">
-						<h1 className="text-3xl md:text-4xl tracking-tight">Projects</h1>
+					<div className="relative z-10 text-center py-56">
+						<h1 className="text-3xl md:text-5xl tracking-tight">Projects</h1>
 					</div>
 				</ContentWrapper>
 			</Header>

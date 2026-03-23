@@ -9,25 +9,18 @@ export default function Stage() {
 		<div className="flex flex-col items-center">
 			<Header graphic="/images/stage/wireframe-wall.png" imageOpacity={50}>
 				<ContentWrapper variant="wide" className="pt-64 pb-24 lg:place-items-end flex-1">
-					<div className="max-w-3xl lg:pt-28 lg:pr-16 z-50">
-						<h2 className="text-center text-3xl">Our Stage</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
-								Our main volume gives you the scale you actually need on set.
+					<div className="z-50 pt-32 max-w-2xl">
+						<h2 className="text-center text-3xl md:text-5xl">Our Stage</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
+								Our main volume gives you the scale you actually need on set. As the largest LED
+								wall in the greater Minneapolis area, it creates natural depth and parallax so
+								actors and cameras can move freely without ever feeling the wall.
 							</h3>
 							<ul className="list-disc list-inside">
-								<li className="">Width: 60ft</li>
-								<li className="">Height: 16.5ft</li>
+								<li className="">Width: 60 ft</li>
+								<li className="">Height: 16.5 ft</li>
 								<li className="">2.5° Curve</li>
-							</ul>
-							<br />
-							<h3 className="text-xl p-4">
-								More pixels mean sharper, more convincing imagery even when the camera gets close.
-							</h3>
-							<ul className="list-disc list-inside">
-								<li className="">38 Tiles Wide × 10 Tiles High</li>
-								<li className="">7296px x 1920px</li>
-								<li className="">14,008,320 Total Pixels</li>
 							</ul>
 						</div>
 					</div>
@@ -36,15 +29,19 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content basis="50%" graphic="/images/stage/upadiv.png">
-						<h2 className="text-center text-3xl">Panels</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
+						<h2 className="text-center text-2xl">Panels</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
 								Premium Unilumin UpadIV panels deliver the brightness and clarity professionals
-								demand.
+								demand. With a tight 2.6 mm pixel pitch and 1,000 nits of brightness, they hold up
+								beautifully under studio lighting and stay crisp even in wide shots or close-ups.
 							</h3>
 							<ul className="list-disc list-inside">
 								<li className="">2.6mm Pixel Pitch</li>
 								<li className="">1000 nits brightness</li>
+								<li className="">38 Tiles Wide × 10 Tiles High</li>
+								<li className="">7296px × 1920px</li>
+								<li className="">14,008,320 Total Pixels</li>
 							</ul>
 						</div>
 					</Content>
@@ -53,12 +50,13 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/primex22.png" isReversed={true}>
-						<h2 className="text-center text-3xl">Tracking</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
+						<h2 className="text-center text-2xl">Tracking</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
 								Optitrack is the gold-standard camera tracking system used on major stages
 								worldwide. It follows your camera in real time so the virtual world stays perfectly
-								locked to the lens.
+								locked to the lens. No drift, no manual tweaks, just seamless integration from the
+								first take.
 							</h3>
 							<ul className="list-disc list-inside">
 								<li className="">12 PrimeX22 Capture Cameras</li>
@@ -72,11 +70,13 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/rtx6000.png">
-						<h2 className="text-center text-3xl">Compute</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
+						<h2 className="text-center text-2xl">Compute</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
 								Two custom-built media servers with dual RTX 6000 Ada GPUs power complex Unreal
-								scenes without dropping frames.
+								scenes without dropping frames. This setup handles high-detail environments and
+								real-time lighting changes with room to spare, so you never have to compromise on
+								quality or frame rate.
 							</h3>
 							<ul className="list-disc list-inside">
 								<li className="">2 Custom Media Servers</li>
@@ -89,11 +89,13 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/pixera.png" isReversed={true}>
-						<h2 className="text-center text-3xl">Media</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
+						<h2 className="text-center text-2xl">Media</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
 								We run the latest Unreal Engine versions natively and keep Pixera on hand for quick
-								2D plates and video playback.
+								2D plates and video playback. This flexible combination lets us jump between
+								photorealistic 3D worlds and fast-turnaround plates without ever slowing down
+								production.
 							</h3>
 							<ul className="list-disc list-inside">
 								<li className="">Unreal Engine 5.3, 5.5, 5.7</li>
@@ -106,17 +108,23 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/floorplan.png">
-						<h2 className="text-center text-3xl">Floorplan</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">See exactly how the stage and amenities layout.</h3>
+						<h2 className="text-center text-2xl">Floorplan</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
+								See exactly how the stage and amenities layout. The open design gives you full
+								flexibility for camera movement, talent blocking, and easy load-in while keeping
+								everything you need within arm’s reach.
+							</h3>
 							<ul className="list-disc list-inside">
-								<a
-									href="/floorplan.pdf"
-									download="my-specific-filename.pdf"
-									className="hover:text-neutral-200 ease-in-out duration-200"
-								>
-									[Download PDF]
-								</a>
+								<li>
+									<a
+										href="/floorplan.pdf"
+										download="my-specific-filename.pdf"
+										className="hover:text-neutral-200 ease-in-out duration-200"
+									>
+										[Download PDF]
+									</a>
+								</li>
 							</ul>
 						</div>
 					</Content>
@@ -125,10 +133,13 @@ export default function Stage() {
 			<Section border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/amenities.png" isReversed={true}>
-						<h2 className="text-center text-3xl">Amenities</h2>
-						<div className="text-center py-4 text-neutral-400">
-							<h3 className="text-xl p-4">
-								Everything you need to keep the day running smoothly is already here.
+						<h2 className="text-center text-2xl">Amenities</h2>
+						<div className="text-left py-4 text-neutral-400">
+							<h3 className="my-4">
+								Everything you need to keep the day running smoothly is already here. With 30-foot
+								ceilings, drive-in access, free parking, a client lounge, dining area, and
+								high-speed WiFi, the studio is built to support long days and large crews without
+								any added stress.
 							</h3>
 							<ul className="list-disc list-inside">
 								<li className="">30ft Ceilings</li>

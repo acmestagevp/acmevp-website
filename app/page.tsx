@@ -4,7 +4,7 @@ import Header from "@/components/ui/Header"
 import Section from "@/components/layout/Section"
 import Content from "@/components/Content"
 import { logos } from "@/constants/logos"
-import Image from "next/image"
+import Link from "next/link"
 import Logo from "@/components/Logo"
 
 export default function Home() {
@@ -31,8 +31,8 @@ export default function Home() {
 			<Section variant="custom" className="p-12" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/home/stage-bts-1.png" isReversed={false}>
-						<h2 className="text-2xl py-2 text-center">Minnesota’s Largest LED Volume</h2>
-						<div className="text-neutral-400 text-center">
+						<h2 className="text-2xl py-2 text-right">Minnesota’s Largest LED Volume</h2>
+						<div className="text-neutral-400 ">
 							<p className="py-2">
 								ACME houses the largest LED volume in Minnesota — a 60 ft × 16.5 ft curved wall
 								delivering 14 million pixels of immersion at 2.6 mm pixel pitch and 1,000 nits
@@ -63,20 +63,18 @@ export default function Home() {
 			<Section variant="custom" className="py-16" border>
 				<ContentWrapper variant="wide">
 					<Content basis="" graphic="/images/home/stage-bts-2.jpg" isReversed={true}>
-						<h2 className="text-center text-2xl">Services</h2>
-						<div className="text-center py-4 text-neutral-300">
-							<h3 className="text-lg">
-								End-to-end production services in the greater Minneapolis area.
-							</h3>
-							<br />
-							<ul className="list-disc list-inside">
-								<li className="">Production</li>
-								<li className="">Studio</li>
-								<li className="">Gear</li>
-								<li className="">VAD</li>
-								{/* <li className="">Education</li> */}
-								<li className="">Post</li>
-							</ul>
+						<Link href="/services">
+							<h2 className="text-left text-2xl">Services</h2>
+						</Link>
+						<div className="text-neutral-400 ">
+							<p className="py-2">
+								We offer complete end-to-end virtual production services across the greater
+								Minneapolis area. From full production management and our flagship studio to premium
+								gear packages, in-house VAD, and seamless post-production, everything you need is
+								under one roof. Whether you’re booking the stage alone or looking for complete
+								project support, our team and trusted network handle the details so you can focus on
+								the creative.
+							</p>
 						</div>
 					</Content>
 				</ContentWrapper>
