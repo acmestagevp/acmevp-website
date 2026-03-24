@@ -1,11 +1,26 @@
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Section from "@/components/layout/Section"
 import AnimateIn from "@/components/decoration/AnimateIn"
+import Image from "next/image"
 
 const Contact = () => {
 	return (
 		<Section variant="custom" className="pt-28 md:py-12">
 			<ContentWrapper variant="wide">
+				<Image
+					className="absolute inset-x-0 w-screen rotate-180 top-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
+					src="/background/bg-2.png"
+					alt="Footer Glow"
+					width={1920}
+					height={1080}
+				/>
+				<Image
+					className="absolute inset-x-0 w-screen rotate-180 top-0 h-[50vh] pointer-events-none z-[-1] opacity-5 bg-mask-top"
+					src="/background/bg-noise.png"
+					alt="Footer Noise"
+					width={1920}
+					height={1080}
+				/>
 				<div className="min-h-[70vh] w-full flex flex-col md:flex-row">
 					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
 						<AnimateIn>

@@ -10,11 +10,11 @@ const Services = () => {
 		<div className="flex flex-col items-center">
 			<Header
 				variant="default"
-				imageOpacity={25}
+				imageOpacity={40}
 				graphic="/images/services/services.jpg"
 				alt="BTS Photo of volume wall shoot at ACME Stage. Photo by Krizia Studios."
 			>
-				<ContentWrapper className="pt-64 pb-12">
+				<ContentWrapper variant="wide" className="pt-96 pb-12">
 					<div className="relative z-10 text-center">
 						<AnimateIn>
 							<h1 className="text-3xl md:text-5xl">Services</h1>
@@ -33,7 +33,7 @@ const Services = () => {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section variant="custom" className="p-18" border>
+			<Section variant="custom" className="py-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/studio.jpg" isReversed={false}>
 						<AnimateIn>
@@ -57,7 +57,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="p-18" border>
+			<Section variant="custom" className="py-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/gear.png" isReversed={true}>
 						<AnimateIn>
@@ -78,7 +78,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="p-18" border>
+			<Section variant="custom" className="py-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/vad.png" isReversed={false}>
 						<AnimateIn>
@@ -98,7 +98,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			{/* <Section variant="custom" className="p-18" border>
+			{/* <Section variant="custom" className="py-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<AnimateIn>
@@ -118,7 +118,7 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section> */}
-			<Section variant="custom" className="p-18" border>
+			<Section variant="custom" className="py-18" border>
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/post.png" isReversed={true}>
 						<AnimateIn>

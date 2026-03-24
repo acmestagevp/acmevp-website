@@ -63,12 +63,12 @@ const NavBar = () => {
 				</div>
 			</ul>
 			{menuOpen && (
-				<div className="absolute top-0 right-4 pt-16 px-4 text-right bg-neutral-950/70 lg:hidden pointer-events-none">
+				<div className="absolute top-0 right-0 pt-16 px-4 text-right bg-neutral-950/70 lg:hidden pointer-events-none">
 					{navItems.map(({ label, href }) => (
 						<Link
 							key={label}
 							href={href}
-							className="block py-2 pointer-events-auto cursor-pointer"
+							className="block py-2 pr-4 pointer-events-auto cursor-pointer"
 							onClick={() => setMenuOpen(false)}
 						>
 							{label}

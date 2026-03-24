@@ -7,14 +7,22 @@ interface AnimateInProps extends MotionProps {
 	children: ReactNode
 	className?: string
 	delay?: number // optional stagger
+	useOpacity?: boolean
 	y?: number // how far it slides up (default 60)
 }
 
-const AnimateIn = ({ children, className = "", delay = 0, y = 60, ...props }: AnimateInProps) => {
+const AnimateIn = ({
+	children,
+	className = "",
+	useOpacity = true,
+	delay = 0,
+	y = 60,
+	...props
+}: AnimateInProps) => {
 	return (
 		<motion.div
-			initial={{ opacity: 0, y }}
-			whileInView={{ opacity: 1, y: 0 }}
+			initial={{ y: y, ...(useOpacity ? { opacity: 0 } : { opacity: 1 }) }}
+			whileInView={{ y: 0, ...(useOpacity ? { opacity: 1 } : {}) }}
 			viewport={{ once: true, margin: "-80px 0px" }} // starts animating a bit before fully in view
 			transition={{
 				duration: 0.5,

@@ -11,9 +11,9 @@ import AnimateIn from "@/components/decoration/AnimateIn"
 export default function Home() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="full" imageOpacity={40} graphic="/images/hero-16-9.png">
+			<Header variant="full" imageOpacity={90} graphic="/images/home/hero-main.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center pt-172 md:pt-212 pb-48">
+					<div className="relative z-10 text-center pt-96 md:pt-108">
 						<AnimateIn>
 							<h1 className="text-3xl md:text-5xl font-semibold">ACME Virtual Production</h1>
 						</AnimateIn>
@@ -56,19 +56,21 @@ export default function Home() {
 				</ContentWrapper>
 			</Section>
 			<Section border>
-				<ContentWrapper variant="default">
-					<AnimateIn>
-						<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
-							Trusted By
-						</h2>
-					</AnimateIn>
-					<AnimateIn delay={0.25}>
-						<div className="flex flex-wrap justify-center">
-							{logos.map((logo, index) => (
-								<Logo key={index} graphic={logo.graphic} alt={logo.alt} />
-							))}
-						</div>
-					</AnimateIn>
+				<ContentWrapper variant="wide" className="">
+					<div className="lg:min-w-7xl py-18">
+						<AnimateIn>
+							<h2 className="text-center text-sm uppercase tracking-widest text-neutral-500">
+								Trusted By
+							</h2>
+						</AnimateIn>
+						<AnimateIn delay={0.25}>
+							<div className="flex flex-wrap justify-center">
+								{logos.map((logo, index) => (
+									<Logo key={index} graphic={logo.graphic} alt={logo.alt} />
+								))}
+							</div>
+						</AnimateIn>
+					</div>
 				</ContentWrapper>
 			</Section>
 			<Section variant="custom" className="py-16" border>
@@ -93,9 +95,11 @@ export default function Home() {
 				</ContentWrapper>
 			</Section>
 			<Section border>
-				<AnimateIn>
-					<Testimonials />
-				</AnimateIn>
+				<ContentWrapper variant="full" className="bg-sides">
+					<AnimateIn>
+						<Testimonials />
+					</AnimateIn>
+				</ContentWrapper>
 			</Section>
 		</div>
 	)

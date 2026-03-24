@@ -4,6 +4,7 @@ import Image from "next/image"
 interface HeaderProps {
 	variant?: "default" | "half" | "full"
 	imageOpacity?: number
+	className?: string
 	graphic: string
 	children?: React.ReactNode
 	alt?: string
@@ -12,12 +13,13 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({
 	variant = "default",
 	graphic,
-	imageOpacity = "40",
+	className,
+	imageOpacity = 40,
 	children,
 	alt = "ACME Virtual Production",
 }) => {
 	const variants = {
-		default: "h-[60vh]",
+		default: "h-[80vh]",
 		half: "h-[50vh]",
 		full: "h-screen",
 	}
@@ -26,24 +28,15 @@ const Header: React.FC<HeaderProps> = ({
 			className={`relative ${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
 		>
 			{children}
-			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-mask`}>
+			<div className={`absolute inset-0 pointer-events-none -z-10 bg-mask`}>
 				<Image
-					className={`w-full -z-1 object-cover ${variants[variant]} bg-mask`}
-					width={1920}
-					height={1080}
+					className={`min-w-full min-${variants[variant]} object-cover ${className}`}
+					style={{ opacity: imageOpacity / 100 }}
+					fill
 					src={graphic}
 					alt={alt}
 				/>
 			</div>
-			{/* {variant === "full" ? (
-				<div
-					className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-					// style={{ opacity: Math.max(0, 1 - scrollY / 200) }}
-				>
-					<span className="text-xs text-neutral-500 tracking-widest uppercase">Scroll</span>
-					<div className="w-px h-8 bg-linear-to-b from-neutral-500 to-transparent animate-pulse" />
-				</div>
-			) : null} */}
 		</section>
 	)
 }

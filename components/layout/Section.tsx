@@ -22,7 +22,7 @@ const Section: React.FC<SectionProps> = ({
 	return (
 		<Component
 			id={id}
-			className={`${border ? "border-t border-neutral-800" : ""} relative ${className} ${variants[variant]}`}
+			className={`${border ? "border-t rounded-4xl border-neutral-700" : ""} relative ${className} ${variants[variant]}`}
 			{...props}
 		>
 			{children}

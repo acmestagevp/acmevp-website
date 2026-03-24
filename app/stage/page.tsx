@@ -7,30 +7,35 @@ import AnimateIn from "@/components/decoration/AnimateIn"
 export default function Stage() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header graphic="/images/stage/wireframe-wall.png" imageOpacity={50}>
-				<ContentWrapper variant="wide" className="pt-64 pb-24 lg:place-items-end flex-1">
-					<div className="z-50 pt-32 max-w-2xl">
-						<AnimateIn>
-							<h2 className="text-center text-3xl md:text-5xl">Our Stage</h2>
-						</AnimateIn>
-
-						<div className="text-left py-4 text-neutral-400">
-							<AnimateIn delay={0.2}>
-								<h3 className="my-4">
-									Our main volume gives you the scale you actually need on set. As the largest LED
-									wall in the greater Minneapolis area, it creates natural depth and parallax so
-									actors and cameras can move freely without ever feeling the wall.
-								</h3>
+			<Header variant="default" graphic="/images/stage/stage-main.png" imageOpacity={60}>
+				<ContentWrapper
+					variant="wide"
+					className="pt-64 pb-24 place-items-center xl:place-items-end flex-1"
+				>
+					<AnimateIn useOpacity={false}>
+						<div className="z-10 mt-24 py-8 px-12 max-w-2xl relative">
+							<div className="absolute -z-1 inset-0 border-t border-neutral-600 rounded-3xl backdrop-blur-sm bg-mask"></div>
+							<AnimateIn>
+								<h2 className="text-center text-3xl md:text-5xl z-0">Our Stage</h2>
 							</AnimateIn>
-							<AnimateIn delay={0.3}>
-								<ul className="list-disc list-inside">
-									<li className="">Width: 60 ft</li>
-									<li className="">Height: 16.5 ft</li>
-									<li className="">2.5° Curve</li>
-								</ul>
-							</AnimateIn>
+							<div className="text-left py-4 text-neutral-400">
+								<AnimateIn delay={0.2}>
+									<h3 className="my-4">
+										Our main volume gives you the scale you actually need on set. As the largest LED
+										wall in the greater Minneapolis area, it creates natural depth and parallax so
+										actors and cameras can move freely without ever feeling the wall.
+									</h3>
+								</AnimateIn>
+								<AnimateIn delay={0.3}>
+									<ul className="list-disc list-inside">
+										<li className="">Width: 60 ft</li>
+										<li className="">Height: 16.5 ft</li>
+										<li className="">2.5° Curve</li>
+									</ul>
+								</AnimateIn>
+							</div>
 						</div>
-					</div>
+					</AnimateIn>
 				</ContentWrapper>
 			</Header>
 			<Section border>
