@@ -1,7 +1,6 @@
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Section from "@/components/layout/Section"
-import { Content } from "next/font/google"
-import React from "react"
+import AnimateIn from "@/components/decoration/AnimateIn"
 
 const Contact = () => {
 	return (
@@ -9,25 +8,33 @@ const Contact = () => {
 			<ContentWrapper variant="wide">
 				<div className="min-h-[70vh] w-full flex flex-col md:flex-row">
 					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
-						<h2 className="text-2xl mb-6">Let's build your world.</h2>
-						<p className="mb-8 text-neutral-400">
-							Ready to step into the volume? Whether you're booking the 60ft wall or need a full VAD
-							environment, our team is ready to build with you.
-						</p>
+						<AnimateIn>
+							<h2 className="text-2xl mb-6">Let's build your world.</h2>
+						</AnimateIn>
+						<AnimateIn delay={0.2}>
+							<p className="mb-8 text-neutral-400">
+								Ready to step into the volume? Whether you're booking the 60ft wall or need a full
+								VAD environment, our team is ready to build with you.
+							</p>
+						</AnimateIn>
 
 						<div className="space-y-2">
-							<div>
-								<h4 className="text-sm text-neutral-400">Email</h4>
-								<p className="text-lg">
-									<a href="mailto:info@acmevp.com">info@acmevp.com</a>
-								</p>
-							</div>
-							<div>
-								<h4 className="text-sm text-neutral-400">Phone</h4>
-								<p className="text-lg">
-									<a href="tel:6123850488">(612) 385-0488</a>
-								</p>
-							</div>
+							<AnimateIn delay={0.3}>
+								<div>
+									<h4 className="text-sm text-neutral-400">Email</h4>
+									<p className="text-lg">
+										<a href="mailto:info@acmevp.com">info@acmevp.com</a>
+									</p>
+								</div>
+							</AnimateIn>
+							<AnimateIn delay={0.3}>
+								<div>
+									<h4 className="text-sm text-neutral-400">Phone</h4>
+									<p className="text-lg">
+										<a href="tel:6123850488">(612) 385-0488</a>
+									</p>
+								</div>
+							</AnimateIn>
 						</div>
 					</div>
 
@@ -53,7 +60,11 @@ const Contact = () => {
 
 							<div className="flex flex-col">
 								<label className="mb-2 text-sm ">Project Type</label>
-								<select className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors">
+								<select
+									className="bg-neutral-950 text-neutral-200 border border-neutral-700 p-3 rounded 
+               focus:outline-none focus:border-blue-500 transition-colors
+               appearance-none"
+								>
 									<option>Virtual Production / LED Volume</option>
 									<option>VAD / Unreal Engine Build</option>
 									<option>Post-Production</option>

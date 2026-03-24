@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({
 	alt = "ACME Virtual Production",
 }) => {
 	const variants = {
-		default: "h-[75vh]",
+		default: "h-[60vh]",
 		half: "h-[50vh]",
 		full: "h-screen",
 	}

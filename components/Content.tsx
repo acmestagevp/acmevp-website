@@ -1,5 +1,7 @@
 import React from "react"
 import Image from "next/image"
+import AnimateIn from "./decoration/AnimateIn"
+
 interface ContentProps {
 	graphic: string
 	basis?: string
@@ -22,13 +24,15 @@ const Content: React.FC<ContentProps> = ({
 				{children}
 			</div>
 			<div className={`flex-1 p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
-				<Image
-					className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
-					width={1080}
-					height={1080}
-					src={graphic}
-					alt={graphic}
-				/>
+				<AnimateIn delay={0.25}>
+					<Image
+						className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
+						width={1080}
+						height={1080}
+						src={graphic}
+						alt={graphic}
+					/>
+				</AnimateIn>
 			</div>
 		</div>
 	)

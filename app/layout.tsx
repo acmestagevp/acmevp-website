@@ -59,7 +59,7 @@ export default function RootLayout({
 				<div className="relative z-10 flex min-h-screen flex-col">
 					{/* <Background /> */}
 					<NavBar />
-					<main className="">{children}</main>
+					<main className="font-sans">{children}</main>
 					<Footer />
 					<Image
 						className="absolute inset-x-0 w-screen bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
