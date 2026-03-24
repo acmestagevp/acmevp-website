@@ -7,7 +7,12 @@ import Link from "next/link"
 const Services = () => {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="default" imageOpacity={25} graphic="/images/services/services.jpg">
+			<Header
+				variant="default"
+				imageOpacity={25}
+				graphic="/images/services/services.jpg"
+				alt="BTS Photo of volume wall shoot at ACME Stage. Photo by Krizia Studios."
+			>
 				<ContentWrapper className="pt-56 pb-32">
 					<div className="relative z-10 text-center">
 						<h1 className="text-3xl md:text-5xl">Services</h1>

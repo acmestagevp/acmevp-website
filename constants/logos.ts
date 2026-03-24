@@ -3,10 +3,10 @@ export const logos = [
 		graphic: "/images/logos/craftsman.png",
 		alt: "Craftsman Logo",
 	},
-	{
-		graphic: "/images/logos/nike.png",
-		alt: "Nike Logo",
-	},
+	// {
+	// 	graphic: "/images/logos/nike.png",
+	// 	alt: "Nike Logo",
+	// },
 	{
 		graphic: "/images/logos/polica.png",
 		alt: "Polica Logo",

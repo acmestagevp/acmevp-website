@@ -13,7 +13,9 @@ export default function Home() {
 			<Header variant="full" imageOpacity={40} graphic="/images/hero-16-9.png">
 				<ContentWrapper variant="narrow">
 					<div className="relative z-10 text-center pt-172 md:pt-212 pb-48">
-						<h1 className="text-3xl md:text-5xl font-semibold">ACME Virtual Production</h1>
+						<h1 className="text-3xl font-sans md:text-5xl font-semibold">
+							ACME Virtual Production
+						</h1>
 						<p className="mt-6 text-neutral-400">
 							ACME Virtual Production opens the door to a new world of possibilities. Whether for
 							high-end commercials, narrative films, or photo-realistic virtual environments, you
@@ -49,9 +51,9 @@ export default function Home() {
 				</ContentWrapper>
 			</Section>
 			<Section border>
-				<ContentWrapper variant="narrow">
+				<ContentWrapper variant="default">
 					<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
-						Trusted by
+						Trusted By
 					</h2>
 					<div className="flex flex-wrap justify-center">
 						{logos.map((logo, index) => (

@@ -5,7 +5,7 @@ import ContentWrapper from "../layout/ContentWrapper"
 
 const Footer = () => {
 	return (
-		<Section variant="custom" className="py-4">
+		<Section variant="custom" className="py-4" border>
 			<ContentWrapper>
 				<div className="flex flex-col justify-center p-4 z-10">
 					<div className="flex flex-col py-16 lg:flex-row justify-between">

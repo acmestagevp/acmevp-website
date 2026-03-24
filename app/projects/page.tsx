@@ -35,9 +35,9 @@ export default function Projects() {
 				})}
 			</div>
 			<Section>
-				<ContentWrapper variant="narrow">
+				<ContentWrapper variant="default">
 					<h2 className="text-center text-sm uppercase tracking-widest text-neutral-400">
-						Delivering End-to-end virtual production for
+						Trusted By
 					</h2>
 					<div className="flex flex-wrap justify-center">
 						{logos.map((logo, index) => (

@@ -6,6 +6,7 @@ interface HeaderProps {
 	imageOpacity?: number
 	graphic: string
 	children?: React.ReactNode
+	alt?: string
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -13,6 +14,7 @@ const Header: React.FC<HeaderProps> = ({
 	graphic,
 	imageOpacity = "40",
 	children,
+	alt = "ACME Virtual Production",
 }) => {
 	const variants = {
 		default: "h-[75vh]",
@@ -21,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({
 	}
 	return (
 		<section
-			className={`relative min-${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
+			className={`relative ${variants[variant]} flex items-center justify-center py-20 md:py-0 w-full`}
 		>
 			{children}
 			<div className={`absolute inset-0 z-0 opacity-${imageOpacity} pointer-events-none bg-mask`}>
@@ -30,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({
 					width={1920}
 					height={1080}
 					src={graphic}
-					alt="Acme Virtual Production"
+					alt={alt}
 				/>
 			</div>
 			{/* {variant === "full" ? (
