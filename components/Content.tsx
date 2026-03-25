@@ -13,7 +13,7 @@ interface ContentProps {
 const Content: React.FC<ContentProps> = ({
 	graphic,
 	isReversed = false,
-	padding = "4",
+	padding = "8",
 	children,
 }) => {
 	return (

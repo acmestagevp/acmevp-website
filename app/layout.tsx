@@ -1,19 +1,23 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Gilda_Display, Inter } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/ui/NavBar"
 import Footer from "@/components/ui/Footer"
 import Background from "@/components/decoration/Background"
 import Image from "next/image"
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const gildaDisplay = Gilda_Display({
+	variable: "--font-serif",
+	weight: "400",
 	subsets: ["latin"],
+	display: "swap",
 })
 
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const inter = Inter({
+	weight: "variable",
+	variable: "--font-inter-sans",
 	subsets: ["latin"],
+	display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -54,7 +58,7 @@ export default function RootLayout({
 			</head>
 			<body
 				id="body"
-				className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+				className={`${gildaDisplay.variable} ${inter.variable} antialiased overflow-x-hidden`}
 			>
 				<div className="relative z-10 flex min-h-screen flex-col">
 					{/* <Background /> */}

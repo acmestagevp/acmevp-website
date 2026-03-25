@@ -44,7 +44,8 @@ const NavBar = () => {
 				<div className="mx-4 my-2 hidden pointer-events-auto lg:inline">
 					{navItems.map(({ label, href }) => (
 						<Link
-							className="mx-6 tracking-wide text-neutral-400 hover:text-neutral-300 ease-in-out duration-200"
+							className={`mx-6  text-neutral-400 hover:text-neutral-300 ease-in-out duration-200 text-sm
+								${label === "Contact" ? "tracking-wide border px-5 py-2 ml-1 rounded-xl shadow-neutral-50/20 bg-neutral-900 border-neutral-700 font-bold hover:shadow-xl duration-200 hover:text-neutral-950 hover:bg-neutral-300" : "tracking-widest"}`}
 							key={label}
 							href={href}
 						>

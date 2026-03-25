@@ -17,7 +17,9 @@ const Services = () => {
 				<ContentWrapper variant="wide" className="pt-96 pb-12">
 					<div className="relative z-10 text-center">
 						<AnimateIn>
-							<h1 className="text-3xl md:text-5xl">Services</h1>
+							<h1 className="text-5xl md:text-7xl font-serif font-gradient w-fit place-self-center">
+								Services
+							</h1>
 						</AnimateIn>
 						<AnimateIn delay={0.25}>
 							<p className="mt-6 text-neutral-400 text-balance">
@@ -38,7 +40,7 @@ const Services = () => {
 					<Content graphic="/images/services/studio.jpg" isReversed={false}>
 						<AnimateIn>
 							<Link href="/stage">
-								<h2 className="text-2xl py-2">Studio</h2>
+								<h2 className="text-4xl py-2">Studio</h2>
 							</Link>
 							<div className="text-neutral-400">
 								<p className="py-2">
@@ -61,7 +63,7 @@ const Services = () => {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/gear.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-2xl py-2">Gear</h2>
+							<h2 className="text-4xl py-2">Gear</h2>
 							<div className="text-neutral-400">
 								<p className="py-2">
 									We offer direct access to premium cameras, lighting packages, grip equipment, and
@@ -82,7 +84,7 @@ const Services = () => {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/vad.png" isReversed={false}>
 						<AnimateIn>
-							<h2 className="text-2xl py-2">Virtual Art Department</h2>
+							<h2 className="text-4xl py-2">Virtual Art Department</h2>
 							<div className="text-neutral-400">
 								<p className="py-2">
 									Our in-house VAD team designs, builds, and operates custom Unreal Engine
@@ -102,7 +104,7 @@ const Services = () => {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/content-1-1.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-2xl py-2">Education</h2>
+							<h2 className="text-4xl py-2">Education</h2>
 							<div className="text-neutral-400">
 								<p className="py-2">
 									We don’t just run the stage — we make sure your team gets the most out of it.
@@ -122,7 +124,7 @@ const Services = () => {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/services/post.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-2xl py-2">Post-Production</h2>
+							<h2 className="text-4xl py-2">Post-Production</h2>
 							<div className="text-neutral-400">
 								<p className="py-2">
 									Our post team picks up where the stage ends, delivering color grading, virtual-set

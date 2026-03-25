@@ -14,9 +14,11 @@ export default function Stage() {
 				>
 					<AnimateIn useOpacity={false}>
 						<div className="z-10 mt-24 py-8 px-12 max-w-2xl relative">
-							<div className="absolute -z-1 inset-0 border-t border-neutral-600 rounded-3xl backdrop-blur-sm bg-mask"></div>
+							<div className="absolute -z-1 inset-0 border-t border-neutral-600 rounded-3xl backdrop-blur-lg bg-neutral-950/70 bg-mask"></div>
 							<AnimateIn>
-								<h2 className="text-center text-3xl md:text-5xl z-0">Our Stage</h2>
+								<h2 className="text-center text-5xl md:text-7xl font-serif font-gradient">
+									The Stage
+								</h2>
 							</AnimateIn>
 							<div className="text-left py-4 text-neutral-400">
 								<AnimateIn delay={0.2}>
@@ -42,7 +44,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content basis="50%" graphic="/images/stage/upadiv.png">
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Panels</h2>
+							<h2 className="text-center text-4xl">Panels</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									Premium Unilumin UpadIV panels deliver the brightness and clarity professionals
@@ -65,7 +67,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/primex22.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Tracking</h2>
+							<h2 className="text-center text-4xl">Tracking</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									Optitrack is the gold-standard camera tracking system used on major stages
@@ -87,7 +89,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/rtx6000.png">
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Compute</h2>
+							<h2 className="text-center text-4xl">Compute</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									Two custom-built media servers with dual RTX 6000 Ada GPUs power complex Unreal
@@ -108,7 +110,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/pixera.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Media</h2>
+							<h2 className="text-center text-4xl">Media</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									We run the latest Unreal Engine versions natively and keep Pixera on hand for
@@ -129,7 +131,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/floorplan.png">
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Floorplan</h2>
+							<h2 className="text-center text-4xl">Floorplan</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									See exactly how the stage and amenities layout. The open design gives you full
@@ -156,7 +158,7 @@ export default function Stage() {
 				<ContentWrapper variant="wide">
 					<Content graphic="/images/stage/amenities.png" isReversed={true}>
 						<AnimateIn>
-							<h2 className="text-center text-2xl">Amenities</h2>
+							<h2 className="text-center text-4xl">Amenities</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									Everything you need to keep the day running smoothly is already here. With 30-foot

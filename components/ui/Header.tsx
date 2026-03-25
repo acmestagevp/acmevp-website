@@ -33,6 +33,8 @@ const Header: React.FC<HeaderProps> = ({
 					className={`min-w-full min-${variants[variant]} object-cover ${className}`}
 					style={{ opacity: imageOpacity / 100 }}
 					fill
+					quality={100}
+					preload={true}
 					src={graphic}
 					alt={alt}
 				/>

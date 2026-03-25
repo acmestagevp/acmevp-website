@@ -24,7 +24,7 @@ const Contact = () => {
 				<div className="min-h-[70vh] w-full flex flex-col md:flex-row">
 					<div className="flex flex-col justify-center md:items-end p-8 md:pl-16 md:w-2/5 text-center md:text-right text-balance">
 						<AnimateIn>
-							<h2 className="text-2xl mb-6">Let's build your world.</h2>
+							<h2 className="text-6xl pb-12! font-serif font-gradient">Let's build your world.</h2>
 						</AnimateIn>
 						<AnimateIn delay={0.2}>
 							<p className="mb-8 text-neutral-400">
@@ -76,9 +76,8 @@ const Contact = () => {
 							<div className="flex flex-col">
 								<label className="mb-2 text-sm ">Project Type</label>
 								<select
-									className="bg-neutral-950 text-neutral-200 border border-neutral-700 p-3 rounded 
-               focus:outline-none focus:border-blue-500 transition-colors
-               appearance-none"
+									className="bg-neutral-950 text-neutral-200 border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 
+									transition-colors appearance-none"
 								>
 									<option>Virtual Production / LED Volume</option>
 									<option>VAD / Unreal Engine Build</option>
@@ -95,7 +94,7 @@ const Contact = () => {
 								/>
 							</div>
 
-							<button className="w-full md:w-max px-12 py-4 border border-neutral-400 hover:bg-neutral-800 hover:border-neutral-200 uppercase tracking-widest transition-all rounded-lg">
+							<button className="w-full md:w-max px-12 py-4 border border-neutral-400 hover:bg-neutral-300 hover:border-neutral-300 text-neutral-300 hover:text-neutral-950 uppercase tracking-widest transition-all rounded-lg shadow-neutral-50/20 hover:shadow-xl duration-200">
 								Send Inquiry
 							</button>
 						</form>

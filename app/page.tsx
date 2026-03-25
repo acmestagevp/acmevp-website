@@ -13,16 +13,17 @@ export default function Home() {
 		<div className="flex flex-col items-center">
 			<Header variant="full" imageOpacity={90} graphic="/images/home/hero-main.png">
 				<ContentWrapper variant="narrow">
-					<div className="relative z-10 text-center pt-96 md:pt-108">
+					<div className="relative z-10 text-center pt-96 md:pt-112">
 						<AnimateIn>
-							<h1 className="text-3xl md:text-5xl font-semibold">ACME Virtual Production</h1>
+							<h1 className="text-5xl md:text-7xl font-serif text-balance font-gradient w-fit">
+								ACME Virtual Production
+							</h1>
 						</AnimateIn>
 						<AnimateIn delay={0.15}>
-							<p className="mt-6 text-neutral-400">
-								ACME Virtual Production opens the door to a new world of possibilities. Whether for
-								high-end commercials, narrative films, or photo-realistic virtual environments, you
-								can transport your production to the bustling streets of Tokyo, the serene beaches
-								of Hawaii, or the rugged peaks of the Rockies — all from the heart of Minnesota.
+							<p className="mt-6 text-neutral-400 text-balance">
+								Whether for high-end commercials, narrative films, or photo-realistic virtual
+								environments, you can transport your production from the bustling streets of Tokyo
+								to the rugged peaks of the Rockies, all from the heart of Minnesota.
 							</p>
 						</AnimateIn>
 						{/* <Link href="/contact">
