@@ -23,9 +23,9 @@ export default function Stage() {
 							<div className="text-left py-4 text-neutral-400">
 								<AnimateIn delay={0.2}>
 									<h3 className="my-4">
-										Our main volume gives you the scale you actually need on set. As the largest LED
-										wall in the greater Minneapolis area, it creates natural depth and parallax so
-										actors and cameras can move freely without ever feeling the wall.
+										Our volume gives you the scale you actually need on set. This is the largest LED
+										wall in the greater Minneapolis area, and with enough space to build entire sets
+										in front of it without running out room.
 									</h3>
 								</AnimateIn>
 								<AnimateIn delay={0.3}>
@@ -48,8 +48,8 @@ export default function Stage() {
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
 									Premium Unilumin UpadIV panels deliver the brightness and clarity professionals
-									demand. With a tight 2.6 mm pixel pitch and 1,000 nits of brightness, they hold up
-									beautifully under studio lighting and stay crisp even in wide shots or close-ups.
+									demand. They hold up beautifully under studio lighting and stay crisp even in wide
+									shots or close-ups.
 								</h3>
 								<ul className="list-disc list-inside">
 									<li className="">2.6mm Pixel Pitch</li>
@@ -72,8 +72,7 @@ export default function Stage() {
 								<h3 className="my-4">
 									Optitrack is the gold-standard camera tracking system used on major stages
 									worldwide. It follows your camera in real time so the virtual world stays
-									perfectly locked to the lens. No drift, no manual tweaks, just seamless
-									integration from the first take.
+									perfectly locked to the lens.
 								</h3>
 								<ul className="list-disc list-inside">
 									<li className="">12 PrimeX22 Capture Cameras</li>
@@ -92,10 +91,9 @@ export default function Stage() {
 							<h2 className="text-center text-4xl">Compute</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
-									Two custom-built media servers with dual RTX 6000 Ada GPUs power complex Unreal
-									scenes without dropping frames. This setup handles high-detail environments and
-									real-time lighting changes with room to spare, so you never have to compromise on
-									quality or frame rate.
+									Two custom-built media servers power complex Unreal Engine scenes without dropping
+									frames, handling high-detail environments and real-time lighting changes with room
+									to spare.
 								</h3>
 								<ul className="list-disc list-inside">
 									<li className="">2 Custom Media Servers</li>
@@ -134,9 +132,9 @@ export default function Stage() {
 							<h2 className="text-center text-4xl">Floorplan</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
-									See exactly how the stage and amenities layout. The open design gives you full
-									flexibility for camera movement, talent blocking, and easy load-in while keeping
-									everything you need within arm’s reach.
+									See the exact stage layout. The open design gives you full flexibility for camera
+									movement, talent blocking, load-in, and set build, all while keeping everything
+									you need within arm’s reach.
 								</h3>
 								<ul className="list-disc list-inside">
 									<li>
@@ -148,6 +146,8 @@ export default function Stage() {
 											[Download PDF]
 										</a>
 									</li>
+									<li>75 ft × 75 ft Dimensions</li>
+									<li>5,625 sq ft Stage Area</li>
 								</ul>
 							</div>
 						</AnimateIn>
@@ -161,10 +161,9 @@ export default function Stage() {
 							<h2 className="text-center text-4xl">Amenities</h2>
 							<div className="text-left py-4 text-neutral-400">
 								<h3 className="my-4">
-									Everything you need to keep the day running smoothly is already here. With 30-foot
-									ceilings, drive-in access, free parking, a client lounge, dining area, and
-									high-speed WiFi, the studio is built to support long days and large crews without
-									any added stress.
+									Everything you need to keep the day running smoothly is already here. With
+									drive-in access, free parking, and high-speed WiFi, the studio is built to support
+									long days and large crews without any added stress.
 								</h3>
 								<ul className="list-disc list-inside">
 									<li className="">30ft Ceilings</li>

@@ -26,7 +26,7 @@ const Content: React.FC<ContentProps> = ({
 			<div className={`flex-1 p-${padding} ${isReversed ? "lg:order-1" : "lg:order-2"}`}>
 				<AnimateIn delay={0.25}>
 					<Image
-						className={`opacity-75 hover:opacity-100 ease-in-out duration-200`}
+						className={`opacity-75 hover:opacity-100 ease-in-out duration-200 rounded-xl`}
 						width={1080}
 						height={1080}
 						src={graphic}

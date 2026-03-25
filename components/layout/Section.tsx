@@ -25,6 +25,17 @@ const Section: React.FC<SectionProps> = ({
 			className={`${border ? "border-t rounded-4xl border-neutral-700" : ""} relative ${className} ${variants[variant]}`}
 			{...props}
 		>
+			<div
+				className="pointer-events-none absolute inset-0"
+				style={
+					border
+						? {
+								background:
+									"radial-gradient(70% 80% at center 0%, rgba(255,255,255,0.05) 3%, rgba(98,255,179,0) 70%, rgba(98,255,179,0) 100%)",
+							}
+						: {}
+				}
+			/>
 			{children}
 		</Component>
 	)

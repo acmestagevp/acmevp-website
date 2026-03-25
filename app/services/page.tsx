@@ -10,7 +10,7 @@ const Services = () => {
 		<div className="flex flex-col items-center">
 			<Header
 				variant="default"
-				imageOpacity={40}
+				imageOpacity={35}
 				graphic="/images/services/services.jpg"
 				alt="BTS Photo of volume wall shoot at ACME Stage. Photo by Krizia Studios."
 			>
@@ -46,13 +46,12 @@ const Services = () => {
 								<p className="py-2">
 									ACME Virtual Production houses Minnesota’s largest LED volume: a 60 ft × 16.5 ft
 									curved wall with over 14 million pixels, 2.6 mm Unilumin UpadIV panels, and 1,000
-									nits brightness. P
+									nits brightness.
 								</p>
 								<p className="py-2">
 									Paired with 30-foot ceilings, drive-in access, free parking, and a client lounge,
-									the stage is built for seamless live-action + virtual integration. Whether you
-									need a single-camera hero shot or a full 270° immersive set, this is the Midwest’s
-									most capable virtual production destination.
+									the stage is built for seamless live-action + virtual integration. This is the
+									Midwest’s most capable virtual production destination.
 								</p>
 							</div>
 						</AnimateIn>
