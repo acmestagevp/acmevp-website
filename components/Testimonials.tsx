@@ -54,13 +54,17 @@ const Testimonials = () => {
 				{items.map((testimonial, index) => (
 					<div
 						key={index}
-						className="w-3xl text-balanced border border-neutral-200/20 rounded-xl bg-neutral-700/10 hover:border-neutral-500/30 hover:bg-neutral-700/30 backdrop-filter backdrop-blur-xs p-12 text-center shadow-2xl ease-in-out duration-200"
+						className="max-w-screen md:max-w-3xl text-balanced border border-neutral-200/20 rounded-xl bg-neutral-700/10 
+						hover:border-neutral-500/30 hover:bg-neutral-700/30 backdrop-filter backdrop-blur-xs 
+						p-12 text-center content-center shadow-2xl ease-in-out duration-200"
 					>
-						<p className="italic text-neutral-400">"{testimonial.quote}"</p>
+						<p className="text-sm italic text-neutral-400">
+							"{testimonial.quote}"
+						</p>
 
-						<div className="mt-8">
-							<p className=" text-white text-xl">{testimonial.name}</p>
-							<p className="text-sm text-neutral-400 uppercase tracking-wide">
+						<div className="mt-6">
+							<p className="text-lg text-white">{testimonial.name}</p>
+							<p className="text-sm text-neutral-400 smallcaps tracking-wide">
 								{testimonial.title}
 							</p>
 						</div>

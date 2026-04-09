@@ -1,26 +1,42 @@
 export const testimonials = [
 	{
-		name: "John Doe",
-		title: "CEO of Acme Corp",
-		quote:
-			"Acme's solutions have transformed our business. Their innovative approach and dedication to customer success are unparalleled.",
+		name: "Tony Oberstar",
+		title: "Director",
+		quote: `The volume wall feels like a real next step for automotive work. 
+			Being able to dial in lighting, sunlight, and environmental angles 
+			in real time made the process both efficient and creatively rewarding. 
+			It gave us a level of control that’s hard to achieve with traditional 
+			production, while still delivering a high-end, cinematic result. The 
+			volume wall feels like a fourth dimension for creativity. You’re no 
+			longer limited to real locations—you can build exactly what you want, 
+			and shape it in real time.`,
 	},
 	{
-		name: "Jane Smith",
-		title: "CTO of Beta Inc",
-		quote:
-			"Working with Acme has been a game-changer for our technology strategy. Their expertise and support have been invaluable.",
+		name: "Maria Carrera",
+		title: "Executive Producer, sureCAN Productions",
+		quote: `It is always a pleasure filming at ACME. Not only are they 
+		the biggest stage in town, but they have the only LED wall this size 
+		with this much room in front of it. This was the only place we could 
+		do that in the midwest, and we were so happy to keep the work at home. 
+		Minneapolis is incredibly lucky to have this space here, in our backyard.`,
 	},
 	{
-		name: "Bob Johnson",
-		title: "Marketing Director of Gamma Ltd",
-		quote:
-			"Acme's marketing solutions have significantly boosted our brand visibility and customer engagement. Highly recommended!",
+		name: "Alex Horner",
+		title: "Director of Photography",
+		quote: `What I find most valuable when working on the volume wall, 
+			is the image you see on camera is what you get. You prep and 
+			build your backgrounds much like you would on a location scout. 
+			I’ve enjoyed working with the volume and have found it to be a 
+			useful tool that’s capable of achieving otherwise very difficult 
+			or impossible results if shot on location.`,
 	},
 	{
-		name: "Alice Williams",
-		title: "Sales Manager of Delta Corp",
-		quote:
-			"Acme's sales strategies have helped us achieve our revenue targets ahead of schedule. Their team is professional and results-driven.",
+		name: "John Wildauer",
+		title: "Virtual Production Supervisor",
+		quote: `As fun as it is to focus on the environemtns getting displayed 
+			on the wall, you can’t ignore the physical limitations of the space 
+			you have to work with. ACME has enough space to do the kinds of 
+			things that just wouldn’t be possible on other stages, and when we 
+			shoot there, I know size isn’t limitation I’ll have to worry about.`,
 	},
 ]
