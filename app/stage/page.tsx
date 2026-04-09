@@ -117,8 +117,17 @@ export default function Stage() {
 									production.
 								</h3>
 								<ul className="list-disc list-inside">
-									<li className="">Unreal Engine 5.3, 5.5, 5.7</li>
-									<li className="">Pixera (2D media, photo, video playback)</li>
+									<li className="">Unreal Engine</li>
+									<ul className="ml-8 list-disc list-inside">
+										<li className="">5.3</li>
+										<li className="">5.5</li>
+										<li className="">5.7</li>
+									</ul>
+									<li className="">Pixera</li>
+									<ul className="ml-8 list-disc list-inside">
+										<li className="">2D Media</li>
+										<li className="">Video Playback</li>
+									</ul>
 								</ul>
 							</div>
 						</AnimateIn>
@@ -139,11 +148,11 @@ export default function Stage() {
 								<ul className="list-disc list-inside">
 									<li>
 										<a
-											href="/floorplan.pdf"
-											download="my-specific-filename.pdf"
+											href="/ACME_Stage_Floor_Plan.pdf"
+											download="ACME_Stage_Floor_Plan.pdf"
 											className="hover:text-neutral-200 ease-in-out duration-200"
 										>
-											[Download PDF]
+											[ Download PDF ]
 										</a>
 									</li>
 									<li>75 ft × 75 ft Dimensions</li>
