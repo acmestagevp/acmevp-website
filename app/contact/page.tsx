@@ -1,9 +1,17 @@
+"use client"
+
 import ContentWrapper from "@/components/layout/ContentWrapper"
 import Section from "@/components/layout/Section"
 import AnimateIn from "@/components/decoration/AnimateIn"
 import Image from "next/image"
+import { sendEmail } from "@/utils/sendEmail"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
 
 const Contact = () => {
+	const [state, formAction] = useActionState(sendEmail, { success: false })
+	const { pending } = useFormStatus()
+
 	return (
 		<Section variant="custom" className="pt-28 md:py-12">
 			<ContentWrapper variant="wide">
@@ -55,27 +63,40 @@ const Contact = () => {
 
 					{/* Right Side: Form (60% width on desktop) */}
 					<div className="flex flex-col justify-center p-8 md:p-12 md:w-3/5">
-						<form className="space-y-6">
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-								<div className="flex flex-col">
-									<label className="mb-2 text-sm font-medium ">Name</label>
-									<input
-										type="text"
-										className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
-									/>
-								</div>
-								<div className="flex flex-col">
-									<label className="mb-2 text-sm ">Company</label>
-									<input
-										type="text"
-										className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
-									/>
-								</div>
+						{state?.success ? (
+							<div className="border border-neutral-700 p-6 rounded-lg bg-neutral-900/50 backdrop-blur text-center">
+								<h4 className="text-xl font-serif mb-2">Message Received</h4>
+								<p className="text-neutral-400 text-sm">
+									We’ll be in touch shortly to start building your world.
+								</p>
 							</div>
+						) : (
+							<form action={formAction} className="space-y-6">
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+									<div className="flex flex-col">
+										<label className="mb-2 text-sm font-medium ">Name</label>
+										<input
+											required
+											type="text"
+											name="name"
+											className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+										/>
+									</div>
+									<div className="flex flex-col">
+										<label className="mb-2 text-sm ">Email</label>
+										<input
+											required
+											type="email"
+											name="email"
+											className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+										/>
+									</div>
+								</div>
 
-							<div className="flex flex-col">
-								<label className="mb-2 text-sm ">Project Type</label>
-								<select
+								<div className="flex flex-col">
+									<label className="mb-2 text-sm ">Subject</label>
+									{/* <select
+									name="projectType"
 									className="bg-neutral-950 text-neutral-200 border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 
 									transition-colors appearance-none"
 								>
@@ -83,21 +104,34 @@ const Contact = () => {
 									<option>VAD / Unreal Engine Build</option>
 									<option>Post-Production</option>
 									<option>Education / Workshop</option>
-								</select>
-							</div>
+								</select> */}
+									<input
+										required
+										type="text"
+										name="subject"
+										className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+									/>
+								</div>
 
-							<div className="flex flex-col">
-								<label className="mb-2 text-sm ">Message</label>
-								<textarea
-									rows={4}
-									className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
-								/>
-							</div>
+								<div className="flex flex-col">
+									<label className="mb-2 text-sm ">Message</label>
+									<textarea
+										required
+										rows={4}
+										name="message"
+										className="border border-neutral-700 p-3 rounded focus:outline-none focus:border-blue-500 transition-colors"
+									/>
+								</div>
 
-							<button className="w-full md:w-max px-12 py-4 border border-neutral-400 hover:bg-neutral-300 hover:border-neutral-300 text-neutral-300 hover:text-neutral-950 uppercase tracking-widest transition-all rounded-lg shadow-neutral-50/20 hover:shadow-xl duration-200">
-								Send Inquiry
-							</button>
-						</form>
+								<button
+									type="submit"
+									disabled={pending}
+									className="w-full md:w-max px-12 py-4 border border-neutral-400 hover:bg-neutral-300 hover:border-neutral-300 text-neutral-300 hover:text-neutral-950 uppercase tracking-widest transition-all rounded-lg shadow-neutral-50/20 hover:shadow-xl duration-200"
+								>
+									{pending ? "Sending..." : "Send Inquiry"}
+								</button>
+							</form>
+						)}
 					</div>
 				</div>
 			</ContentWrapper>
