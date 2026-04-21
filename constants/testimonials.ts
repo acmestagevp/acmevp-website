@@ -21,6 +21,17 @@ export const testimonials = [
 		Minneapolis is incredibly lucky to have this space here, in our backyard.`,
 	},
 	{
+		name: "Kristin Langerud",
+		title: "Exectuive Producer, Goldlime",
+		quote: `ACME's volume wall is such an important tool to our production 
+		market. Having access to it and the creative flexibility it provides has 
+		allowed us to push our work in ways that simply weren’t possible before. 
+		Additionally, its size opens up a range of new possibilities and presents 
+		an opportunity to achieve more ambitious results. The team accommodated 
+		all our needs and it was a pleasure to work here!
+`
+	},
+	{
 		name: "Alex Horner",
 		title: "Director of Photography",
 		quote: `What I find most valuable when working on the volume wall, 
