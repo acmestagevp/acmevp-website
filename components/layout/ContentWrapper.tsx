@@ -1,6 +1,6 @@
 // components/ui/content-wrapper.tsx
 type ContentWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
-	variant?: "default" | "wide" | "narrow" | "full"
+	variant?: "default" | "wide" | "narrow" | "full" | "bleed"
 }
 
 const ContentWrapper: React.FC<ContentWrapperProps> = ({
@@ -14,6 +14,7 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
 		wide: "max-w-7xl mx-auto px-5 sm:px-6 lg:px-8",
 		narrow: "max-w-3xl mx-auto px-5 sm:px-6 lg:px-8",
 		full: "w-screen px-5 sm:px-6 lg:px-8",
+		bleed: "w-screen",
 	}
 
 	return (
