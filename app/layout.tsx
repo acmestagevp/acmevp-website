@@ -4,7 +4,6 @@ import "./globals.css"
 import NavBar from "@/components/ui/NavBar"
 import Footer from "@/components/ui/Footer"
 import Background from "@/components/decoration/Background"
-import Image from "next/image"
 
 const gildaDisplay = Gilda_Display({
 	variable: "--font-serif",
@@ -41,6 +40,11 @@ export const metadata: Metadata = {
 		siteName: "ACME Virtual Production",
 		type: "website",
 	},
+	twitter: {
+		card: "summary_large_image",
+		title: "ACME Virtual Production",
+		description: "A full service virtual production studio located in Minneapolis, MN.",
+	},
 }
 
 export default function RootLayout({
@@ -53,32 +57,18 @@ export default function RootLayout({
 			<head>
 				<meta
 					name="viewport"
-					content="width=device-width, viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scaleable=no"
+					content="width=device-width, viewport-fit=cover, initial-scale=1"
 				/>
 			</head>
 			<body
 				id="body"
-				className={`${gildaDisplay.variable} ${inter.variable} antialiased overflow-x-hidden`}
+				className={`${gildaDisplay.variable} ${inter.variable} antialiased`}
 			>
-				<div className="relative z-10 flex min-h-screen flex-col">
-					{/* <Background /> */}
+				<div className="site-shell relative isolate flex min-h-screen min-w-0 flex-col">
+					<Background />
 					<NavBar />
-					<main className="font-sans">{children}</main>
+					<main className="relative z-10 flex-1">{children}</main>
 					<Footer />
-					<Image
-						className="absolute inset-x-0 w-screen bottom-0 h-[50vh] pointer-events-none z-[-1] object-cover opacity-25 bg-mask-top"
-						src="/background/bg-2.png"
-						alt="Footer Glow"
-						width={1920}
-						height={1080}
-					/>
-					<Image
-						className="absolute inset-x-0 w-screen bottom-0 h-[50vh] pointer-events-none z-[-1] opacity-5 bg-mask-top"
-						src="/background/bg-noise.png"
-						alt="Footer Noise"
-						width={1920}
-						height={1080}
-					/>
 				</div>
 			</body>
 		</html>

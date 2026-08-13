@@ -35,9 +35,9 @@ const Services = () => {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section variant="custom" className="py-18" border>
+			<Section variant="custom" className="pt-20 md:pt-28">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/services/studio.jpg" isReversed={false}>
+					<Content graphic="/images/services/studio.jpg" alt="ACME studio and LED volume" isReversed={false}>
 						<AnimateIn>
 							<Link href="/stage">
 								<h2 className="text-4xl py-2">Studio</h2>
@@ -58,9 +58,9 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="py-18" border>
+			<Section variant="custom">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/services/gear.png" isReversed={true}>
+					<Content graphic="/images/services/gear.png" alt="Camera and lighting gear available from ACME" isReversed={true}>
 						<AnimateIn>
 							<h2 className="text-4xl py-2">Gear</h2>
 							<div className="text-neutral-400">
@@ -79,9 +79,9 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section>
-			<Section variant="custom" className="py-18" border>
+			<Section variant="custom">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/services/vad.png" isReversed={false}>
+					<Content graphic="/images/services/vad.png" alt="Virtual art department production workspace" isReversed={false}>
 						<AnimateIn>
 							<h2 className="text-4xl py-2">Virtual Art Department</h2>
 							<div className="text-neutral-400">
@@ -119,9 +119,9 @@ const Services = () => {
 					</Content>
 				</ContentWrapper>
 			</Section> */}
-			<Section variant="custom" className="py-18" border>
+			<Section variant="custom">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/services/post.png" isReversed={true}>
+					<Content graphic="/images/services/post.png" alt="ACME post-production workflow" isReversed={true}>
 						<AnimateIn>
 							<h2 className="text-4xl py-2">Post-Production</h2>
 							<div className="text-neutral-400">
@@ -137,6 +137,17 @@ const Services = () => {
 							</div>
 						</AnimateIn>
 					</Content>
+				</ContentWrapper>
+			</Section>
+			<Section className="pb-24 pt-8 md:pb-32 md:pt-12">
+				<ContentWrapper variant="narrow" className="text-center">
+					<AnimateIn>
+						<p className="mb-5 text-sm uppercase tracking-[0.24em] text-neutral-500">One production partner</p>
+						<h2 className="font-serif text-3xl md:text-4xl">Let&apos;s make the plan.</h2>
+						<Link href="/contact" className="control-surface mt-8 inline-flex items-center justify-center px-8 py-3 uppercase tracking-widest hover:bg-neutral-300 hover:text-neutral-950">
+							Discuss a project
+						</Link>
+					</AnimateIn>
 				</ContentWrapper>
 			</Section>
 		</div>

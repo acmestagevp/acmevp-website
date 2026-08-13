@@ -1,82 +1,112 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { navItems } from "@/constants/nav"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 
 const NavBar = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
 	const [scrolled, setScrolled] = useState(false)
+	const pathname = usePathname()
+	const navRef = useRef<HTMLElement>(null)
+	const menuButtonRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
 		const handleScroll = () => {
 			setScrolled(window.scrollY > 120)
 		}
+		handleScroll()
 		window.addEventListener("scroll", handleScroll, { passive: true })
-		return () => window.removeEventListener("scroll", handleScroll)
-	}, [])
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape" && menuOpen) {
+				setMenuOpen(false)
+				menuButtonRef.current?.focus()
+			}
+		}
+		const handlePointerDown = (event: PointerEvent) => {
+			if (navRef.current && !navRef.current.contains(event.target as Node)) setMenuOpen(false)
+		}
+		const handleResize = () => {
+			if (window.innerWidth >= 1024 && menuOpen) setMenuOpen(false)
+		}
+		document.addEventListener("keydown", handleKeyDown)
+		document.addEventListener("pointerdown", handlePointerDown)
+		window.addEventListener("resize", handleResize)
+		return () => {
+			window.removeEventListener("scroll", handleScroll)
+			document.removeEventListener("keydown", handleKeyDown)
+			document.removeEventListener("pointerdown", handlePointerDown)
+			window.removeEventListener("resize", handleResize)
+		}
+	}, [menuOpen])
 
+	const closeMenu = () => setMenuOpen(false)
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
 	return (
-		<nav
-			className={`fixed top-0 z-40 pointer-events-none transition-all duration-500
+		<nav ref={navRef} aria-label="Primary navigation"
+			className={`shell-nav fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,backdrop-filter] duration-300
 				${
-					scrolled
+					 scrolled
 						? "bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800/60"
-						: "bg-transparent border-b border-transparent"
+						: "bg-transparent"
 				}`}
 		>
-			<ul className="flex w-screen justify-between items-center p-4">
-				<div className="mx-4">
-					<Link className="" href={"/"}>
+			<div className="layout-wrapper layout-wrapper--full flex items-center justify-between py-3">
+				<Link href="/" onClick={() => setMenuOpen(false)} aria-label="ACME Virtual Production home">
 						<Image
 							src="/images/ACME-Logo-White.png"
 							alt="Acme Virtual Production"
 							width={128}
 							height={50}
-							className="opacity-70 hover:opacity-100 ease-in-out duration-200 pointer-events-auto cursor-pointer"
-							onClick={() => setMenuOpen(false)}
+							priority
+							className="opacity-80 transition-opacity duration-200 hover:opacity-100"
 						/>
 					</Link>
-				</div>
-				<div className="mx-4 my-2 hidden pointer-events-auto lg:inline">
+				<ul className="hidden items-center gap-2 lg:flex">
 					{navItems.map(({ label, href }) => (
+						<li key={label}>
 						<Link
-							className={`mx-4 text-neutral-400 hover:text-neutral-300 ease-in-out duration-200 text-sm
-								${label === "Contact" ? "tracking-wide border px-5 py-2 ml-1 rounded-xl shadow-neutral-50/20 bg-neutral-900 border-neutral-700 font-bold hover:shadow-xl duration-200 hover:text-neutral-950 hover:bg-neutral-300" : "tracking-widest"}`}
-							key={label}
+							className={label === "Contact" ? "shell-cta ml-2 text-sm" : "shell-nav__link px-3 py-2 text-sm tracking-widest text-secondary hover:text-neutral-300"}
 							href={href}
+							aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}
 						>
 							{label}
 						</Link>
+						</li>
 					))}
-				</div>
-				<div className="lg:hidden mx-4 my-2 z-50">
+				</ul>
+				<div className="lg:hidden">
 					<button
-						className="pointer-events-auto cursor-pointer text-xl"
+						ref={menuButtonRef}
+						className="shell-cta min-w-10 px-3 text-xl"
 						onClick={toggleMenu}
-						aria-label="Toggle Menu"
+						aria-label={menuOpen ? "Close menu" : "Open menu"}
+						aria-expanded={menuOpen}
+						aria-controls="mobile-navigation"
 					>
-						☰
+						<span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
 					</button>
 				</div>
-			</ul>
-			{menuOpen && (
-				<div className="absolute top-0 right-0 pt-16 px-4 text-right bg-neutral-950/70 lg:hidden pointer-events-none">
+			</div>
+			<nav id="mobile-navigation" hidden={!menuOpen} aria-label="Mobile navigation" className="shell-nav__menu panel-surface absolute right-[var(--page-gutter)] z-50 w-[min(18rem,calc(100vw-2*var(--page-gutter)))] p-3 text-right lg:hidden">
+				<ul>
 					{navItems.map(({ label, href }) => (
+						<li key={label}>
 						<Link
-							key={label}
 							href={href}
-							className="block py-2 pr-4 pointer-events-auto cursor-pointer"
-							onClick={() => setMenuOpen(false)}
+							className={label === "Contact" ? "shell-cta mt-2 w-full" : "shell-nav__link block px-4 py-3 text-secondary hover:text-neutral-300"}
+							onClick={closeMenu}
+							aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}
 						>
 							{label}
 						</Link>
+						</li>
 					))}
-				</div>
-			)}
+				</ul>
+			</nav>
 		</nav>
 	)
 }

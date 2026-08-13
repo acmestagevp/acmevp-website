@@ -9,6 +9,16 @@ const Testimonials = () => {
 	useEffect(() => {
 		const row = rowRef.current
 		if (!row) return
+		const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+		let frame = 0
+		let isReducedMotion = motionQuery.matches
+		const updatePreference = () => {
+			isReducedMotion = motionQuery.matches
+		}
+		motionQuery.addEventListener("change", updatePreference)
+		if (isReducedMotion) {
+			return () => motionQuery.removeEventListener("change", updatePreference)
+		}
 
 		const width = row.scrollWidth / 2
 		let x = 0
@@ -29,10 +39,10 @@ const Testimonials = () => {
 
 			row.style.transform = `translateX(${x}px)`
 
-			requestAnimationFrame(loop)
+			frame = requestAnimationFrame(loop)
 		}
 
-		requestAnimationFrame(loop)
+		frame = requestAnimationFrame(loop)
 
 		const slow = () => (targetSpeed = 5)
 		const normal = () => (targetSpeed = 80)
@@ -41,6 +51,8 @@ const Testimonials = () => {
 		row.parentElement?.addEventListener("mouseleave", normal)
 
 		return () => {
+			cancelAnimationFrame(frame)
+			motionQuery.removeEventListener("change", updatePreference)
 			row.parentElement?.removeEventListener("mouseenter", slow)
 			row.parentElement?.removeEventListener("mouseleave", normal)
 		}
@@ -49,7 +61,7 @@ const Testimonials = () => {
 	const items = [...testimonials, ...testimonials] // duplicate for seamless loop
 
 	return (
-		<div className="w-full overflow-hidden my-24">
+		<div className="my-24 w-full overflow-hidden" aria-label="Testimonials" role="region">
 			<div ref={rowRef} className="flex w-max gap-8">
 				{items.map((testimonial, index) => (
 					<div
@@ -59,7 +71,7 @@ const Testimonials = () => {
 						p-12 text-center content-center shadow-2xl ease-in-out duration-200"
 					>
 						<p className="text-sm italic text-neutral-400">
-							"{testimonial.quote}"
+							&ldquo;{testimonial.quote}&rdquo;
 						</p>
 
 						<div className="mt-6">

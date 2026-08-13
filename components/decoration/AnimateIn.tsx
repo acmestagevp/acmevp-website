@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, MotionProps } from "framer-motion"
+import { motion, MotionProps, useReducedMotion } from "framer-motion"
 import { ReactNode } from "react"
 
 interface AnimateInProps extends MotionProps {
@@ -19,12 +19,14 @@ const AnimateIn = ({
 	y = 60,
 	...props
 }: AnimateInProps) => {
+	const reducedMotion = useReducedMotion()
+	const motionDisabled = reducedMotion === true
 	return (
 		<motion.div
-			initial={{ y: y, ...(useOpacity ? { opacity: 0 } : { opacity: 1 }) }}
-			whileInView={{ y: 0, ...(useOpacity ? { opacity: 1 } : {}) }}
+			initial={reducedMotion ? false : { y: y, ...(useOpacity ? { opacity: 0 } : { opacity: 1 }) }}
+			whileInView={motionDisabled ? undefined : { y: 0, ...(useOpacity ? { opacity: 1 } : {}) }}
 			viewport={{ once: true, margin: "-80px 0px" }} // starts animating a bit before fully in view
-			transition={{
+			transition={motionDisabled ? { duration: 0 } : {
 				duration: 0.5,
 				ease: "easeOut",
 				delay,

@@ -7,6 +7,9 @@ interface ImageBlockProps {
 	alt: string
 	caption?: string
 	fullWidth?: boolean
+	aspectRatio?: "video" | "square" | "portrait" | "intrinsic"
+	fit?: "cover" | "contain"
+	sizes?: string
 }
 
 const ImageBlock: React.FC<ImageBlockProps> = ({
@@ -14,20 +17,33 @@ const ImageBlock: React.FC<ImageBlockProps> = ({
 	alt,
 	caption,
 	fullWidth = false,
+	aspectRatio = "video",
+	fit = "contain",
+	sizes = "(max-width: 768px) 100vw, 80rem",
 }) => {
+	const ratioClass = {
+		video: "aspect-video",
+		square: "aspect-square",
+		portrait: "aspect-[4/5]",
+		intrinsic: "aspect-video",
+	}[aspectRatio]
+	const fitClass = fit === "cover" ? "object-cover" : "object-contain"
+
 	return (
 		<AnimateIn>
 			<div className={fullWidth ? "w-full" : "max-w-4xl mx-auto"}>
-				<div className="relative w-full aspect-video overflow-hidden">
+				<div className={`relative w-full ${ratioClass} overflow-hidden bg-black/20`}>
 					<Image
-						className="object-cover opacity-75 hover:opacity-100 ease-in-out duration-200"
+						className={fitClass}
 						fill
 						src={src}
 						alt={alt}
+						sizes={sizes}
+						loading="lazy"
 					/>
 				</div>
 				{caption && (
-					<p className="mt-3 text-center text-sm text-neutral-500">
+					<p className="mt-3 text-left text-sm text-muted">
 						{caption}
 					</p>
 				)}

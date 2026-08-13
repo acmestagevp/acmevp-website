@@ -8,6 +8,8 @@ import AnimateIn from "@/components/decoration/AnimateIn"
 import ProjectContent from "@/components/project/ProjectContent"
 import { projects } from "@/constants/projects"
 
+const siteUrl = "https://acmevp.com"
+
 // Pre-render all project pages at build time
 export function generateStaticParams() {
 	return projects.map((project) => ({
@@ -24,13 +26,33 @@ export function generateMetadata({
 	return params.then(({ slug }) => {
 		const project = projects.find((p) => p.slug === slug)
 		if (!project) {
-			return { title: "Project Not Found" }
+			return { title: "Project Not Found", robots: { index: false, follow: false } }
 		}
+		const description = project.seo?.description ?? (project.subtitle
+			? `${project.title}: ${project.subtitle}. A project by ACME Virtual Production.`
+			: `${project.title}. A project by ACME Virtual Production.`)
+		const preview = project.seo?.socialImage
+			? new URL(project.seo.socialImage, siteUrl).toString()
+			: undefined
+		const isIndexable = project.publicationState === "indexable" || project.publicationState === "publishable"
 		return {
 			title: project.subtitle ? `${project.title} – ${project.subtitle}` : project.title,
-			description: project.subtitle
-				? `${project.title}: ${project.subtitle}. A project by ACME Virtual Production.`
-				: `${project.title}. A project by ACME Virtual Production.`,
+			description,
+			alternates: { canonical: `${siteUrl}/projects/${project.slug}` },
+			openGraph: {
+				title: project.title,
+				description,
+				url: `${siteUrl}/projects/${project.slug}`,
+				type: "website",
+				...(preview ? { images: [{ url: preview, alt: project.title }] } : {}),
+			},
+			twitter: {
+				card: "summary_large_image",
+				title: project.title,
+				description,
+				...(preview ? { images: [preview] } : {}),
+			},
+			robots: { index: isIndexable, follow: true },
 		}
 	})
 }
@@ -66,14 +88,20 @@ export default async function ProjectPage({
 				</ContentWrapper>
 			</Header>
 
-			<ProjectContent blocks={project.content} />
+			<ProjectContent blocks={project.content} projectTitle={project.title} />
 
-			<Section>
+			<Section mode="gallery" variant="custom" className="py-12 md:py-16">
 				<ContentWrapper variant="default">
-					<div className="py-8 text-center">
+					<div className="flex flex-col items-center gap-5 text-center">
+						<div>
+							<h2 className="font-serif text-2xl md:text-3xl">Let&apos;s make the next one.</h2>
+							<Link href="/contact" className="shell-cta mt-6 uppercase tracking-widest">
+								Discuss a project
+							</Link>
+						</div>
 						<Link
 							href="/projects"
-							className="text-neutral-400 hover:text-neutral-300 ease-in-out duration-200 tracking-widest text-sm uppercase"
+							className="text-secondary hover:text-[var(--text-primary)] tracking-widest text-sm uppercase"
 						>
 							← Back to Projects
 						</Link>

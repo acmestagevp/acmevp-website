@@ -4,18 +4,20 @@ import AnimateIn from "@/components/decoration/AnimateIn"
 interface TextBlockProps {
 	heading?: string
 	body: string
+	headingLevel?: "h2" | "h3"
 }
 
-const TextBlock: React.FC<TextBlockProps> = ({ heading, body }) => {
+const TextBlock: React.FC<TextBlockProps> = ({ heading, body, headingLevel = "h2" }) => {
+	const Heading = headingLevel
 	return (
 		<AnimateIn>
-			<div className="max-w-3xl mx-auto text-center">
+			<div className="max-w-[var(--measure-reading)] mx-auto text-left">
 				{heading && (
-					<h2 className="mb-4 text-2xl md:text-3xl font-serif font-gradient">
+					<Heading className="mb-4 text-xl md:text-2xl font-serif text-[var(--text-primary)]">
 						{heading}
-					</h2>
+					</Heading>
 				)}
-				<p className="text-neutral-400 text-balance leading-relaxed">
+				<p className="text-secondary leading-relaxed">
 					{body}
 				</p>
 			</div>

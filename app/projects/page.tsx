@@ -19,9 +19,9 @@ export default function Projects() {
 					</div>
 				</ContentWrapper>
 			</Header>
-			<Section>
+			<Section mode="gallery">
 				<ContentWrapper variant="bleed">
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[2px]">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-media)]">
 						{projects.map((project) => (
 							<ProjectCard
 								key={project.slug}

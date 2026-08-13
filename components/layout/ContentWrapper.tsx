@@ -10,11 +10,11 @@ const ContentWrapper: React.FC<ContentWrapperProps> = ({
 	...props
 }) => {
 	const variants = {
-		default: "max-w-4xl mx-auto px-5 sm:px-6 lg:px-8",
-		wide: "max-w-7xl mx-auto px-5 sm:px-6 lg:px-8",
-		narrow: "max-w-3xl mx-auto px-5 sm:px-6 lg:px-8",
-		full: "w-screen px-5 sm:px-6 lg:px-8",
-		bleed: "w-screen",
+		default: "layout-wrapper layout-wrapper--default",
+		wide: "layout-wrapper layout-wrapper--wide",
+		narrow: "layout-wrapper layout-wrapper--narrow",
+		full: "layout-wrapper layout-wrapper--full",
+		bleed: "layout-wrapper layout-wrapper--bleed",
 	}
 
 	return (

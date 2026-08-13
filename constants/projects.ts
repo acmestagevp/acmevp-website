@@ -16,6 +16,17 @@
 
 export type VideoPlatform = "youtube" | "vimeo"
 
+export type ProjectPublicationState = "fixture-valid" | "indexable" | "publishable"
+
+export interface ProjectSeo {
+	/** Approved launch copy only; fixtures intentionally leave this unset. */
+	description?: string
+	/** Approved absolute or public-relative social preview only. */
+	socialImage?: string
+	publishedAt?: string
+	modifiedAt?: string
+}
+
 export interface VideoBlock {
 	type: "video"
 	platform: VideoPlatform
@@ -36,6 +47,8 @@ export interface ImageBlock {
 	alt: string
 	caption?: string // optional caption below the image
 	fullWidth?: boolean // if true, image spans the full content width
+	aspectRatio?: "video" | "square" | "portrait" | "intrinsic"
+	fit?: "cover" | "contain"
 }
 
 export type ContentBlock = VideoBlock | TextBlock | ImageBlock
@@ -48,6 +61,9 @@ export interface Project {
 	subtitle?: string // e.g. "Wasted Me" — omit when only a title is needed
 	thumbnail: string // path to thumbnail image under /public
 	content: ContentBlock[] // ordered blocks rendered top-to-bottom
+	/** Readiness is separate from template validity so fixtures remain routable. */
+	publicationState?: ProjectPublicationState
+	seo?: ProjectSeo
 }
 
 // --- Projects ---
