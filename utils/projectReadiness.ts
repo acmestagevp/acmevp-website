@@ -17,11 +17,6 @@ export type ProjectReadinessReport = {
 }
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
-const videoIdPatterns = {
-	youtube: /^[A-Za-z0-9_-]{6,}$/,
-	vimeo: /^\d{4,}$/,
-} as const
-
 const isDate = (value?: string) => {
 	if (!value) return false
 	const date = new Date(value)
@@ -52,8 +47,11 @@ export function getProjectReadinessReport(records: readonly Project[] = projects
 		if (!project.content.length) addIssue(technicalFailures, project, "content", "Project has no content blocks.")
 
 		project.content.forEach((block: ContentBlock, index) => {
-			if (block.type === "video" && !videoIdPatterns[block.platform].test(block.videoId)) {
-				addIssue(technicalFailures, project, `content[${index}].videoId`, `Invalid ${block.platform} video ID shape.`)
+			if (block.type === "video" && block.source.kind === "mux" && !/^[A-Za-z0-9_-]+$/.test(block.source.playbackId)) {
+				addIssue(technicalFailures, project, `content[${index}].source.playbackId`, "Invalid Mux playback ID shape.")
+			}
+			if (block.type === "video" && block.source.kind === "local-fixture" && block.source.path !== "/videos/placeholder.mp4") {
+				addIssue(technicalFailures, project, `content[${index}].source.path`, "Unknown local fixture path.")
 			}
 			if (block.type === "image" && !existsInPublic(block.src)) {
 				addIssue(technicalFailures, project, `content[${index}].src`, "Local image does not exist.")
@@ -70,7 +68,10 @@ export function getProjectReadinessReport(records: readonly Project[] = projects
 		if (!project.seo?.socialImage) addIssue(contentGates, project, "seo.socialImage", "Approved social preview is missing.")
 		if (!isDate(project.seo?.publishedAt)) addIssue(contentGates, project, "seo.publishedAt", "Approved non-future publication date is missing.")
 		if (!isDate(project.seo?.modifiedAt)) addIssue(contentGates, project, "seo.modifiedAt", "Approved non-future modified date is missing.")
-		if (project.content.some((block) => block.type === "video")) addIssue(contentGates, project, "content.video", "Embed ownership and rights are unverified.")
+		if (project.content.some((block) => block.type === "video")) addIssue(contentGates, project, "content.video", "Video ownership, rights, and production-provider readiness require owner approval.")
+		if (project.content.some((block) => block.type === "video" && block.source.kind === "local-fixture")) {
+			addIssue(contentGates, project, "content.video.fixture", "Temporary local fixture must be replaced by approved production media.")
+		}
 		addIssue(contentGates, project, "content.credits", "Credits and public-use rights require owner approval.")
 		if (state === "publishable" && !project.seo?.socialImage) {
 			addIssue(contentGates, project, "publicationState", "Cannot be publishable without an approved social preview.")

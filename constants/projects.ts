@@ -14,7 +14,7 @@
 
 // --- Content Block Types ---
 
-export type VideoPlatform = "youtube" | "vimeo"
+export type VideoPlatform = "local" | "mux"
 
 export type ProjectPublicationState = "fixture-valid" | "indexable" | "publishable"
 
@@ -27,10 +27,23 @@ export interface ProjectSeo {
 	modifiedAt?: string
 }
 
+export interface LocalVideoSource {
+	kind: "local-fixture"
+	path: "/videos/placeholder.mp4"
+	temporary: true
+}
+
+export interface MuxVideoSource {
+	kind: "mux"
+	playbackId: string
+	temporary?: false
+}
+
+export type ProjectVideoSource = LocalVideoSource | MuxVideoSource
+
 export interface VideoBlock {
 	type: "video"
-	platform: VideoPlatform
-	videoId: string // e.g. "dQw4w9WgXcQ" (YouTube) or "76979871" (Vimeo)
+	source: ProjectVideoSource
 	featured?: boolean // if true, video renders full-width & tall (video-primary pages)
 	autoplay?: boolean // if true, video autoplays muted (default: false)
 }
@@ -77,8 +90,7 @@ export const projects: Project[] = [
 		content: [
 			{
 				type: "video",
-				platform: "youtube",
-				videoId: "dQw4w9WgXcQ",
+				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
 				featured: true,
 			},
 		],
@@ -91,8 +103,7 @@ export const projects: Project[] = [
 		content: [
 			{
 				type: "video",
-				platform: "vimeo",
-				videoId: "76979871",
+				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
 			},
 			{
 				type: "text",
@@ -120,8 +131,7 @@ export const projects: Project[] = [
 			},
 			{
 				type: "video",
-				platform: "youtube",
-				videoId: "dQw4w9WgXcQ",
+				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
 			},
 			{
 				type: "image",
@@ -139,8 +149,7 @@ export const projects: Project[] = [
 		content: [
 			{
 				type: "video",
-				platform: "youtube",
-				videoId: "dQw4w9WgXcQ",
+				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
 				featured: true,
 			},
 		],

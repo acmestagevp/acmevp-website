@@ -23,7 +23,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 
 	const getBlockKey = (block: ContentBlock) => {
 		const fingerprint = block.type === "video"
-			? `${block.type}-${block.platform}-${block.videoId}`
+			? `${block.type}-${block.source.kind}-${block.source.kind === "mux" ? block.source.playbackId : block.source.path}`
 			: block.type === "image"
 				? `${block.type}-${block.src}-${block.alt}`
 				: `${block.type}-${block.heading ?? "untitled"}-${block.body}`
@@ -45,8 +45,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 							return (
 								<Section key={key} variant="custom" mode="gallery" className="w-full py-6 md:py-8">
 									<VideoBlock
-										platform={block.platform}
-										videoId={block.videoId}
+										source={block.source}
 										projectTitle={projectTitle}
 										blockNumber={index + 1}
 										featured={true}
@@ -60,8 +59,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 							<Section key={key} variant="custom" mode="gallery" className={`w-full py-6 md:py-8 composition-${archetype}`}>
 								<ContentWrapper variant="wide">
 									<VideoBlock
-										platform={block.platform}
-										videoId={block.videoId}
+										source={block.source}
 										projectTitle={projectTitle}
 										blockNumber={index + 1}
 										featured={false}

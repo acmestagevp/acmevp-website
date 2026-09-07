@@ -14,7 +14,7 @@
 /coverage
 
 # plans 
-/plans
+/.plans
 
 # next.js
 /.next/
@@ -38,6 +38,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# next-video source files remain local; generated metadata is tracked
+/videos/*
+!/videos/*.json
+!/videos/*.js
+!/videos/*.ts
+/public/_next-video
 
 # typescript
 *.tsbuildinfo
