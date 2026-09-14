@@ -1,25 +1,16 @@
 // ──────────────────────────────────────────────────────────────
 // Projects data — the single source of truth for all projects.
 //
-// To add or edit a project, just modify the `projects` array below.
-// Each project has top-level metadata (slug, title, optional subtitle,
-// thumbnail) plus an ordered `content` array of blocks that render
-// top-to-bottom on the individual project page.
-//
-// Supported block types:
-//   • video  — embedded YouTube or Vimeo player
-//   • text   — heading + paragraph (great for case studies)
-//   • image  — full or content-width image with optional caption
+// The project catalog intentionally contains only the four official
+// projects for the first publishable draft.
 // ──────────────────────────────────────────────────────────────
-
-// --- Content Block Types ---
 
 export type VideoPlatform = "local" | "mux"
 
 export type ProjectPublicationState = "fixture-valid" | "indexable" | "publishable"
 
 export interface ProjectSeo {
-	/** Approved launch copy only; fixtures intentionally leave this unset. */
+	/** Approved launch copy only; the first draft uses route fallback metadata. */
 	description?: string
 	/** Approved absolute or public-relative social preview only. */
 	socialImage?: string
@@ -44,114 +35,113 @@ export type ProjectVideoSource = LocalVideoSource | MuxVideoSource
 export interface VideoBlock {
 	type: "video"
 	source: ProjectVideoSource
-	featured?: boolean // if true, video renders full-width & tall (video-primary pages)
-	autoplay?: boolean // if true, video autoplays muted (default: false)
+	featured?: boolean
+	autoplay?: boolean
 }
 
 export interface TextBlock {
 	type: "text"
-	heading?: string // optional section heading
-	body: string // paragraph text
+	heading?: string
+	body: string
 }
 
 export interface ImageBlock {
 	type: "image"
-	src: string // path to image under /public
+	src: string
 	alt: string
-	caption?: string // optional caption below the image
-	fullWidth?: boolean // if true, image spans the full content width
+	caption?: string
+	fullWidth?: boolean
 	aspectRatio?: "video" | "square" | "portrait" | "intrinsic"
 	fit?: "cover" | "contain"
 }
 
 export type ContentBlock = VideoBlock | TextBlock | ImageBlock
 
-// --- Project Type ---
-
 export interface Project {
-	slug: string // URL-safe identifier, used in /projects/[slug]
-	title: string // e.g. "Polica"
-	subtitle?: string // e.g. "Wasted Me" — omit when only a title is needed
-	thumbnail: string // path to thumbnail image under /public
-	content: ContentBlock[] // ordered blocks rendered top-to-bottom
-	/** Readiness is separate from template validity so fixtures remain routable. */
+	slug: string
+	title: string
+	subtitle?: string
+	thumbnail: string
+	content: ContentBlock[]
 	publicationState?: ProjectPublicationState
 	seo?: ProjectSeo
 }
 
-// --- Projects ---
-
 export const projects: Project[] = [
+	{
+		slug: "cadillac-future-iq",
+		title: "Cadillac",
+		subtitle: "Future IQ",
+		thumbnail: "/images/projects/future-iq.png",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "mux", playbackId: "b2V5InHCmI3DAvCVP00HJBuiMuFk7ETeDpT02QMFStzt00" },
+				featured: true,
+			},
+			// {
+			// 	type: "text",
+			// 	heading: "Credits",
+			// 	body: "Director: Tony Oberstar. Cinematographer: Marcus Taplin.",
+			// },
+		],
+	},
+	{
+		slug: "cadillac-future-iq-behind-the-scenes",
+		title: "Cadillac",
+		subtitle: "Future IQ: Behind the Scenes",
+		thumbnail: "/images/projects/future-iq-bts.png",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "mux", playbackId: "iNcr86G02a02GAYDkpPc5iTUhiyVJUoKr3wOLTWxkjQNs" },
+				featured: true,
+			},
+			// {
+			// 	type: "text",
+			// 	heading: "Credits",
+			// 	body: "Produced by Nick Leisenheimer.",
+			// },
+		],
+	},
 	{
 		slug: "polica-wasted-me",
 		title: "Polica",
 		subtitle: "Wasted Me",
-		thumbnail: "/images/content-1-1.png",
+		thumbnail: "/images/projects/polica-wasted-me.png",
+		publicationState: "publishable",
 		content: [
 			{
 				type: "video",
-				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
+				source: { kind: "mux", playbackId: "900Nx01jFo6OBmMcKZsL27M0100LmVTs8MRflGkVSLgxW00w" },
 				featured: true,
 			},
+			// {
+			// 	type: "text",
+			// 	heading: "Credits",
+			// 	body: "Directed by Ghost+Cow. Cinematographer: Steve Speers.",
+			// },
 		],
 	},
 	{
-		slug: "renewal-by-andersen",
-		title: "Renewal by Andersen",
-		subtitle: "A Window in Time",
-		thumbnail: "/images/alpha-1-1.png",
+		slug: "a-window-in-time-renewal-by-andersen",
+		title: "A Window in Time",
+		subtitle: "Renewal by Andersen",
+		thumbnail: "/images/projects/rba-awit.png",
+		publicationState: "publishable",
 		content: [
 			{
 				type: "video",
-				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
-			},
-			{
-				type: "text",
-				heading: "Behind the Project",
-				body: "Renewal by Andersen partnered with ACME to create a cinematic spot that showcases the craftsmanship behind every window. Using our LED volume, we transported the talent into a variety of seasonal environments — all without leaving the stage.",
-			},
-			{
-				type: "image",
-				src: "/images/alpha-1-1.png",
-				alt: "On-set still from the Renewal by Andersen shoot",
-				caption: "LED wall in action during the shoot",
-			},
-		],
-	},
-	{
-		slug: "case-study-alex-horner",
-		title: "Case Study",
-		subtitle: "Alex Horner",
-		thumbnail: "/images/content-1-1.png",
-		content: [
-			{
-				type: "text",
-				heading: "Overview",
-				body: "Director of Photography Alex Horner shares his experience working on the ACME volume wall. This case study explores how virtual production expanded creative possibilities while streamlining the shoot day.",
-			},
-			{
-				type: "video",
-				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
-			},
-			{
-				type: "image",
-				src: "/images/content-1-1.png",
-				alt: "Volume wall setup for the Alex Horner case study",
-				fullWidth: true,
-			},
-		],
-	},
-	{
-		slug: "bts-polica-wasted-me",
-		title: "Behind the Scenes",
-		subtitle: "Polica - Wasted Me",
-		thumbnail: "/images/alpha-1-1.png",
-		content: [
-			{
-				type: "video",
-				source: { kind: "local-fixture", path: "/videos/placeholder.mp4", temporary: true },
+				source: { kind: "mux", playbackId: "w100Y5AWF5YqtdhUc5O6901hBgeDn2UIml9oST2At9iqE" },
 				featured: true,
 			},
+			// {
+			// 	type: "text",
+			// 	heading: "Credits",
+			// 	body: "Director: Kat Rapheal. Cinematographer: Alex Horner.",
+			// },
 		],
 	},
 ]
