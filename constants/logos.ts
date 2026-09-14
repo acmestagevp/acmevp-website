@@ -23,4 +23,16 @@ export const logos = [
 		graphic: "/images/logos/und.png",
 		alt: "University of North Dakota Logo",
 	},
+	{
+		graphic: "/images/logos/evanescence.png",
+		alt: "Evanescence Logo",
+	},
+	{
+		graphic: "/images/logos/martac.png",
+		alt: "Martac Logo",
+	},
+	{
+		graphic: "/images/logos/sec.png",
+		alt: "Soaring Eagle Casino Logo",
+	},
 ]

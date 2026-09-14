@@ -52,7 +52,7 @@ export default function Home() {
 				</ContentWrapper>
 			</Section>
 			<Section className="py-14 md:py-20">
-				<ContentWrapper variant="wide" className="">
+				<ContentWrapper variant="default" className="">
 					<div className="py-16">
 						<AnimateIn>
 							<h2 className="text-center text-sm uppercase tracking-widest text-neutral-500">
