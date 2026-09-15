@@ -11,7 +11,12 @@ import AnimateIn from "@/components/decoration/AnimateIn"
 export default function Home() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="full" imageOpacity={90} graphic="/images/home/hero-main.png" alt="Virtual production scene on the ACME LED volume">
+			<Header
+				variant="full"
+				imageOpacity={90}
+				graphic="/images/home/hero-main.png"
+				alt="Virtual production scene on the ACME LED volume"
+			>
 				<ContentWrapper variant="default">
 					<div className="relative z-10 pt-80 text-center md:pt-96">
 						<AnimateIn>
@@ -22,7 +27,7 @@ export default function Home() {
 						</AnimateIn>
 						<AnimateIn delay={0.15}>
 							<p className="mt-6 text-neutral-400 text-balance">
-								From high-end commercials to photo-realistic virtual environments, ACME Virutal
+								From high-end commercials to photo-realistic virtual environments, ACME Virtual
 								Production can take you anywhere you can imagine, all from the heart of Minnesota.
 							</p>
 						</AnimateIn>
@@ -31,7 +36,11 @@ export default function Home() {
 			</Header>
 			<Section variant="custom" className="pt-20 md:pt-28">
 				<ContentWrapper variant="wide">
-					<Content graphic="/images/home/stage-bts-1.png" alt="Behind-the-scenes view of the ACME stage" isReversed={false}>
+					<Content
+						graphic="/images/home/stage-bts-1.png"
+						alt="Behind-the-scenes view of the ACME stage"
+						isReversed={false}
+					>
 						<AnimateIn>
 							<Link href="/stage">
 								<h2 className="text-2xl md:text-right">Stage</h2>
@@ -71,7 +80,12 @@ export default function Home() {
 			</Section>
 			<Section variant="custom" className="py-20 md:py-28">
 				<ContentWrapper variant="wide">
-					<Content basis="" graphic="/images/home/stage-bts-2.jpg" alt="Production crew working on the ACME virtual production stage" isReversed={true}>
+					<Content
+						basis=""
+						graphic="/images/home/stage-bts-2.jpg"
+						alt="Production crew working on the ACME virtual production stage"
+						isReversed={true}
+					>
 						<AnimateIn>
 							<Link href="/services">
 								<h2 className="text-left py-2 text-2xl">Services</h2>
@@ -102,7 +116,9 @@ export default function Home() {
 			<Section className="pb-24 pt-8 md:pb-32 md:pt-12">
 				<ContentWrapper variant="narrow" className="text-center">
 					<AnimateIn>
-						<p className="mb-5 text-sm uppercase tracking-[0.24em] text-neutral-500">Ready when you are</p>
+						<p className="mb-5 text-sm uppercase tracking-[0.24em] text-neutral-500">
+							Ready when you are
+						</p>
 						<h2 className="font-serif text-3xl md:text-4xl">Let&apos;s build your world.</h2>
 						<Link
 							href="/contact"
