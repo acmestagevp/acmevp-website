@@ -1,88 +1,100 @@
-# Product Overview — Minneapolis LED Volume Website
+# Product Overview
 
 ## Document status
 
-- **Status:** `in-review`
-- **Owner:** ACME website team
-- **Last updated:** 2026-08-31
-- **Evidence basis:** repository observation and stakeholder direction
+- **Status:** `approved`
+- **Owner:** John Wildauer
+- **Last updated:** 2026-09-18
+- **Evidence basis:** repository observation
 
 ## Business problem
 
-Production clients in Minneapolis and the wider Midwest need a credible way to evaluate an LED volume, understand the available production services, see representative work, and start a conversation with the studio. The website is the studio's public sales and qualification surface; unclear capability information, stale project content, or a difficult inquiry path can lose prospective work.
+ACME Virtual Production operates the largest LED volume in Minnesota — a 60 ft × 16.5 ft curved wall — and offers end-to-end virtual production services (studio, gear, virtual art department, post-production) from Minneapolis. Prospective clients: producers, directors, brands, and agencies evaluating whether ACME's stage and team can deliver their shoot. They need to quickly assess the stage's technical capabilities, understand the service lines, see credible past work, and start a conversation. Without a polished, credible web presence, ACME loses those inquiries to competitors with stronger marketing. The website is the studio's primary inbound channel.
 
 ## Current state
 
-**Observed:** This existing Next.js site presents ACME Virtual Production as a Minneapolis, Minnesota virtual production studio. It exposes Home, Stage, Services, Projects, project-detail, and Contact routes. The site includes stage specifications, service descriptions, client logos, testimonials, project media, and a contact form.
+Observed (directly supported by the repository):
 
-**Observed:** Shared navigation, layout, visual, project rendering, and animation components are present under `components/`. Reusable content is partly centralized in `constants/nav.ts`, `constants/logos.ts`, `constants/projects.ts`, and `constants/testimonials.ts`; several page sections remain inline in route files.
+- A Next.js 16 App Router marketing site with six routes: `/` (home), `/stage`, `/services`, `/projects`, `/projects/[slug]` (static-generated per project), and `/contact`.
+- All content is code-resident: copy lives in page components; structured data (projects, navigation, client logos, testimonials) lives in `constants/`.
+- The project catalog contains four official projects (Cadillac Future IQ + BTS, Polica, Renewal by Andersen), each marked `publishable` with Mux-hosted video.
+- A publication-state model (`fixture-valid` → `indexable` → `publishable`) gates search indexing; a readiness checker validates catalog integrity and tracks unapproved content (SEO descriptions, social images, dates, credits, video rights).
+- The contact page delivers inquiries via a Resend server action to `info@acmevp.com`.
+- SEO plumbing exists: per-page metadata, canonical URLs, OpenGraph/Twitter cards, `robots.txt`, and a readiness-gated sitemap.
 
-**Inferred:** The primary content-maintenance need is to make approved copy, projects, testimonials, navigation, and related structured content editable in stable constants/data modules without duplicating edits across pages.
+Inferred (reasonable interpretation, not verified):
+
+- The site is intended for production deployment at `acmevp.com` via Vercel (metadata, sitemap, and email sender all reference the domain); live deployment status was not verified during initialization.
+- The code comments describe a "first publishable draft": the four projects are publishable, but their SEO fields (descriptions, social previews, dates) are not yet filled in.
 
 ## Personas and stakeholders
 
-| Persona/stakeholder | Goals | Pain points | Success looks like |
-|---|---|---|---|
-| Production client / agency producer | Quickly assess fit, capability, proof, and availability | Technical details and service scope may be scattered | Can understand the offer and submit a qualified inquiry |
-| Director, DP, or creative lead | Determine whether the volume supports the desired creative | Needs credible visuals, specs, and examples | Can evaluate the stage and imagine a project |
-| ACME website/content team | Keep public content accurate and current | Repeated page edits create drift and maintenance cost | One approved content source updates every intended consumer |
-| ACME production team | Convert interest into a project conversation | Lost or incomplete inquiries reduce follow-up quality | Contact path is obvious and submissions reach the team |
+| Persona/stakeholder                       | Goals                                                         | Pain points                                                  | Success looks like                                             |
+| ----------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------- |
+| Prospective client (producer/EP/director) | Evaluate the stage, services, and past work; start an inquiry | Hard to judge scale/quality of an LED volume from text alone | Convincing showcase of specs and work; a clear path to contact |
+| Returning client / visitor                | Find contact info; check for new work                         | Stale or hidden work                                         | Current project catalog; visible contact details               |
+| ACME content owner (staff)                | Keep copy, projects, and media current                        | Content changes require code edits                           | Predictable, well-mapped places to make changes                |
+| Search engines / social previews          | Crawl and index approved content accurately                   | Indexing unapproved or incomplete pages                      | Only approved pages indexed; accurate metadata                 |
 
 ## Product description
 
-The website is a cinematic, technically credible public presentation for ACME Virtual Production. It combines a marketing home page, facility and services information, a project portfolio with detail pages, testimonials and trusted-client proof, and a contact/inquiry path. Shared navigation and presentation patterns keep the experience coherent across routes, while centralized structured content is the durable source for reusable editorial data.
+The ACME Virtual Production website is a public marketing site that presents the studio's stage specifications, service lines, and project portfolio, and converts visitor interest into inquiries via a contact form that delivers email to the studio. Its boundaries: a static-content marketing site with code-resident content — no CMS, no authentication, no booking system, no e-commerce. Major capabilities: marketing pages (home, stage, services), a project showcase (listing + detail pages with video-first content), a contact/inquiry channel, site-wide navigation/branding, and search discoverability with publication gating.
 
 ## MVP and boundaries
 
+This is an existing product: the current site is the baseline contract, documented as-is. The terms below apply to future changes.
+
+### Workspace MVP
+
+Not applicable — the workspace (Next.js + pnpm + ESLint + Vercel deployment path) already exists and runs.
+
 ### Product MVP
 
-The current product MVP is a trustworthy public website that communicates the Minneapolis LED volume's differentiators, explains services, demonstrates work, and provides a working path to contact ACME.
+Already delivered in baseline form: all six routes functional, contact form delivering, publication-gated SEO in place. Remaining product-MVP gaps are content approvals (project SEO fields, credits, video rights) rather than capabilities.
 
 ### In scope
 
-- Public route presentation for Home, Stage, Services, Projects, project details, and Contact.
-- Stage capability and facility information, including media and technical specifications.
-- Service and production-support explanation.
-- Portfolio listing and structured project detail content with video, text, and image blocks.
-- Testimonials, client logos, shared navigation, and contact conversion path.
-- Centralized content/data sources for reusable navigation, projects, testimonials, logos, and future approved content.
-- Responsive, accessible, performant presentation appropriate for production clients.
+- The six routes and their current behavior (the baseline contract)
+- Contact inquiry delivery via Resend
+- Project catalog presentation and its publication-state model
+- Search discoverability: metadata, robots, sitemap, indexing gates
 
 ### Out of scope
 
-- A CMS, authenticated editorial dashboard, or non-developer publishing workflow.
-- Booking, quoting, payment, account management, or project-management features.
-- Changes to visual design or site behavior as part of initialization.
-- Replacing existing fixtures or making unapproved claims about clients, capabilities, or project publication readiness.
+- CMS integration, authentication, client portals
+- Booking/scheduling systems, e-commerce, blog
+- Any capability not present in the current site unless a future initiative authorizes it
+
+### Initial initiative roadmap
+
+Existing repository — plan as we go. The recommended first initiative (improving the layout of the individual project pages) is recorded in the project manifest's [Decisions and handoff](../project-manifest.md#decisions-and-handoff).
 
 ## Success metrics
 
-| Metric | Baseline | Target | Measurement method |
-|---|---|---|---|
-| Core routes render successfully | Existing route set is present; runtime validation pending | All documented routes render without blocking console/runtime errors | Playwright route smoke checks and build |
-| Inquiry path discoverability | Contact CTA appears in shared/site content | Primary routes expose an obvious path to Contact | Route/content review |
-| Content maintenance locality | Central constants exist, but some copy is inline | New/editable project, testimonial, logo, and navigation content has one documented source of truth | Static repository review |
-| Responsive usability | Existing responsive classes are present; full matrix pending | Desktop, tablet, and mobile checks pass for affected routes | Playwright viewport checks |
+| Metric                                     | Baseline                                                  | Target                                                     | Measurement method                   |
+| ------------------------------------------ | --------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------ |
+| Site builds and lints clean                | observed passing baseline (not yet executed this session) | `pnpm build` + `pnpm lint` pass after every change         | Automated commands per work order    |
+| Contact inquiries arrive                   | form delivers to `info@acmevp.com`                        | inquiries received from real prospects                     | User-observed inbox (manual)         |
+| Project pages render approved media        | 4 publishable projects with Mux video                     | all catalog projects render their content blocks correctly | User visual verification             |
+| Search engines index only approved content | publication gates implemented                             | no `fixture-valid` page indexed; approved pages indexed    | Sitemap/metadata inspection (manual) |
 
 ## Product constraints
 
-- Brand and claims must remain accurate to ACME Virtual Production and the Minneapolis LED volume.
-- Initialization and documentation must not modify application source, content, assets, or runtime behavior.
-- Content changes should use existing typed structures and shared components where applicable.
-- Public media is served from `public/`; embedded project video depends on external YouTube/Vimeo availability.
-- Contact delivery depends on the Resend API and `RESEND_API_KEY`; secrets must not be committed.
-- Accessibility includes semantic navigation/forms, keyboard operation, and respect for reduced-motion preferences.
+- Deployment: Vercel CI/CD triggered by the user's manual push of `master`; agents never push or deploy
+- Secrets: `RESEND_API_KEY` required in `.env.local` for the contact form
+- Media: project videos hosted on Mux (playback IDs in the catalog); local placeholder fixture exists for draft work
+- Stack: preserve Next.js 16 / React 19 / TypeScript / Tailwind CSS 4 / pnpm
+- Accessibility: reduced-motion support is an existing behavior and must be preserved
 
 ## Feature map
 
-- [`site-navigation-and-presentation.md`](features/site-navigation-and-presentation.md) — Public route discovery, shared shell, and responsive presentation.
-- [`facility-services-proof.md`](features/facility-services-proof.md) — Stage, services, client proof, and testimonials that qualify the studio.
-- [`project-showcase.md`](features/project-showcase.md) — Portfolio index and structured project detail pages.
-- [`contact-inquiry.md`](features/contact-inquiry.md) — Contact conversion and inquiry submission flow.
-- [`centralized-content-maintenance.md`](features/centralized-content-maintenance.md) — Durable content-source expectations for the website team.
+- [`marketing-pages.md`](features/marketing-pages.md) — home, stage, and services pages presenting the studio's story, specifications, and service lines
+- [`projects-listing.md`](features/projects-listing.md) — the `/projects` grid showcasing the catalog
+- [`project-detail.md`](features/project-detail.md) — individual project pages with video/text/image content blocks
+- [`contact-inquiry.md`](features/contact-inquiry.md) — contact information and the inquiry form delivering email to the studio
+- [`site-chrome.md`](features/site-chrome.md) — navigation, footer, branding, typography, and motion behavior across all pages
+- [`seo-discoverability.md`](features/seo-discoverability.md) — metadata, robots, sitemap, and the publication gating that controls indexing
 
 ## Open questions
 
-- Confirm the production deployment project and environment-variable ownership in the first implementation initiative.
-- Confirm which current project records are approved for public indexing versus fixture/demo use.
-- Decide whether future content should remain TypeScript constants or graduate to a CMS; no CMS is assumed for initialization.
+- None blocking initialization. Follow-up candidates recorded in the manifest: unused remnant components; contact-form hardening (no user-facing failure message; unescaped input in HTML email).

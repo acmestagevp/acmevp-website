@@ -6,12 +6,61 @@ Use this process when `.forge/` is added to a repository containing source code,
 
 ## Read first
 
-Read [`00-overview.md`](00-overview.md), then inspect the repository without modifying source code. Classify findings as **observed** (directly supported by files or executed commands), **inferred** (reasonable interpretation), or **desired** (requested future behavior).
+Read [`00-overview.md`](00-overview.md), then open the project manifest at
+[`../project-manifest.md`](../project-manifest.md). Initialization is
+agent-guided: you conduct a conversational intake with the user and complete
+the manifest together. Users may pre-fill the manifest's Project intake
+section, but that is optional, and its absence must never block
+initialization. Treat pre-filled intake answers as user-provided context, not
+repository evidence. Classify repository findings as **observed**
+(directly supported by files or executed commands), **inferred** (reasonable
+interpretation), or **desired** (requested future behavior).
 
-## Initialization questionnaire
+## Guided intake
+
+Before asking anything structured, briefly introduce the workflow in plain
+language: what the forge will set up, that independent checks run in the
+background, and where the user will personally make decisions. Keep jargon out
+of the conversation — use plain language, define any term the moment it must
+appear, and never require the user to know workflow vocabulary (gates,
+cadence, blueprints). Translate their answers into the manifest fields
+yourself.
+
+Conduct the intake in stages:
+
+1. **Open intent.** Start with an open prompt — what the user wants to
+   create, or keep creating, and who it is for. Listen for goals, users,
+   constraints, and context before asking anything structured.
+2. **Involvement gauge.** Determine how much the user wants to participate in
+   technical choices — gating states, language choices, linting methods,
+   workspace defaults — versus wanting working results with the diligence
+   handled in the background. Ask directly when the signals are unclear, and
+   record the `guided` | `collaborative` | `direct` level and how it was
+   decided in the manifest. The level changes who supplies the answers, not
+   what gets recorded: every manifest field is completed at every level, and
+   all gates, reviews, and validation still run.
+3. **Branch by level.**
+   - `guided`: propose a short, plain-language defaults summary — what you
+     will set up and how the work will be independently checked — and record
+     the user's approval. Ask only genuinely user-only questions (goals,
+     priorities, taste).
+   - `collaborative`: ask grouped questions about the consequential choices,
+     such as language or framework when undetermined and where the user wants
+     checkpoints, and select defaults for the rest.
+   - `direct`: conduct the full grouped questionnaire below.
+4. **Recap and record.** Summarize what was configured in plain language,
+   complete the manifest's intake, involvement, preference, baseline, and
+   policy sections, and mark agent-selected choices as `agent-default` with
+   rationale.
+
+### Full questionnaire (`direct` level)
 
 Conduct the same short, conversational intake used for new repositories and
-record it in the canonical [`../initialization-record.md`](../initialization-record.md). Ask grouped questions and preserve the distinction between observed facts, inferred choices, desired outcomes, and provisional answers. Offer `I don't know yet` for technical choices; record it as provisional with a decision owner and next action.
+record it in the canonical [`../project-manifest.md`](../project-manifest.md).
+Ask grouped questions and preserve the distinction between observed facts,
+inferred choices, desired outcomes, and provisional answers. Preserve
+`unknown` for technical choices that are not known; record the choice as
+provisional with a decision owner and next action.
 
 Capture, at minimum:
 
@@ -19,30 +68,39 @@ Capture, at minimum:
 - primary goal, users/stakeholders, expected first outcome, explicit non-goals, and tool-use intent;
 - preferred language, framework, runtime, package/build tool, and target platform;
 - working preferences, including speed, learning, safety, documentation depth, and review strictness;
-- Git installation/repository state, current/default branch, local branch capability, remote expectation, initiative branch policy, and reduced-capability fallback;
+- rapid-mode preference as a working preference only: whether the user generally wants to be offered the rapid initiative path for small, well-understood changes; a preference never makes rapid mode the default and never replaces the explicit per-initiative request required by [`00-overview.md`](00-overview.md);
+- Git installation/repository state, current/default branch, local branch capability, remote expectation, initiative branch policy and default initiative branch naming convention, and reduced-capability fallback;
 - required human, external/manual, and automated gates;
-- review configuration: design review requirement, implementation cadence, per-work-order versus batch grouping, and requested depth;
+- the ideal user/agent development cycle: where the user expects to manually gate the process (after design review, at validation, at closeout, or none), including any manual verification or compilation requirement that gates validation;
+- review configuration: design review requirement, validation cadence (`per work order` | `consolidated` | `custom`), and requested depth;
 - known, unknown, or unavailable commands; and
 - unresolved decisions with owners and next actions, plus the recommended first initiative.
 
-On resume, update the same record, preserve prior answers, and append a dated
+On resume, update the same manifest, preserve prior answers, and append a dated
 revision entry explaining every changed answer.
 
 ## Git and branch capability check
 
 During the repository inventory, establish and record in
-[`../initialization-record.md`](../initialization-record.md) whether Git is
+[`../project-manifest.md`](../project-manifest.md) whether Git is
 installed and initialized, the current and default/base branch, whether a
 local initiative branch can be created, and whether a remote is required,
 available, or intentionally irrelevant. Record the evidence or check result;
 an unknown or unavailable command is not evidence of capability.
 
 For a Git repository with local branch capability, use a dedicated initiative
-branch by default, named `forge/YYYY-MM-DD-short-slug`, unless the project
-policy records a different naming convention. The user may select `optional`
-branching or opt out for an initiative, but the initiative must record the
-limitation, base branch, and alternate file/diff evidence. A remote is never
-required solely to use local branches.
+branch by default, named `dev/YYYY-MM-DD-short-slug`, unless the project
+manifest or host repository policy specifies another convention. The Forge must
+not assume that its own name belongs in the branch namespace, and branches
+created under a previous `forge/` default remain valid historical evidence. The
+user may select `optional` branching or opt out for an initiative, but the
+initiative must record the limitation, base branch, and alternate file/diff
+evidence. A remote is never required solely to use local branches.
+
+Initialize the **Default initiative branch naming convention** field in
+[`../project-manifest.md`](../project-manifest.md) to
+`dev/YYYY-MM-DD-short-slug` unless the user or host repository policy records a
+different convention.
 
 If Git, repository initialization, or local branch creation is unavailable,
 label the workflow **reduced capability**. Preserve file and comparable diff
@@ -60,17 +118,17 @@ practical, and record the fallback owner and next action.
 6. **Review requirements.** Set the requirements artifact to `in-review` and route a fresh-context requirements reviewer using [`00-overview.md`](00-overview.md). Record `requirements-review.md` (or the configured equivalent), identify ambiguity, unsupported claims, conflicts, and missing acceptance criteria, and resolve blockers before blueprinting. Do not treat this as a design review.
 7. **Map the technical system.** Populate [`../blueprints/technical-context.md`](../blueprints/technical-context.md) from repository evidence. Add container, component, and feature blueprints with links to real paths or symbols where useful.
 8. **Review blueprints.** Spawn a fresh-context reviewer to compare documented architecture with repository evidence and the requirements. Record discrepancies rather than silently correcting them.
-9. **Configure policy.** Replace the `TODO` values in [`00-overview.md`](00-overview.md) with verified commands, branch expectations, manual gates, tools, and parallelism rules.
-10. **Finalize initialization.** If the repository is broken, prioritize restoring a runnable baseline. Otherwise recommend the smallest valuable change that exercises the documented workflow. Set the record to `complete` only with linked completion evidence, including the branch capability decision; if the repository cannot be safely understood or validated, set it to `blocked` with the blocking reason, decision needed, owner, and next action.
+9. **Configure policy.** Populate the Project policy section of [`../project-manifest.md`](../project-manifest.md) — commands, gates, tools, parallelism, and recovery rules — with verified facts, recording unknowns with owners. Do not place project-specific policy in process documents: they are swappable, and the manifest is the durable contract.
+10. **Finalize initialization.** If the repository is broken, prioritize restoring a runnable baseline. Otherwise recommend the smallest valuable change that exercises the documented workflow. Set the manifest to `complete` only with linked completion evidence, including the branch capability decision; if the repository cannot be safely understood or validated, set it to `blocked` with the blocking reason, decision needed, owner, and next action.
 
 ## Required completion evidence
 
 - Repository inventory and runnable-state evidence are recorded.
 - Observed, inferred, and desired behavior are distinguishable in durable documents.
 - Requirements and blueprints have independent review findings.
-- Project policy contains verified commands where available and named owners for unknowns.
+- Project policy in the project manifest contains verified commands where available and named owners for unknowns.
 - The first initiative addresses the highest-value baseline gap or delivers a small vertical slice.
-- [`../initialization-record.md`](../initialization-record.md) is `complete` or `blocked`; a complete record links the generated product overview, technical context, policy, review findings, and first-initiative handoff.
+- [`../project-manifest.md`](../project-manifest.md) is `complete` or `blocked`; a complete manifest links the generated product overview, technical context, policy, review findings, and first-initiative handoff.
 
 ## Handoff
 

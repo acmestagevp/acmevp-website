@@ -1,49 +1,84 @@
-# Feature Blueprint: Contact Inquiry
+# Feature Blueprint: Contact and Inquiry
+
+> This is the technical counterpart to [`contact-inquiry.md`](../../requirements/features/contact-inquiry.md). It explains how shared capabilities and feature-specific components satisfy the feature requirements.
 
 ## Feature Summary
 
-`app/contact/page.tsx` is a client component using React form state and a server action from `utils/sendEmail.ts`. The action reads form fields and sends through Resend using a server-side API key, returning success/failure state to the page.
+The `/contact` page is a client component presenting contact channels and an inquiry form wired to the `sendEmail` server action via `useActionState`. Submission state flows through React: `useFormStatus` drives the pending button, and a successful result replaces the form with a confirmation panel. Delivery is delegated to the Resend SDK inside the server action.
 
 ## Document status
 
-- **Status:** `in-review`
-- **Owner:** ACME website team
-- **Last updated:** 2026-08-31
+- **Status:** `approved`
+- **Owner:** John Wildauer
+- **Last updated:** 2026-09-18
 - **Requirements:** [`../../requirements/features/contact-inquiry.md`](../../requirements/features/contact-inquiry.md)
 
 ## Component Blueprint Composition
 
-Compose [#Shared Site Shell](../components/shared-site-shell.md) with Contact page form composition and the Resend server integration.
+Composes @Presentation Foundation (#Section, #ContentWrapper wide, #AnimateIn) for layout. The form uses `control-surface` styling tokens from [`app/globals.css`](../../../app/globals.css).
 
 ## Feature-Specific Components
 
 ```component
-name: ContactInquiryFlow
-container: Next.js Web Application
+name: ContactPage
+container: Next.js Web App
 responsibilities:
-  - Render labeled required fields and pending/success states.
-  - Invoke the server action and expose status feedback.
+	- Client component: contact channels (mailto/tel) + inquiry form
+	- useActionState(sendEmail) drives form vs. confirmation rendering
 ```
 
 ```component
-name: ResendEmailAdapter
-container: Next.js Web Application
+name: SubmitButton
+container: Next.js Web App
 responsibilities:
-  - Translate validated form data into a Resend email request.
-  - Return failure when provider delivery throws or reports failure.
+	- useFormStatus pending state: disabled + "Sending..." label while in flight
 ```
+
+```component
+name: sendEmail
+container: Next.js Web App
+responsibilities:
+	- Server action: parse FormData (name, email, subject, message)
+	- Send via Resend: fixed sender, to info@acmevp.com, CC list, reply-to visitor, subject from form
+	- try/catch → { success: boolean }; console logging only
+```
+
+## Models and contracts
+
+```model
+name: InquiryForm
+store: FormData (unpersisted)
+description: Four required fields submitted to the server action
+fields:
+	- name, email, subject, message
+constraints:
+	- All fields required; email type-validated by the input
+	- No server-side validation or sanitization (known follow-up candidate)
+```
+
+### Key Contracts
+
+- `sendEmail(prevState: { success: boolean }, formData) → { success: boolean }` — the only server boundary; requires `RESEND_API_KEY`.
+- Success replaces the form with a `role="status" aria-live="polite"` confirmation panel.
+- Failure returns `{ success: false }` with no user-facing error surface (follow-up candidate).
+
+### Integration Contracts
+
+- Resend sender identity is fixed (`no-reply@acmevp.com`); recipients/CCs are hardcoded in the action.
 
 ## Requirement alignment
 
-- `REQ-CONTACT-001` → Contact form, `useActionState`, and `sendEmail`.
-- `REQ-CONTACT-002` → Action result controls the confirmation state; direct email/phone are rendered alongside the form.
+- `REQ-CONTACT-001` → ContactPage left column: mailto + tel links
+- `REQ-CONTACT-002` → form fields with `htmlFor`-associated labels; required + email type
+- `REQ-CONTACT-003` → #sendEmail server action + Resend
+- `REQ-CONTACT-004` → #SubmitButton pending state + success confirmation panel
 
 ## Architecture Decision Records
 
-### ADR-001: Keep email delivery server-side
+### ADR-001: Server action instead of an API route
 
-**Context:** Resend requires a secret API key and the contact flow does not need a client-side provider SDK.
+**Context:** The form needs email delivery without a custom endpoint.
 
-**Decision:** Keep provider calls in the server action and expose only a boolean outcome to the client form.
+**Decision:** `"use server"` action in [`utils/sendEmail.ts`](../../../utils/sendEmail.ts), integrated with `useActionState`/`useFormStatus`.
 
-**Consequences:** Secrets stay out of browser bundles; production delivery configuration must be verified separately.
+**Consequences:** No API surface to secure or version; failure handling is currently minimal (recorded as a follow-up candidate in the manifest).

@@ -1,29 +1,33 @@
-# Review: Review Type — WO-001 or Initiative
+# Review: Requirements or Design — Initiative
 
 ## Review metadata
 
-- **Review type:** `requirements | design | implementation | closeout`
+- **Review type:** `requirements | design`
 - **Status:** `in-review`
 - **Reviewer:** `TODO`
+- **Reviewer session/agent ID:** `TODO` <!-- fresh-context session per the dispatch invariants in [`../../../process/00-overview.md`](../../../process/00-overview.md) -->
+- **Session exception:** `none` | `approved and logged` — evidence: `TODO`
 - **Date:** `TODO`
-- **Initiative:** [`../initiative-slug-v1.md`](../initiative-slug-v1.md) <!-- replace initiative-slug when copying -->
-- **Review file:** `requirements-review.md` | `design-review.md` | `implementation-review-WO-001.md` | `closeout-review.md`
-- **Reviewed artifact:** requirements draft for requirements, [`../initiative-slug-v1.md`](../initiative-slug-v1.md) for design/closeout, or [`../work-orders/WO-001-short-title.md`](../work-orders/WO-001-short-title.md) for implementation <!-- replace placeholders and select the applicable artifact -->
-- **Compared commit/diff:** `TODO`
+- **Initiative:** [`../initiative-slug-v1.md`](../initiative-slug-v1.md) <!-- replace initiative-slug when copying; for a requirements review, the initiative may not exist yet -->
+- **Review file:** `requirements-review.md` | `design-review.md`
+- **Reviewed artifact:** `TODO: the requirements draft for a requirements review; the initiative plan and its work orders for a design review` <!-- select the applicable artifact -->
 
-Review files belong in this initiative's `reviews/` directory. Use one of these
-subject-specific names: `requirements-review.md`, `design-review.md`,
-`implementation-review-[work-order-id].md`, or `closeout-review.md`.
+Review files belong in this initiative's `reviews/` directory. Validation
+artifacts are separate and live in `validations/`; use
+[`../validations/validation-template.md`](../validations/validation-template.md)
+for those.
 
 ## Scope of review
 
-`TODO: State what was inspected and what was intentionally excluded. For implementation, state the authorized work-order scope and explicitly exclude unimplemented design obligations.`
+`TODO: State what was inspected and what was intentionally excluded. Assess against the converged plan and explicit user decisions; do not reconstruct exploratory possibilities as omissions.`
 
 ## Findings
 
 ### Blockers
 
-- `None or TODO: finding — Severity: blocker; Evidence: TODO; Recommendation: TODO; Required next state: draft | in-progress | blocked | approved | complete`
+Each blocker must cite the converged plan, requirement, policy rule, or evidence that makes it blocking; do not invent requirements from exploratory possibilities the work-order plan does not carry forward.
+
+- `None or TODO: finding — Severity: blocker; Blocking citation: TODO; Evidence: TODO; Recommendation: TODO; Required next state: draft | in-review | blocked | approved`
 
 ### Warnings
 
@@ -33,13 +37,12 @@ subject-specific names: `requirements-review.md`, `design-review.md`,
 
 - `None or TODO: finding — Severity: note; Evidence: TODO; Recommendation: TODO; Required next state: TODO`
 
-## Traceability and validation
+## Traceability
 
 - **Requirements checked:** `TODO`
 - **Blueprints checked:** `TODO`
-- **Commands/evidence checked:** `TODO`
-- **Manual gates checked:** `TODO`
-- **Implementation evidence checked:** `TODO: changed files, validation attempts/results, and comparable diff or equivalent evidence; state not applicable for requirements/design/closeout`
+- **Durable-document impact classifications present:** `TODO` <!-- design review: classification presence and authorized documentation ownership per [`../../../process/00-overview.md`](../../../process/00-overview.md) -->
+- **Gates identified:** `TODO` <!-- design review: automated, manual, external, and human approval gates -->
 
 ## Decision
 

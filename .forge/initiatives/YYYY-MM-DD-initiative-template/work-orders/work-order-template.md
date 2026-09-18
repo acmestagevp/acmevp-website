@@ -8,7 +8,10 @@
 - **Initiative:** [`../initiative-slug-v1.md`](../initiative-slug-v1.md) <!-- replace initiative-slug when copying -->
 - **Generated filename:** `WO-001-short-title.md` <!-- replace with this work order's generated filename -->
 - **Owner/orchestrator:** `TODO`
-- **Implementation review:** [`../reviews/implementation-review-WO-001.md`](../reviews/implementation-review-WO-001.md) <!-- replace WO-001 with this work order's ID when copying -->
+- **Validation:** [`../validations/validation-WO-001.md`](../validations/validation-WO-001.md) <!-- replace WO-001 with this work order's ID when copying -->
+- **Fixes:** `none` | fix chain of [`WO-001a-short-slug.md`](WO-001a-short-slug.md) and its failing validation [`../validations/validation-WO-001.md`](../validations/validation-WO-001.md) — `TODO` <!-- for fix work orders only: link the original work order and the failing validation -->
+- **Implementer session/agent ID:** `TODO` <!-- separate fresh implementer session per the dispatch invariants in [`../../../process/00-overview.md`](../../../process/00-overview.md) -->
+- **Session exception:** `none` | `approved and logged` — evidence: `TODO`
 
 ## Summary
 
@@ -49,13 +52,18 @@ Copy applicable requirement wording and acceptance criteria verbatim.
 - **Manual/external checks:** `TODO`
 - **Acceptance test:** Given `TODO`, when `TODO`, then `TODO`.
 
-## Documentation updates
+## Durable-document impact
 
-- `TODO: explicitly list requirements/blueprints to update, or state none`
+- **Requirements impact:** `update` | `verify unchanged` | `not applicable` — selected: `TODO`
+- **Blueprint impact:** `update` | `verify unchanged` | `not applicable` — selected: `TODO`
+- **Affected documents/IDs:** `TODO`
+- **Rationale and evidence:** `TODO` <!-- `not applicable` is never a blank exemption; record the rationale and the evidence that the document was checked -->
+- **Authorized documentation changes:** `TODO`
 
 ## Completion checklist
 
 - [ ] Implementation is complete within scope.
 - [ ] Tests/checks and required gates have evidence.
-- [ ] Authorized durable documentation is updated.
-- [ ] Execution log is appended.
+- [ ] Durable-document impact classification is accurate against the diff, and authorized documentation updates are applied.
+- [ ] Execution log is appended, including dispatch and completion session/agent identifiers.
+- [ ] Work order is `in-review` with recorded evidence, and completion (`complete`) comes only from a passed validation in `validations/validation-[work-order-id].md`.

@@ -4,26 +4,32 @@
 
 ## Initiative metadata
 
-- **Status:** `draft`
+- **Phase:** `draft` | `plan` | `review` | `execute` | `validate` | `closeout` — selected: `draft`
+- **Status:** `active` | `blocked` | `closed` — selected: `active` <!-- when blocked, record the reason, decision needed, owner, and next action in Risks and decisions; `closed` is the terminal status, set when closeout completes -->
 - **Owner/orchestrator:** `TODO`
 - **Created:** `TODO`
 - **Updated:** `TODO`
-- **Current gate:** `planning`
 - **Authoritative version:** `v1`
+- **Initiative mode:** `standard` | `rapid` — selected: `standard`
+- **Mode requested by:** `user` | `orchestrator recommendation` | `project policy` — selected: `TODO`
+- **Mode confirmation:** `TODO` <!-- explicit user confirmation or approval evidence; `rapid` is invalid without it -->
+- **Rapid-mode eligibility:** `confirmed` | `not eligible` | `overridden by user` — selected: `TODO`
 - **Base/default branch:** `TODO`
 - **Initiative branch:** `TODO` <!-- branch name, or `none` in reduced-capability/opt-out mode -->
 - **Branch policy:** `required` | `optional` | `user opt-out` — selected: `TODO`
-- **Branch naming convention:** `forge/YYYY-MM-DD-short-slug` or project override: `TODO`
+- **Branch naming convention:** `dev/YYYY-MM-DD-short-slug` or recorded override: `TODO`
 - **Branch capability/evidence:** `TODO`
 - **Reduced-capability fallback or opt-out evidence:** `TODO` <!-- include explicit no-branch review notice when applicable -->
 - **Branch creation failure:** `none` | `recorded below` — `TODO`
+- **Validation cadence:** `per work order` | `consolidated` | `custom` — selected: `per work order` <!-- `consolidated` requires explicit user request and a cascade-failure warning when applicable -->
+- **Phase transition evidence:** `TODO` <!-- for each transition (draft → plan, plan → review, review → execute, each execute → validate and validate → execute in the per-work-order loop, validate → closeout) and the terminal status flip (closeout → `closed`), record the trigger, date, and evidence -->
+- **Direct-translation confirmation:** `not needed` | `requested and confirmed` — evidence: `TODO` <!-- required when the initial prompt was broad but the work orders are a direct translation of the user's stated authorization -->
 
 ## Standard artifact locations
 
 - **Authoritative plan:** `[initiative-slug]-v1.md`
 - **Design review:** [`reviews/design-review.md`](reviews/design-review.md)
-- **Implementation reviews:** `reviews/implementation-review-[work-order-id].md`
-- **Closeout review:** [`reviews/closeout-review.md`](reviews/closeout-review.md)
+- **Validations:** `validations/validation-[work-order-id].md`
 - **Execution log:** [`execution-log.md`](execution-log.md)
 - **Work orders:** [`work-orders/`](work-orders/)
 
@@ -56,6 +62,34 @@ Use the sizing guidance in [`02-initiative.md`](../../process/02-initiative.md).
 
 `TODO: Explain the problem and link the relevant durable documents.`
 
+## Exploration scratchpad
+
+Use this section during the open-ended planning loop. Keep observations,
+research, alternatives, and user decisions distinct from settled scope. This
+section may be incomplete while the initiative is being explored.
+
+### Initial findings
+
+- `TODO: repository observations, evidence, and relevant existing behavior`
+
+### Questions and hypotheses
+
+- `TODO: unresolved question or hypothesis to investigate`
+
+### Options considered
+
+| Option | Benefits | Costs/risks | Current direction |
+|---|---|---|---|
+| `TODO` | `TODO` | `TODO` | `TODO` |
+
+### Decisions and discussion notes
+
+- `TODO: record material decisions, rationale, and user guidance`
+
+### Next investigation or conversation focus
+
+- `TODO: leave open-ended during exploration; replace with a convergence action when ready`
+
 ## Requirements and blueprint references
 
 - **Requirements:** `TODO: relative links and IDs`
@@ -67,9 +101,11 @@ Use the sizing guidance in [`02-initiative.md`](../../process/02-initiative.md).
 
 ## Work-order plan
 
-| Order | Work order | Purpose | Dependencies | Review cadence |
-|---|---|---|---|---|
-| 1 | [`work-orders/WO-001-short-title.md`](work-orders/WO-001-short-title.md) <!-- replace with the generated work-order filename --> | `TODO` | `none` | `per work order` |
+Work orders are not created during initial exploration. Once the user confirms
+the initiative is ready for formal design preparation, create the generated
+work-order files here and replace this note with the ordered plan.
+
+_No work orders created yet._
 
 ## Risks and decisions
 
@@ -84,5 +120,9 @@ Use the sizing guidance in [`02-initiative.md`](../../process/02-initiative.md).
 - [ ] The advisory split assessment is recorded; any split initiatives have distinct outcomes, dependencies, and review/closeout boundaries.
 - [ ] Requirements and blueprints are linked.
 - [ ] Work orders are independently executable and ordered.
+- [ ] Every work order carries a durable-document impact classification per [`00-overview.md`](../../process/00-overview.md).
+- [ ] Initiative mode metadata (mode, requested by, confirmation, eligibility) is recorded.
+- [ ] Phase transition evidence and the direct-translation confirmation (when applicable) are recorded.
+- [ ] Validation cadence is recorded.
 - [ ] Validation commands and manual gates are identified.
 - [ ] Required human approval has been obtained or is pending at the documented gate.

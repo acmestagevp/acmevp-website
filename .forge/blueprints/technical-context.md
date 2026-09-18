@@ -1,58 +1,66 @@
-# Technical Context — Minneapolis LED Volume Website
+# Technical Context
 
 ## Document status
 
-- **Status:** `in-review`
-- **Owner:** ACME website team
-- **Last updated:** 2026-08-31
-- **Evidence basis:** observed repository structure, package manifest, and inferred deployment policy
+- **Status:** `approved`
+- **Owner:** John Wildauer
+- **Last updated:** 2026-09-18
+- **Evidence basis:** `observed`
 
 ## Repository map
 
-| Area | Path/signpost | Responsibility |
-|---|---|---|
-| Application routes | `app/` | Next.js App Router pages, metadata, sitemap, robots, and global CSS |
-| Shared layout | `components/layout/`, `components/ui/` | Content wrappers, sections, header, navigation, footer |
-| Feature presentation | `components/`, `components/project/`, `components/decoration/` | Content composition, project blocks, animation, backgrounds, logos, testimonials |
-| Content constants | `constants/` | Navigation, logos, projects, testimonials; primary structured content source |
-| Server integration | `utils/sendEmail.ts` | Resend-backed server action for contact submissions |
-| Static media | `public/images/`, `public/background/`, `public/ACME_Stage_Floor_Plan.pdf` | Public image, background, and facility assets |
-| Tooling/configuration | `package.json`, `tsconfig.json`, `next.config.ts`, `eslint.config.mjs`, `postcss.config.mjs` | Dependencies, TypeScript, Next, lint, and Tailwind/PostCSS configuration |
+| Area               | Path/signpost                                            | Responsibility                                                                                                                           |
+| ------------------ | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| App routes         | [`app/`](../../app/)                                     | Next.js App Router: home, stage, services, projects, project detail, contact; plus root layout, global styles, `robots.ts`, `sitemap.ts` |
+| UI chrome          | [`components/ui/`](../../components/ui/)                 | `NavBar` (fixed responsive nav), `Footer`, `Header` (hero section with image variants)                                                   |
+| Layout primitives  | [`components/layout/`](../../components/layout/)         | `Section` (mode/variant/border/atmosphere), `ContentWrapper` (default/wide/narrow/full/bleed widths)                                     |
+| Project content    | [`components/project/`](../../components/project/)       | `ProjectContent` block dispatcher; `VideoBlock`, `TextBlock`, `ImageBlock`                                                               |
+| Decoration         | [`components/decoration/`](../../components/decoration/) | `AnimateIn` (reduced-motion-aware entrance animation), `Background` (glow + noise layers)                                                |
+| Content components | [`components/`](../../components/)                       | `Content` (two-column editorial block), `ProjectCard`, `Testimonials` (marquee), `Logo`                                                  |
+| Data               | [`constants/`](../../constants/)                         | `projects.ts` (catalog + types + publication states), `nav.ts`, `logos.ts`, `testimonials.ts`                                            |
+| Server utilities   | [`utils/`](../../utils/)                                 | `sendEmail.ts` (Resend server action), `projectReadiness.ts` (catalog validation + readiness report)                                     |
+| Static assets      | [`public/`](../../public/)                               | Images, background layers, stage floor-plan PDF                                                                                          |
+| Video records      | [`videos/`](../../videos/)                               | next-video JSON records for local video fixtures                                                                                         |
+| Styling            | [`app/globals.css`](../../app/globals.css)               | Tailwind CSS 4 entry; design tokens (CSS custom properties), layout wrappers, surface classes                                            |
 
 ## Runtime and deployment topology
 
-The system is a single Next.js web application. Development runs with `pnpm dev` and serves `http://localhost:3000`; production is built with `pnpm build` and run with `pnpm start`. Deployment is intended for Vercel or an equivalent Next.js host (provisional until the deployment project is verified). Browser clients receive statically rendered/server-rendered route output, public assets, and client-side behavior where components opt into it. The Contact route invokes a server action that sends email through Resend.
+A single Next.js application. Development: `pnpm dev` at `http://localhost:3000`. Production: `pnpm build` statically generates all routes (project detail pages via `generateStaticParams`); the user pushes `master` to GitHub, which triggers Vercel CI/CD deployment to `acmevp.com`. External services: Mux (project video playback), Resend (contact-form email delivery). No server-side persistence — all data is code-resident in `constants/`. The contact form's server action runs on the server at request time; everything else is static.
 
 ## Technology baseline
 
-| Concern | Choice | Version/constraint | Confidence |
-|---|---|---|---|
-| Language | TypeScript | `^5` | observed |
-| Framework | Next.js App Router | `16.1.6` | observed |
-| UI runtime | React and React DOM | `19.2.3` | observed |
-| Package manager | pnpm | lockfile and workspace file present | observed |
-| Styling | Tailwind CSS with PostCSS | Tailwind `^4`, `@tailwindcss/postcss` `^4` | observed |
-| Animation | Framer Motion plus browser APIs | Framer Motion `^12.38.0` | observed |
-| Email | Resend server SDK | `^6.10.0`; `RESEND_API_KEY` required | observed |
-| Deployment | Vercel or equivalent | Project/environment not yet verified | provisional |
+| Concern         | Choice                                                 | Version/constraint             | Confidence |
+| --------------- | ------------------------------------------------------ | ------------------------------ | ---------- |
+| Language        | TypeScript                                             | 5.x                            | observed   |
+| Framework       | Next.js (App Router)                                   | 16.1.6                         | observed   |
+| UI library      | React                                                  | 19.2.3                         | observed   |
+| Styling         | Tailwind CSS                                           | 4 (via `@tailwindcss/postcss`) | observed   |
+| Animation       | framer-motion                                          | ^12.38.0                       | observed   |
+| Video           | next-video + Mux playback                              | ^2.8.1                         | observed   |
+| Email           | Resend SDK                                             | ^6.10.0                        | observed   |
+| Package manager | pnpm                                                   | workspace + lockfile           | observed   |
+| Linting         | ESLint + eslint-config-next                            | 9                              | observed   |
+| Fonts           | next/font/google — Gilda Display (serif), Inter (sans) | —                              | observed   |
+| Runtime         | Node.js                                                | version not pinned             | inferred   |
 
 ## Cross-cutting concerns
 
-- **Configuration and secrets:** Environment variables are accessed server-side for Resend; API keys must remain outside source control.
-- **Authentication/authorization:** None observed; all routes are public.
-- **Errors and retries:** Contact send failures return an unsuccessful action state and log server-side; retry/operational alerting is not observed.
-- **Logging and observability:** Browser console/network checks and build/lint are the current validation mechanisms; production observability is unknown.
-- **Persistence and migrations:** No application database or migration system observed.
-- **Testing strategy:** No test suite is declared in `package.json`; use lint, build, route smoke checks, responsive checks, keyboard checks, and reduced-motion checks.
+- **Configuration and secrets:** `RESEND_API_KEY` in `.env.local` (gitignored) — required for the contact form. No other environment variables. The site URL `https://acmevp.com` is hardcoded in layout metadata, sitemap, robots, and project-page metadata.
+- **Authentication/authorization:** none — fully public site; no user accounts or protected areas.
+- **Errors and retries:** `sendEmail` wraps delivery in try/catch and returns `{ success: false }` on failure with `console.error`; no retries, no user-facing error message. Readiness checking throws nothing — it collects issues into a report.
+- **Logging and observability:** `console.log`/`console.error` in the server action only; no logging framework, no analytics.
+- **Persistence and migrations:** none. Content lives in `constants/`; next-video keeps JSON records in `videos/` for local fixtures.
+- **Testing strategy:** none. Verification is `pnpm build` + `pnpm lint` plus the user's manual visual checks (see project manifest policy).
 
 ## Boundary inventory
 
-- [`next-web-application.md`](containers/next-web-application.md) — Deployable Next.js site, public routes, static assets, and contact server action.
+- [`containers/nextjs-web-app.md`](containers/nextjs-web-app.md) — the single deployable boundary: the Next.js site including its server action, static generation, and external service calls
 
 ## Architectural risks and unknowns
 
-- Several marketing copy blocks are inline in route files, so the constants source-of-truth is incomplete.
-- `utils/componentMap.ts` contains mostly commented mappings and is not the active composition mechanism; do not treat it as authoritative without verification.
-- Project records include fixture-like video IDs and publication-state support; public approval and media ownership need confirmation.
-- External video embeds and Resend introduce network/runtime dependencies.
-- Git branch/default-branch capability could not be verified through the available repository inspection tools and remains an initialization unknown.
+- **Unused remnant components** — `components/Banner.tsx`, `components/decoration/BrushReveal.tsx`, `components/Project.tsx`, `utils/componentMap.ts` have no importers. User-confirmed dead ends from past UI trials; intentionally excluded from requirements and component blueprints. Removal is a follow-up candidate, not authorized work. The same remnant set includes the unused `VideoPlatform` type export in `constants/projects.ts` and four unreferenced next-video JSON records in `videos/` (future-iq, future-iq-bts, polica-wasted-me, rba-awit — blueprint review B-4).
+- **Contact-form hardening** — no user-facing failure feedback; form input is interpolated unescaped into the HTML email body. Follow-up candidate recorded in the manifest.
+- **No test suite, no formatter** — verification depends entirely on build, lint, and manual visual checks.
+- **Outstanding SEO content gates** — the four catalog projects are `publishable` but lack approved SEO descriptions, social images, and dates; the readiness report flags these deliberately.
+- **Per-route canonical gap** — only home and project pages define canonical URLs (requirements review F-1).
+- **Node version unpinned** — no `.nvmrc`/engines field; Vercel build uses its default Node version.
