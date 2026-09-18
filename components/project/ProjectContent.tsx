@@ -25,7 +25,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 	const getBlockKey = (block: ContentBlock) => {
 		const fingerprint =
 			block.type === "video"
-				? `${block.type}-${block.source.kind}-${block.source.kind === "mux" ? block.source.playbackId : block.source.path}`
+				? `${block.type}-${block.source.kind}-${block.source.kind === "mux" ? block.source.playbackId : block.source.kind === "youtube" ? block.source.videoId : block.source.path}`
 				: block.type === "image"
 					? `${block.type}-${block.src}-${block.alt}`
 					: `${block.type}-${block.heading ?? "untitled"}-${block.body}`

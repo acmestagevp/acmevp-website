@@ -34,7 +34,7 @@ name: Header
 container: Next.js Web App
 responsibilities:
 	- Hero region with variants (default 80vh, half 50vh, full 100vh, text-only) and an optional background image at configurable opacity
-	- Text-variant padding: nav-clearing by default (`pt-32`/`md:pt-40`, clearing the fixed NavBar); the optional `textPaddingClassName` prop replaces the padding block for routes without nav chrome (project detail pages pass `py-12 md:py-16`)
+	- Text-variant padding: nav-clearing by default (`pt-32`/`md:pt-40`, clearing the fixed NavBar); the optional `textPaddingClassName` prop replaces the padding block and the optional `textMinHeightClassName` prop replaces the min-heights (`min-h-[16rem] md:min-h-[20rem]`) — project detail pages pass `py-12 md:py-16`; the projects listing passes a tighter nav-clearing `pt-24 pb-6 md:pt-28 md:pb-8` with `min-h-0 md:min-h-0`
 ```
 
 ```component

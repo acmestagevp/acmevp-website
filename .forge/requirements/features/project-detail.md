@@ -14,11 +14,13 @@ Each project gets its own page at `/projects/[slug]`, statically generated from 
 
 ## Terminology
 
-| Term           | Definition                                                                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Content block  | A typed unit of project content: `video`, `text`, or `image`, defined in the catalog                                             |
-| Featured video | A video block rendered at true 16:9, inset by the global page gutter on both sides; a lone video block is featured automatically |
-| Local fixture  | A temporary placeholder video (`/videos/placeholder.mp4`) used in place of approved production media during draft work           |
+| Term             | Definition                                                                                                                                                                              |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Content block    | A typed unit of project content: `video`, `text`, or `image`, defined in the catalog                                                                                                    |
+| Featured video   | A video block rendered at true 16:9, width-capped by the viewport height and centered (the global page gutter is the minimum side margin); a lone video block is featured automatically |
+| Close affordance | A fixed top-right "×" control on project detail pages linking back to `/projects`                                                                                                       |
+| Local fixture    | A temporary placeholder video (`/videos/placeholder.mp4`) used in place of approved production media during draft work                                                                  |
+| YouTube embed    | The privacy-enhanced `youtube-nocookie.com` iframe player used for media that is public on a client's YouTube channel but cannot be hosted directly                                     |
 
 ## Requirements
 
@@ -39,11 +41,12 @@ Each project gets its own page at `/projects/[slug]`, statically generated from 
 **Acceptance Criteria:**
 
 - **AC-PDET-002.1:** Video blocks with a Mux source shall play via the Mux playback ID with visible controls.
-- **AC-PDET-002.2:** A video block marked featured — or the sole video block of a project — shall render at true 16:9 (height follows width at all breakpoints, no letterbox bars), inset by the global page gutter on both sides.
+- **AC-PDET-002.2:** A video block marked featured — or the sole video block of a project — shall render at true 16:9 (no letterbox bars), width-capped by the viewport height (`min(available width, viewport-height-derived width)`) so the film plus its section padding fits the viewport with even top/bottom spacing, centered within the full wrapper (the global page gutter remains the minimum side margin; side margins may grow slightly on short viewports).
 - **AC-PDET-002.6:** Video blocks with a Mux source shall display a poster image derived from the playback ID (`image.mux.com/{playbackId}/thumbnail.jpg`) before playback.
 - **AC-PDET-002.3:** Autoplay, when configured for a block, shall be muted and inline (plays inline, no audio surprise).
 - **AC-PDET-002.4:** Local-fixture sources shall render the placeholder video in place of production media.
 - **AC-PDET-002.5:** The player shall expose an accessible title and a screen-reader status describing the video.
+- **AC-PDET-002.7:** Video blocks with a YouTube source shall render the client's public video via the privacy-enhanced embed (`youtube-nocookie.com/embed/{videoId}`) with visible native controls and no autoplay parameters; the iframe fills the same featured/standard frame as the Mux and local-fixture players.
 
 ### REQ-PDET-003: Text and image blocks support editorial depth
 
@@ -63,6 +66,7 @@ Each project gets its own page at `/projects/[slug]`, statically generated from 
 
 - **AC-PDET-004.1:** Every project page shall end with a "Discuss a project" CTA linking to `/contact`.
 - **AC-PDET-004.2:** Every project page shall provide a "Back to Projects" link to `/projects`.
+- **AC-PDET-004.3:** Every project page shall provide a fixed top-right "×" close affordance linking to `/projects`, inset by the page gutter, above the content, with an accessible label (e.g. "Close project — back to Projects").
 
 ## Non-functional requirements
 

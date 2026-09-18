@@ -70,6 +70,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
 	return (
 		<div className="flex flex-col items-center">
+			{/* Fixed close affordance: project pages render as an overlay on the
+				projects listing — the "×" returns to /projects, inset by the page
+				gutter, above the content. */}
+			<Link
+				href="/projects"
+				aria-label="Close project — back to Projects"
+				className="fixed top-[var(--page-gutter)] right-[var(--page-gutter)] z-40 flex h-10 w-10 items-center justify-center rounded-[var(--radius-control)] border border-[var(--border-subtle)] bg-[var(--surface-translucent)] text-xl leading-none text-[var(--text-primary)] transition-colors duration-150 hover:border-[var(--border-strong)] hover:bg-[var(--text-primary)] hover:text-[var(--text-inverse)]"
+			>
+				<span aria-hidden="true">×</span>
+			</Link>
+
 			{/* Video-first: the featured film leads; the title/subtitle header follows
 				with normal section rhythm (the nav is suppressed on project pages). */}
 			<ProjectContent blocks={project.content} projectTitle={project.title} />

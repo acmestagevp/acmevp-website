@@ -4,7 +4,7 @@
 
 ## Feature Summary
 
-Each `/projects/[slug]` page is statically generated from the catalog: `ProjectContent` renders the project's content blocks in order with the featured video leading the page, a text-variant `Header` renders title/subtitle beneath the content, and a closing section provides the contact CTA and back-link. Video blocks delegate to @Media Delivery; text and image blocks are feature-specific presentational components. **This feature is the target of the first initiative (layout improvement) — this blueprint documents the current baseline.**
+Each `/projects/[slug]` page is statically generated from the catalog: `ProjectContent` renders the project's content blocks in order with the featured video leading the page, a text-variant `Header` renders title/subtitle beneath the content, a fixed top-right "×" close affordance links back to the listing, and a closing section provides the contact CTA and back-link. Video blocks delegate to @Media Delivery; text and image blocks are feature-specific presentational components. **This feature is the target of the layout initiative — this blueprint documents the current behavior.**
 
 ## Document status
 
@@ -54,13 +54,14 @@ fields:
 	- text: { heading?, body }
 	- image: { src, alt, caption?, fullWidth?, aspectRatio?, fit? }
 constraints:
-	- Video sources validated by the readiness checker (Mux ID shape; fixture path fixed)
+	- Video sources validated by the readiness checker (Mux ID shape; 11-character YouTube ID shape; fixture path fixed)
 	- Local image srcs must exist under public/ (readiness-checked)
 ```
 
 ### Key Contracts
 
-- **Featured inference:** `featured = block.featured ?? (blocks.length === 1 && blocks[0].type === "video")` — a lone video is always featured; featured videos render at true 16:9 inset by the global page gutter (`ContentWrapper variant="full"`).
+- **Featured inference:** `featured = block.featured ?? (blocks.length === 1 && blocks[0].type === "video")` — a lone video is always featured; featured videos render at true 16:9, width-capped by the viewport height and centered, inset by the global page gutter (`ContentWrapper variant="full"` — the gutter is the minimum side margin).
+- **Close affordance:** the page route renders a fixed top-right "×" `Link` to `/projects` (`top-[var(--page-gutter)] right-[var(--page-gutter)] z-40`, accessible label "Close project — back to Projects"), inset by the page gutter and above the content.
 - **Unknown slug:** `notFound()` renders the 404; metadata for unknown slugs is noindex.
 - **Static generation:** every catalog slug is pre-rendered at build time.
 
@@ -71,9 +72,9 @@ constraints:
 ## Requirement alignment
 
 - `REQ-PDET-001` → [`app/projects/[slug]/page.tsx`](../../../app/projects/[slug]/page.tsx) + #ProjectContent: header + ordered block rendering + 404
-- `REQ-PDET-002` → @Media Delivery #VideoBlock: Mux playback, gutter-framed 16:9 featured rendering, Mux poster before playback, muted autoplay, fixture fallback, accessible titles
+- `REQ-PDET-002` → @Media Delivery #VideoBlock: Mux playback, YouTube embeds for client-channel-only media, viewport-balanced 16:9 featured rendering, Mux poster before playback, muted autoplay, fixture fallback, accessible titles
 - `REQ-PDET-003` → #TextBlock / #ImageBlock: reading measure, aspect/fit options, captions, lazy loading
-- `REQ-PDET-004` → closing `Section` in the page route: "Discuss a project" CTA + back-to-projects link
+- `REQ-PDET-004` → closing `Section` in the page route: "Discuss a project" CTA + back-to-projects link, plus the fixed top-right close affordance
 
 ## Architecture Decision Records
 

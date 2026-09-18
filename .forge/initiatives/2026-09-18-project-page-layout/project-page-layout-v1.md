@@ -7,7 +7,7 @@
 - **Owner/orchestrator:** John Wildauer (owner) / Zoo architect session (orchestrator during draft)
 - **Created:** 2026-09-18
 - **Updated:** 2026-09-18
-- **Authoritative version:** `v1`
+- **Authoritative version:** `v1` — superseded by [`project-page-layout-v2.md`](project-page-layout-v2.md) for iteration 2 (2026-09-18); this version is retained for history
 - **Initiative mode:** `standard` | `rapid` — selected: `rapid` (switched from `standard` 2026-09-18 per the user's explicit request)
 - **Mode requested by:** `user` — explicit request 2026-09-18 ("use the rapid initiative path"), made after the architect session offered rapid upon convergence per the user's standing preference
 - **Mode confirmation:** rapid confirmed 2026-09-18 — the user accepted all recommended defaults (converged prompt-as-draft confirmed accurate) and then explicitly selected the rapid path when offered
@@ -106,6 +106,7 @@ The user identified the individual project pages as the first area to improve. T
 - 2026-09-18: user selected the rapid initiative path when offered upon convergence (per standing preference); mode metadata updated. On the user's request, create work orders and proceed through per-work-order validation and closeout.
 - 2026-09-18: `draft` → `plan` on the user's request; work orders created in dependency order — WO-001 (nav suppression, no dependencies), WO-002 (video-first order, depends on WO-001), WO-003 (framed 16:9 video with gutters/poster/controls, depends on WO-002). Sequential execution; each work order dispatches to a fresh implementer session with per-work-order validation.
 - 2026-09-18: user authorized continuing the rapid path without further gating until closeout ("continue the rapid path, and don't gate again until we're ready to closeout the initiative") — recorded as the standing authority for the `review` → `execute` gate bypass; per-work-order validation sessions still run; the user's visual verification of the affected pages remains the closeout approval gate.
+- 2026-09-18: at the closeout gate the user requested iteration-2 changes (viewport-balanced video spacing, an "X" close affordance — reversing the "no additional top back-link" decision — and a tighter Projects listing header) plus process directives (efficiency, verification reduced to git-diff scope review + build/lint, no browser automation, no gating until iteration 2 completes). Authoritative plan version moved to [`project-page-layout-v2.md`](project-page-layout-v2.md); v1 closeout (commit/merge/status flip) is deferred until iteration 2 completes and the user approves.
 
 ### Next investigation or conversation focus
 

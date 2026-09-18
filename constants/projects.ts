@@ -1,11 +1,12 @@
 // ──────────────────────────────────────────────────────────────
 // Projects data — the single source of truth for all projects.
 //
-// The project catalog intentionally contains only the four official
-// projects for the first publishable draft.
+// Production media plays from Mux by playback ID; media that is public
+// on client YouTube channels but cannot be hosted directly plays via
+// the privacy-enhanced youtube-nocookie.com embed.
 // ──────────────────────────────────────────────────────────────
 
-export type VideoPlatform = "local" | "mux"
+export type VideoPlatform = "local" | "mux" | "youtube"
 
 export type ProjectPublicationState = "fixture-valid" | "indexable" | "publishable"
 
@@ -30,7 +31,14 @@ export interface MuxVideoSource {
 	temporary?: false
 }
 
-export type ProjectVideoSource = LocalVideoSource | MuxVideoSource
+export interface YouTubeVideoSource {
+	kind: "youtube"
+	/** 11-character YouTube video ID from the client's public channel. */
+	videoId: string
+	temporary?: false
+}
+
+export type ProjectVideoSource = LocalVideoSource | MuxVideoSource | YouTubeVideoSource
 
 export interface VideoBlock {
 	type: "video"
@@ -68,6 +76,23 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+	// Client-channel YouTube sources: this media is public on the clients'
+	// YouTube channels but cannot be hosted directly, so it plays via the
+	// privacy-enhanced youtube-nocookie.com embed.
+	{
+		slug: "mn-lottery-jumanji",
+		title: "MN Lottery",
+		subtitle: "Jumanji Campaign",
+		thumbnail: "/images/projects/mnl-jumanji.png",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "youtube", videoId: "ouIYp23CqUs" },
+				featured: true,
+			},
+		],
+	},
 	{
 		slug: "cadillac-future-iq",
 		title: "Cadillac",
@@ -142,6 +167,20 @@ export const projects: Project[] = [
 			// 	heading: "Credits",
 			// 	body: "Director: Kat Rapheal. Cinematographer: Alex Horner.",
 			// },
+		],
+	},
+	{
+		slug: "und-lead-your-own-way",
+		title: "University of North Dakota",
+		subtitle: "Lead Your Own Way",
+		thumbnail: "/images/projects/und-lyow.png",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "youtube", videoId: "skJNJLSk9KA" },
+				featured: true,
+			},
 		],
 	},
 ]

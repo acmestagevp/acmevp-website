@@ -8,7 +8,11 @@ import { projects } from "@/constants/projects"
 export default function Projects() {
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="text">
+			<Header
+				variant="text"
+				textPaddingClassName="pt-24 pb-6 md:pt-28 md:pb-8"
+				textMinHeightClassName="min-h-0 md:min-h-0"
+			>
 				<ContentWrapper variant="wide">
 					<div className="relative z-10 text-center">
 						<AnimateIn>

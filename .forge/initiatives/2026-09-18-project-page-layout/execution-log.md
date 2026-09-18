@@ -11,7 +11,7 @@
 - **Initiative:** Project Page Layout (`.forge/initiatives/2026-09-18-project-page-layout/`)
 - **Initiative mode:** `standard` | `rapid` — selected: `rapid`
 - **Current phase:** `draft` | `plan` | `review` | `execute` | `validate` | `closeout` — selected: `closeout`
-- **Current status:** `active` | `blocked` | `closed` — selected: `active`
+- **Current status:** `active` | `blocked` | `closed` — selected: `closed`
 - **Orchestrator:** Zoo architect session (orchestrator from draft through execution)
 - **Orchestrator session/agent ID:** zoo-architect-2026-09-18
 
@@ -140,10 +140,88 @@
   5. Local-fixture video path is compile-verified only (no catalog fixture exercises it) — note for whenever a fixture source is next used. (WO-003 validation note N-6)
 - **Pending closeout actions:** the user's visual verification + closeout approval (the gate they retained); then commit all changes and merge `dev/2026-09-18-project-page-layout` into `master` (dispatched to an execution-capable coding session per the capability routing rule), then the status flip to `closed`.
 
+### 2026-09-18 — Iteration 2 begins (rapid path); Dispatch 7: WO-004 implementation
+
+- **Closeout-gate feedback:** the user reviewed iteration 1 and requested three changes — (1) even spacing around the featured video (currently a top gap with the video extending past the viewport bottom; slightly larger side margins acceptable), (2) a fixed top-right "X" close affordance linking to `/projects` (reverses the "no additional top back-link" decision), (3) a tighter Projects listing title block. Process directives: prioritize efficiency/cost; verification reduced to git-diff scope review + `pnpm build`/`pnpm lint` (browser automation waived — the user visually confirms all changes after implementation); no gating until iteration 2 completes.
+- **Plan version:** [`project-page-layout-v2.md`](project-page-layout-v2.md) created as the authoritative plan (rapid mode, user-requested); v1 retained for history; v1 closeout deferred until iteration 2 completes and the user approves.
+- **Dispatch 7 — WO-004 implementer:** session/agent ID `impl-WO-004-2026-09-18-1` (fresh code-mode session); work order set to `in-progress`; scope: all three iteration-2 changes per [`work-orders/WO-004-iteration2-polish.md`](work-orders/WO-004-iteration2-polish.md) (single consolidated work order per the user's efficiency directive); dependencies WO-001/002/003 complete; dispatched by `zoo-architect-2026-09-18`.
+
+### 2026-09-18 — WO-004 implemented with evidence (impl-WO-004-2026-09-18-1)
+
+- **Session/agent ID:** `impl-WO-004-2026-09-18-1` (fresh code-mode implementer session; dispatched by `zoo-architect-2026-09-18`); branch verified `dev/2026-09-18-project-page-layout`.
+- **Changed files (no files created or deleted):**
+  - `components/project/VideoBlock.tsx` — featured `frameClass` → `relative mx-auto aspect-video w-[min(100%,calc((100svh-8rem)*16/9))] overflow-hidden`: viewport-balanced framing (true 16:9, width capped by `100svh` minus `8rem` of section-padding/breathing reserve, centered; the `ContentWrapper variant="full"` gutter remains the minimum side margin). Non-featured frame unchanged; the featured/standard ternary branches now genuinely differ (resolves the WO-003 validation note N-2 redundancy as a side effect).
+  - `app/projects/[slug]/page.tsx` — added the fixed top-right close affordance: `Link` to `/projects`, `fixed top-[var(--page-gutter)] right-[var(--page-gutter)] z-40`, "×" glyph with `aria-label="Close project — back to Projects"`, token-based subtle styling (`shell-cta` hover pattern at small size). Video-first order, Header call, and closing CTA untouched.
+  - `app/projects/page.tsx` — listing-only header tightening: `textPaddingClassName="pt-24 pb-6 md:pt-28 md:pb-8"` (top padding clears the fixed NavBar) + `textMinHeightClassName="min-h-0 md:min-h-0"`.
+  - `components/ui/Header.tsx` — smallest-coherent extension: new optional `textMinHeightClassName` prop (replacement-not-append, same mechanism as `textPaddingClassName`); callers passing nothing render byte-identically (`/`, `/services`, `/stage` unaffected).
+  - `.forge/requirements/features/project-detail.md` — authorized update: AC-PDET-002.2 → viewport-balanced framing; new AC-PDET-004.3 (close affordance); Terminology updated ("Featured video" revised; "Close affordance" added).
+  - `.forge/blueprints/components/media-delivery.md` — authorized update: featured-framing responsibility + Featured framing contract → viewport-balanced (cap formula recorded).
+  - `.forge/blueprints/features/project-detail.md` — authorized update: Feature Summary + close-affordance Key Contract + viewport-balanced featured inference + REQ-PDET-002/004 alignment rows.
+  - `.forge/blueprints/components/presentation-foundation.md` — authorized update: `Header` block records the `textMinHeightClassName` extension and the listing's tighter values.
+  - `.forge/requirements/features/projects-listing.md` — verified unchanged (no header-padding statements; nothing made inaccurate).
+  - `.forge/initiatives/2026-09-18-project-page-layout/work-orders/WO-004-iteration2-polish.md` — implementation record appended; completion checklist satisfied; status set to `in-review`.
+  - `.forge/initiatives/2026-09-18-project-page-layout/execution-log.md` — this entry.
+- **Validation results (2026-09-18):**
+  - `pnpm build` — **pass** (exit 0; Next.js 16.1.6/Turbopack; compiled 2.8s; 14/14 routes including the four SSG project detail pages).
+  - `pnpm lint` — **fail, pre-existing baseline only** (exit 1): `components/Banner.tsx` 12:65 warning, `utils/componentMap.ts` 9:48 error — remnant files matching the recorded baseline; no findings in changed files; not fixed (out of scope).
+  - Per the reduced validation scope (user directive 2026-09-18), no browser automation was run; the git-diff scope review is the validator's step and the user visually confirms all three changes after implementation.
+- **Durable-document impact:** requirements `update` and blueprint `update` applied as authorized (AC-PDET-002.2 revision + AC-PDET-004.3 + Terminology; media-delivery framing contract; project-detail blueprint composition; presentation-foundation `Header` block); `projects-listing.md` verified unchanged and accurate.
+- **Status:** WO-004 set to `in-review` — implemented with evidence recorded, awaiting fresh validation per [`05-validation.md`](../../process/05-validation.md); `complete` remains reserved for a passed validation in [`validations/validation-WO-004.md`](validations/validation-WO-004.md).
+
+### 2026-09-18 — Iteration 3 begins (rapid path); Dispatch 8: WO-005 implementation
+
+- **User request (2026-09-18):** fast-track an iteration 3 adding two projects whose media cannot be hosted directly but is public on client YouTube channels — (1) "MN Lottery" / "Jumanji Campaign" (`https://www.youtube.com/watch?v=ouIYp23CqUs`), (2) "University of North Dakota" / "Lead Your Own Way" (`https://www.youtube.com/watch?v=skJNJLSk9KA`); thumbnails pre-staged in `public/images/projects/` (confirmed present: `mnl-jumanji.png`, `und-lyow.png`). Directive: proceed without gating until the work order is complete and reviewed, then closeout.
+- **Plan version:** [`project-page-layout-v3.md`](project-page-layout-v3.md) created as the authoritative plan (rapid mode, user-requested "fast track"); v2 retained for history. Design: third `youtube` source kind rendered as a `youtube-nocookie.com` iframe inside the unchanged viewport-balanced 16:9 frame (no new dependency), readiness rule for 11-char video IDs, two `publishable` catalog entries with slugs `mn-lottery-jumanji` / `und-lead-your-own-way`. WO-004 remains `in-review`; the WO-004 and WO-005 validations batch before the combined closeout per the user's no-gating directive.
+- **Dispatch 8 — WO-005 implementer:** session/agent ID `impl-WO-005-2026-09-18-1` (fresh code-mode session); work order set to `in-progress`; scope: the `youtube` source kind (catalog types, `VideoBlock` iframe branch, `ProjectContent` fingerprint fix — required for TypeScript narrowing, readiness rule) + the two catalog projects per [`work-orders/WO-005-youtube-embeds-catalog.md`](work-orders/WO-005-youtube-embeds-catalog.md); dependencies WO-001/002/003 complete, WO-004 in-review (untouched by this work order); dispatched by `zoo-architect-2026-09-18`.
+
+### 2026-09-18 — WO-005 implemented with evidence (impl-WO-005-2026-09-18-1)
+
+- **Session/agent ID:** `impl-WO-005-2026-09-18-1` (fresh code-mode implementer session; dispatched by `zoo-architect-2026-09-18`); branch verified `dev/2026-09-18-project-page-layout`.
+- **Changed files (no files created or deleted):**
+  - `constants/projects.ts` — `YouTubeVideoSource` added to the source union (`videoId` required, `temporary?: false`); `VideoPlatform` → `"local" | "mux" | "youtube"`; two `publishable` catalog entries appended (`mn-lottery-jumanji`, `und-lead-your-own-way`, each a single `featured: true` YouTube video block, no `seo`, no autoplay) with the client-channel-embed comment; stale "only the four official projects" header comment revised in the same file.
+  - `components/project/VideoBlock.tsx` — `youtube` branch before the Mux else-branch: `youtube-nocookie.com/embed/{videoId}` iframe in the identical `absolute inset-0 h-full w-full` frame, accessible `title` + `aria-describedby` status hookup, standard YouTube `allow` list, `allowFullScreen`; no poster, no autoplay parameters.
+  - `components/project/ProjectContent.tsx` — fingerprint ternary extended (`mux → playbackId`, `youtube → videoId`, else `path`), restoring sound narrowing with the third union member.
+  - `utils/projectReadiness.ts` — YouTube technical-failure rule (11-character `/^[A-Za-z0-9_-]{11}$/` video ID, message "Invalid YouTube video ID shape."); the file carries the editor's whole-file Prettier reformat (user-confirmed format-on-save pattern per WO-001) — every pre-existing rule wrapped verbatim, formatting-only, no behavior change.
+  - `.forge/requirements/features/project-detail.md` — authorized update: AC-PDET-002.7 + "YouTube embed" Terminology entry.
+  - `.forge/blueprints/components/media-delivery.md` — authorized update: source union + Capability Summary + `VideoBlock` responsibilities + "YouTube embed" key contract + integration contract ("Mux hosts all hostable production media; … YouTube embed for client-channel-only media") + ADR-001 revision.
+  - `.forge/blueprints/features/project-detail.md` — authorized update: `ContentBlock` constraints (11-character YouTube ID shape) + REQ-PDET-002 alignment row.
+  - `.forge/requirements/features/projects-listing.md`, `.forge/blueprints/components/presentation-foundation.md` — verified unchanged and accurate against the resulting behavior.
+  - `.forge/initiatives/2026-09-18-project-page-layout/work-orders/WO-005-youtube-embeds-catalog.md` — implementation record appended; completion checklist satisfied; status set to `in-review`.
+  - `.forge/initiatives/2026-09-18-project-page-layout/execution-log.md` — this entry.
+- **Validation results (2026-09-18):**
+  - `pnpm build` — **pass** (exit 0; Next.js 16.1.6/Turbopack; compiled in 2.8s; 16/16 static pages — six SSG project pages as expected).
+  - `pnpm lint` — **fail, pre-existing baseline only** (exit 1): `components/Banner.tsx` 12:65 warning, `utils/componentMap.ts` 9:48 error — remnant files matching the recorded baseline; no findings in changed files; not fixed (out of scope).
+  - Prerendered HTML: `mn-lottery-jumanji.html` / `und-lead-your-own-way.html` exist with the correct `youtube-nocookie.com/embed/ouIYp23CqUs` / `skJNJLSk9KA` iframe srcs, exactly one `h1` each (`MN Lottery` / `University of North Dakota`), subtitle present, no `image.mux.com` reference; `projects.html` shows exactly six card links including both new slugs.
+  - Per the reduced validation scope (user directive 2026-09-18), no browser automation was run; the git-diff scope review is the validator's step and the user visually confirms after implementation.
+- **Durable-document impact:** requirements `update` and blueprint `update` applied as authorized (AC-PDET-002.7 + Terminology; media-delivery contracts + ADR-001; project-detail blueprint constraints); `projects-listing.md` and `presentation-foundation.md` verified unchanged.
+- **Status:** WO-005 set to `in-review` — implemented with evidence recorded, awaiting fresh validation per [`05-validation.md`](../../process/05-validation.md); `complete` remains reserved for a passed validation in [`validations/validation-WO-005.md`](validations/validation-WO-005.md). Per the user's no-gating directive, the WO-004 and WO-005 validations batch before the combined closeout.
+
+### 2026-09-18 — User acceptance, gate waiver; WO-004 and WO-005 complete (user directive)
+
+- **User's manual catalog change (2026-09-18, between the WO-005 implementation record and closeout):** the user personally reordered [`constants/projects.ts`](../../../constants/projects.ts) — `mn-lottery-jumanji` moved from the last to the **first** listing position (the client-channel comment moved with it); `und-lead-your-own-way` remains last. User-authored, user-owned change accepted as-is.
+- **Re-verification after the user's change (execution-capable session `impl-WO-005-2026-09-18-1`):** `pnpm build` **pass** (exit 0; Next.js 16.1.6/Turbopack; 16/16 static pages; `/projects/[slug]` now lists `mn-lottery-jumanji` first); prerendered `projects.html` card order confirmed: `mn-lottery-jumanji` → `cadillac-future-iq` → `cadillac-future-iq-behind-the-scenes` → `polica-wasted-me` → `a-window-in-time-renewal-by-andersen` → `und-lead-your-own-way`.
+- **User acceptance + gate waiver (2026-09-18):** the user reviewed the delivered iteration-3 behavior — "otherwise, everything looks good" — and directed: "lets commit, close out this initiative, and merge back into master." As gate owner, this directive is the retained user approval; the batched WO-004/WO-005 validation sessions are **waived** by it. Recorded transparently: neither `validations/validation-WO-004.md` nor `validations/validation-WO-005.md` was created; both work orders are marked `complete` on this gate-owner decision instead of a passed independent validation.
+- **WO-004 → `complete`** and **WO-005 → `complete`**: set on the user's acceptance + waiver above; completion records appended to both work orders.
+
+### 2026-09-18 — Closeout (git actions executed in-session per the user's directive)
+
+- **Closeout session/agent ID:** the `impl-WO-005-2026-09-18-1` execution-capable session continuing into closeout per the user's direct instruction ("lets commit, close out this initiative, and merge back into master") — [`06-closeout.md`](../../process/06-closeout.md) routes the commit/merge to an execution-capable session; the operations are mechanical, with independence guaranteed upstream (WO-001/002/003 fresh-session validations; WO-004/005 user acceptance).
+- **Preconditions (verified from recorded evidence):**
+  - Every work order `complete`: WO-001/002/003 via passed fresh-session validations; WO-004/005 via the user's recorded acceptance + gate waiver (2026-09-18).
+  - Validations, gates, and approvals have recorded evidence: three validation files (WO-001/002/003); the intermediate-gate waivers (2026-09-18); the user's visual verification delivered ("everything looks good"); the closeout directive recorded above.
+  - Session separation: dispatches 1–8 were each fresh sessions with IDs recorded; the planned WO-004/005 validation dispatches never ran — a user-directed waiver, not an unapproved exception; the user's manual catalog change is user-owned work outside the work orders, re-verified and recorded.
+  - Final state clean: `git status --porcelain` reviewed pre-commit — only authorized initiative changes (five work orders' code, authorized durable documents, orchestrator planning artifacts, the user's catalog reorder, the two pre-staged thumbnails); no conflicts, no debris (the WO-003 temp-file flag was previously confirmed stale).
+- **Deferred work recorded** (detail in [Unresolved and deferred work](#unresolved-and-deferred-work)): cosmetic AC-PDET-002.6/002.7 list numbering; pre-initiative "baseline contract" framing sweep; remnant lint cleanup (manifest-owned); local-fixture compile-only note.
+- **Closure actions:** status flip to `closed` applied in the plan metadata and this log header together with this record; all changes committed on `dev/2026-09-18-project-page-layout` (work commit, then a closeout-record commit carrying the work-commit hash evidence), then merged into `master` (fast-forward expected — `master` last at `341b8b7`). Merge result verified in-terminal after execution; the executing session reports the hashes.
+
 ## Session separation exceptions
 
 None recorded.
 
 ## Unresolved and deferred work
 
-- None yet; follow-up candidates live in the [project manifest](../../project-manifest.md#decisions-and-handoff).
+- **Cosmetic:** `AC-PDET-002.6`/`AC-PDET-002.7` are numbered out of list order in [`requirements/features/project-detail.md`](../../requirements/features/project-detail.md); fix in the next doc-touching pass. (WO-003 validation note N-5, carried)
+- **Docs sweep:** pre-initiative "baseline contract" framing sentences in the requirements Overview and the feature blueprint summary are stale now that the initiative is closed; sweep in the next doc-touching initiative. (WO-002 N-5 / WO-003 N-8, carried)
+- **Lint baseline:** `components/Banner.tsx` / `utils/componentMap.ts` remain the sole `pnpm lint` failures — owned by the remnant-component cleanup follow-up in the [project manifest](../../project-manifest.md#decisions-and-handoff).
+- **Local-fixture sources:** compile-verified only (no catalog fixture exercises the path); re-check whenever a fixture source is next used. (WO-003 validation note N-6, carried)
+- Other follow-up candidates live in the [project manifest](../../project-manifest.md#decisions-and-handoff).
