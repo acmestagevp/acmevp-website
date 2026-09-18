@@ -214,6 +214,11 @@
 - **Deferred work recorded** (detail in [Unresolved and deferred work](#unresolved-and-deferred-work)): cosmetic AC-PDET-002.6/002.7 list numbering; pre-initiative "baseline contract" framing sweep; remnant lint cleanup (manifest-owned); local-fixture compile-only note.
 - **Closure actions:** status flip to `closed` applied in the plan metadata and this log header together with this record; all changes committed on `dev/2026-09-18-project-page-layout` (work commit, then a closeout-record commit carrying the work-commit hash evidence), then merged into `master` (fast-forward expected — `master` last at `341b8b7`). Merge result verified in-terminal after execution; the executing session reports the hashes.
 
+### 2026-09-18 — Closeout addendum: commit and merge evidence
+
+- **Work commits:** `d0010f0` "project page layout part 1" was already on the initiative branch at closeout (user-made; observed via `git log`, master still at `341b8b7`); the closeout work commit is **`6fcbe21`** "project page layout part 2: iterations 2-3" (19 files changed, +715/−57; includes the WO-004/WO-005 code, the durable-document updates, the user's catalog reorder, and the closeout records above).
+- **Closeout record:** this addendum is the final closeout-record commit on `dev/2026-09-18-project-page-layout`; the merge into `master` follows immediately as a fast-forward and is verified in-terminal (master advancing to the closeout-record commit; working tree clean). Commit hashes are reported by the executing session in its completion summary.
+
 ## Session separation exceptions
 
 None recorded.
