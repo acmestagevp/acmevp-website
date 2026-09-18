@@ -34,6 +34,7 @@ name: Header
 container: Next.js Web App
 responsibilities:
 	- Hero region with variants (default 80vh, half 50vh, full 100vh, text-only) and an optional background image at configurable opacity
+	- Text-variant padding: nav-clearing by default (`pt-32`/`md:pt-40`, clearing the fixed NavBar); the optional `textPaddingClassName` prop replaces the padding block for routes without nav chrome (project detail pages pass `py-12 md:py-16`)
 ```
 
 ```component
@@ -42,6 +43,7 @@ container: Next.js Web App
 responsibilities:
 	- Fixed top navigation: logo link, five nav items, aria-current indication, scrolled-state background
 	- Mobile menu: toggle button, Escape/outside-pointer/resize close, focus return to toggle
+	- Route suppression: renders nothing on project detail routes (`/projects/{slug}`) via a `usePathname()` check (consistent across SSR and client render); the `/projects` listing and all other routes keep the nav
 ```
 
 ```component
@@ -80,7 +82,7 @@ responsibilities:
 	- Infinite marquee of testimonial cards; hover slows the scroll; disabled under prefers-reduced-motion
 ```
 
-`Section` and `ContentWrapper` nest inside `Header` or page flows; `AnimateIn` wraps content inside any of them. `NavBar` and `Footer` mount once in the root layout around `{children}`; `Background` sits behind everything.
+`Section` and `ContentWrapper` nest inside `Header` or page flows; `AnimateIn` wraps content inside any of them. `NavBar` and `Footer` mount once in the root layout around `{children}` — `NavBar` suppresses itself (returns `null`) on project detail routes (`/projects/{slug}`), so those pages render without nav chrome while all other routes, including `/projects`, keep it; `Background` sits behind everything.
 
 ## System Contracts
 

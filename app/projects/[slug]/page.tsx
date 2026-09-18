@@ -28,13 +28,16 @@ export function generateMetadata({
 		if (!project) {
 			return { title: "Project Not Found", robots: { index: false, follow: false } }
 		}
-		const description = project.seo?.description ?? (project.subtitle
-			? `${project.title}: ${project.subtitle}. A project by ACME Virtual Production.`
-			: `${project.title}. A project by ACME Virtual Production.`)
+		const description =
+			project.seo?.description ??
+			(project.subtitle
+				? `${project.title}: ${project.subtitle}. A project by ACME Virtual Production.`
+				: `${project.title}. A project by ACME Virtual Production.`)
 		const preview = project.seo?.socialImage
 			? new URL(project.seo.socialImage, siteUrl).toString()
 			: undefined
-		const isIndexable = project.publicationState === "indexable" || project.publicationState === "publishable"
+		const isIndexable =
+			project.publicationState === "indexable" || project.publicationState === "publishable"
 		return {
 			title: project.subtitle ? `${project.title} – ${project.subtitle}` : project.title,
 			description,
@@ -57,11 +60,7 @@ export function generateMetadata({
 	})
 }
 
-export default async function ProjectPage({
-	params,
-}: {
-	params: Promise<{ slug: string }>
-}) {
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
 	const { slug } = await params
 	const project = projects.find((p) => p.slug === slug)
 
@@ -71,13 +70,15 @@ export default async function ProjectPage({
 
 	return (
 		<div className="flex flex-col items-center">
-			<Header variant="text">
+			{/* Video-first: the featured film leads; the title/subtitle header follows
+				with normal section rhythm (the nav is suppressed on project pages). */}
+			<ProjectContent blocks={project.content} projectTitle={project.title} />
+
+			<Header variant="text" textPaddingClassName="py-12 md:py-16">
 				<ContentWrapper variant="wide">
 					<div className="relative z-10 text-center">
 						<AnimateIn>
-							<h1 className="text-4xl md:text-6xl font-serif font-gradient">
-								{project.title}
-							</h1>
+							<h1 className="text-4xl md:text-6xl font-serif font-gradient">{project.title}</h1>
 						</AnimateIn>
 						{project.subtitle && (
 							<AnimateIn delay={0.2}>
@@ -87,8 +88,6 @@ export default async function ProjectPage({
 					</div>
 				</ContentWrapper>
 			</Header>
-
-			<ProjectContent blocks={project.content} projectTitle={project.title} />
 
 			<Section mode="gallery" variant="custom" className="py-12 md:py-16">
 				<ContentWrapper variant="default">

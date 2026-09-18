@@ -16,17 +16,19 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 	const isVideoOnly = blocks.length === 1 && blocks[0].type === "video"
 	const archetype = isVideoOnly
 		? "film-first"
-		: blocks.some((block) => block.type === "image") && blocks.some((block) => block.type === "text")
+		: blocks.some((block) => block.type === "image") &&
+			  blocks.some((block) => block.type === "text")
 			? "case-study"
 			: "behind-the-scenes"
 	const blockKeys = new Map<string, number>()
 
 	const getBlockKey = (block: ContentBlock) => {
-		const fingerprint = block.type === "video"
-			? `${block.type}-${block.source.kind}-${block.source.kind === "mux" ? block.source.playbackId : block.source.path}`
-			: block.type === "image"
-				? `${block.type}-${block.src}-${block.alt}`
-				: `${block.type}-${block.heading ?? "untitled"}-${block.body}`
+		const fingerprint =
+			block.type === "video"
+				? `${block.type}-${block.source.kind}-${block.source.kind === "mux" ? block.source.playbackId : block.source.path}`
+				: block.type === "image"
+					? `${block.type}-${block.src}-${block.alt}`
+					: `${block.type}-${block.heading ?? "untitled"}-${block.body}`
 		const occurrence = blockKeys.get(fingerprint) ?? 0
 		blockKeys.set(fingerprint, occurrence + 1)
 		return `${fingerprint}-${occurrence}`
@@ -40,23 +42,30 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 					case "video": {
 						const featured = block.featured ?? isVideoOnly
 
-						// Featured videos bleed full-width — no ContentWrapper constraint
+						// Featured videos render at true 16:9, inset by the global page gutter via the full wrapper
 						if (featured) {
 							return (
 								<Section key={key} variant="custom" mode="gallery" className="w-full py-6 md:py-8">
-									<VideoBlock
-										source={block.source}
-										projectTitle={projectTitle}
-										blockNumber={index + 1}
-										featured={true}
-										autoplay={block.autoplay}
-									/>
+									<ContentWrapper variant="full">
+										<VideoBlock
+											source={block.source}
+											projectTitle={projectTitle}
+											blockNumber={index + 1}
+											featured={true}
+											autoplay={block.autoplay}
+										/>
+									</ContentWrapper>
 								</Section>
 							)
 						}
 
 						return (
-							<Section key={key} variant="custom" mode="gallery" className={`w-full py-6 md:py-8 composition-${archetype}`}>
+							<Section
+								key={key}
+								variant="custom"
+								mode="gallery"
+								className={`w-full py-6 md:py-8 composition-${archetype}`}
+							>
 								<ContentWrapper variant="wide">
 									<VideoBlock
 										source={block.source}
@@ -73,11 +82,7 @@ const ProjectContent: React.FC<ProjectContentProps> = ({ blocks, projectTitle })
 						return (
 							<Section key={key} variant="custom" mode="gallery" className="w-full py-6 md:py-8">
 								<ContentWrapper variant="default">
-									<TextBlock
-										heading={block.heading}
-										body={block.body}
-										headingLevel="h2"
-									/>
+									<TextBlock heading={block.heading} body={block.body} headingLevel="h2" />
 								</ContentWrapper>
 							</Section>
 						)

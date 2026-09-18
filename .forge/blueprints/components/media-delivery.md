@@ -20,7 +20,8 @@ name: VideoBlock
 container: Next.js Web App
 responsibilities:
 	- Client component rendering next-video's <Video> for a ProjectVideoSource
-	- Featured vs. standard framing (full-bleed viewport height vs. aspect-video)
+	- Featured vs. standard framing (featured renders at aspect-video inset by the page gutter; standard at aspect-video within a wide wrapper)
+	- Mux poster derived from the playback ID (`image.mux.com/{playbackId}/thumbnail.jpg`) shown before playback
 	- Accessible title + screen-reader status describing the player
 	- Autoplay only when configured, forced muted + playsInline
 ```
@@ -41,7 +42,8 @@ responsibilities:
 
 - **Source union:** `LocalVideoSource` is constrained to `path: "/videos/placeholder.mp4"` and `temporary: true` — the readiness checker rejects any other local path. `MuxVideoSource` playback IDs must match `/^[A-Za-z0-9_-]+$/`.
 - **Autoplay invariant:** `autoplay` implies muted and playsInline; controls are always visible.
-- **Featured framing:** featured videos render full-bleed (`md:h-[85vh]`); standard videos render at `aspect-video`.
+- **Featured framing:** featured videos render at true 16:9 (`aspect-video` at all breakpoints, no letterbox bars), inset by the global page gutter via `ContentWrapper variant="full"` in `ProjectContent`; standard videos render at `aspect-video` within a wide wrapper.
+- **Poster:** Mux sources pass `poster={`https://image.mux.com/${playbackId}/thumbnail.jpg`}` to next-video's `<Video>`; local-fixture sources pass no poster (the placeholder renders its own first frame).
 
 ### Integration Contracts
 

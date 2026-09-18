@@ -22,7 +22,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
 }) => {
 	const title = `${projectTitle} project film${blockNumber ? `, video ${blockNumber}` : ""}`
 	const frameClass = featured
-		? "relative w-full aspect-video md:aspect-auto md:h-[85vh] overflow-hidden"
+		? "relative w-full aspect-video overflow-hidden"
 		: "relative w-full aspect-video overflow-hidden"
 
 	return (
@@ -45,6 +45,7 @@ const VideoBlock: React.FC<VideoBlockProps> = ({
 				) : (
 					<Video
 						playbackId={source.playbackId}
+						poster={`https://image.mux.com/${source.playbackId}/thumbnail.jpg`}
 						className="absolute inset-0 h-full w-full"
 						controls
 						autoPlay={autoplay}

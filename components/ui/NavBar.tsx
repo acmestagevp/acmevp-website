@@ -45,36 +45,51 @@ const NavBar = () => {
 	const closeMenu = () => setMenuOpen(false)
 	const toggleMenu = () => setMenuOpen((prev) => !prev)
 
+	// Project detail routes (/projects/{slug}) render without nav chrome;
+	// the /projects listing and all other routes keep the nav unchanged.
+	const isProjectDetail = pathname.startsWith("/projects/") && pathname.length > "/projects/".length
+	if (isProjectDetail) return null
+
 	return (
-		<nav ref={navRef} aria-label="Primary navigation"
+		<nav
+			ref={navRef}
+			aria-label="Primary navigation"
 			className={`shell-nav fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,backdrop-filter] duration-300
 				${
-					 scrolled
+					scrolled
 						? "bg-neutral-950/90 backdrop-blur-md border-b border-neutral-800/60"
 						: "bg-transparent"
 				}`}
 		>
 			<div className="layout-wrapper layout-wrapper--full flex items-center justify-between py-3">
 				<Link href="/" onClick={() => setMenuOpen(false)} aria-label="ACME Virtual Production home">
-						<Image
-							src="/images/ACME-Logo-White.png"
-							alt="Acme Virtual Production"
-							width={128}
-							height={50}
-							priority
-							className="opacity-80 transition-opacity duration-200 hover:opacity-100"
-						/>
-					</Link>
+					<Image
+						src="/images/ACME-Logo-White.png"
+						alt="Acme Virtual Production"
+						width={128}
+						height={50}
+						priority
+						className="opacity-80 transition-opacity duration-200 hover:opacity-100"
+					/>
+				</Link>
 				<ul className="hidden items-center gap-2 lg:flex">
 					{navItems.map(({ label, href }) => (
 						<li key={label}>
-						<Link
-							className={label === "Contact" ? "shell-cta ml-2 text-sm" : "shell-nav__link px-3 py-2 text-sm tracking-widest text-secondary hover:text-neutral-300"}
-							href={href}
-							aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}
-						>
-							{label}
-						</Link>
+							<Link
+								className={
+									label === "Contact"
+										? "shell-cta ml-2 text-sm"
+										: "shell-nav__link px-3 py-2 text-sm tracking-widest text-secondary hover:text-neutral-300"
+								}
+								href={href}
+								aria-current={
+									pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
+										? "page"
+										: undefined
+								}
+							>
+								{label}
+							</Link>
 						</li>
 					))}
 				</ul>
@@ -91,18 +106,31 @@ const NavBar = () => {
 					</button>
 				</div>
 			</div>
-			<nav id="mobile-navigation" hidden={!menuOpen} aria-label="Mobile navigation" className="shell-nav__menu panel-surface absolute right-[var(--page-gutter)] z-50 w-[min(18rem,calc(100vw-2*var(--page-gutter)))] p-3 text-right lg:hidden">
+			<nav
+				id="mobile-navigation"
+				hidden={!menuOpen}
+				aria-label="Mobile navigation"
+				className="shell-nav__menu panel-surface absolute right-[var(--page-gutter)] z-50 w-[min(18rem,calc(100vw-2*var(--page-gutter)))] p-3 text-right lg:hidden"
+			>
 				<ul>
 					{navItems.map(({ label, href }) => (
 						<li key={label}>
-						<Link
-							href={href}
-							className={label === "Contact" ? "shell-cta mt-2 w-full" : "shell-nav__link block px-4 py-3 text-secondary hover:text-neutral-300"}
-							onClick={closeMenu}
-							aria-current={pathname === href || (href !== "/" && pathname.startsWith(`${href}/`)) ? "page" : undefined}
-						>
-							{label}
-						</Link>
+							<Link
+								href={href}
+								className={
+									label === "Contact"
+										? "shell-cta mt-2 w-full"
+										: "shell-nav__link block px-4 py-3 text-secondary hover:text-neutral-300"
+								}
+								onClick={closeMenu}
+								aria-current={
+									pathname === href || (href !== "/" && pathname.startsWith(`${href}/`))
+										? "page"
+										: undefined
+								}
+							>
+								{label}
+							</Link>
 						</li>
 					))}
 				</ul>

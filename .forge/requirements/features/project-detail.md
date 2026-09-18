@@ -10,15 +10,15 @@
 
 ## Overview
 
-Each project gets its own page at `/projects/[slug]`, statically generated from the catalog. A page opens with the project's title and optional subtitle, then renders the project's content blocks in catalog order — video-first today, with text and image blocks available. Pages close with a contact CTA and a link back to the listing. This is the deepest view of ACME's work and the primary target of the first initiative (layout improvement); the requirements below document the current behavior as the baseline contract that the initiative will revise.
+Each project gets its own page at `/projects/[slug]`, statically generated from the catalog. A page opens with the featured video, then the project's title and optional subtitle, then any remaining content blocks in catalog order — video-first today, with text and image blocks available. Pages close with a contact CTA and a link back to the listing. This is the deepest view of ACME's work and the primary target of the first initiative (layout improvement); the requirements below document the current behavior as the baseline contract that the initiative will revise.
 
 ## Terminology
 
-| Term           | Definition                                                                                                             |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Content block  | A typed unit of project content: `video`, `text`, or `image`, defined in the catalog                                   |
-| Featured video | A video block rendered full-bleed; a lone video block is featured automatically                                        |
-| Local fixture  | A temporary placeholder video (`/videos/placeholder.mp4`) used in place of approved production media during draft work |
+| Term           | Definition                                                                                                                       |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Content block  | A typed unit of project content: `video`, `text`, or `image`, defined in the catalog                                             |
+| Featured video | A video block rendered at true 16:9, inset by the global page gutter on both sides; a lone video block is featured automatically |
+| Local fixture  | A temporary placeholder video (`/videos/placeholder.mp4`) used in place of approved production media during draft work           |
 
 ## Requirements
 
@@ -39,7 +39,8 @@ Each project gets its own page at `/projects/[slug]`, statically generated from 
 **Acceptance Criteria:**
 
 - **AC-PDET-002.1:** Video blocks with a Mux source shall play via the Mux playback ID with visible controls.
-- **AC-PDET-002.2:** A video block marked featured — or the sole video block of a project — shall render full-bleed (viewport-scale height on desktop).
+- **AC-PDET-002.2:** A video block marked featured — or the sole video block of a project — shall render at true 16:9 (height follows width at all breakpoints, no letterbox bars), inset by the global page gutter on both sides.
+- **AC-PDET-002.6:** Video blocks with a Mux source shall display a poster image derived from the playback ID (`image.mux.com/{playbackId}/thumbnail.jpg`) before playback.
 - **AC-PDET-002.3:** Autoplay, when configured for a block, shall be muted and inline (plays inline, no audio surprise).
 - **AC-PDET-002.4:** Local-fixture sources shall render the placeholder video in place of production media.
 - **AC-PDET-002.5:** The player shall expose an accessible title and a screen-reader status describing the video.

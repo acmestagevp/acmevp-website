@@ -5,6 +5,7 @@ interface HeaderProps {
 	variant?: "default" | "half" | "full" | "text"
 	imageOpacity?: number
 	className?: string
+	textPaddingClassName?: string
 	graphic?: string
 	children?: React.ReactNode
 	alt?: string
@@ -14,6 +15,7 @@ const Header: React.FC<HeaderProps> = ({
 	variant = "default",
 	graphic,
 	className,
+	textPaddingClassName,
 	imageOpacity = 40,
 	children,
 	alt = "ACME Virtual Production feature image",
@@ -23,7 +25,11 @@ const Header: React.FC<HeaderProps> = ({
 		half: { section: "h-[50vh]", image: "h-full" },
 		full: { section: "h-screen", image: "h-full" },
 	}
-	const textClass = "relative flex min-h-[16rem] items-center justify-center w-full px-[var(--page-gutter)] pt-32 pb-12 md:min-h-[20rem] md:pt-40 md:pb-16"
+	// Text variant: the default padding clears the fixed NavBar (pt-32/md:pt-40);
+	// textPaddingClassName replaces the padding block for routes without nav
+	// chrome (replacement, not append — same-property utilities resolve by
+	// stylesheet order, so appended padding could not override the default).
+	const textClass = `relative flex min-h-[16rem] items-center justify-center w-full px-[var(--page-gutter)] md:min-h-[20rem] ${textPaddingClassName ?? "pt-32 pb-12 md:pt-40 md:pb-16"}`
 	return (
 		<section
 			className={

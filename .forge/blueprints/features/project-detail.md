@@ -4,7 +4,7 @@
 
 ## Feature Summary
 
-Each `/projects/[slug]` page is statically generated from the catalog: a text-variant `Header` renders title/subtitle, `ProjectContent` renders the project's content blocks in order, and a closing section provides the contact CTA and back-link. Video blocks delegate to @Media Delivery; text and image blocks are feature-specific presentational components. **This feature is the target of the first initiative (layout improvement) — this blueprint documents the current baseline.**
+Each `/projects/[slug]` page is statically generated from the catalog: `ProjectContent` renders the project's content blocks in order with the featured video leading the page, a text-variant `Header` renders title/subtitle beneath the content, and a closing section provides the contact CTA and back-link. Video blocks delegate to @Media Delivery; text and image blocks are feature-specific presentational components. **This feature is the target of the first initiative (layout improvement) — this blueprint documents the current baseline.**
 
 ## Document status
 
@@ -26,7 +26,7 @@ responsibilities:
 	- Dispatch each ContentBlock to its renderer in catalog order
 	- Auto-feature a lone video block; compute composition archetype class (film-first | case-study | behind-the-scenes)
 	- Stable React keys via block fingerprinting (type + source/heading/body + occurrence)
-	- Wrap blocks in Section/ContentWrapper with per-type width choices (featured video full-bleed; text default; image wide/full)
+	- Wrap blocks in Section/ContentWrapper with per-type width choices (featured video full-width wrapper with page gutters; text default; image wide/full)
 ```
 
 ```component
@@ -60,7 +60,7 @@ constraints:
 
 ### Key Contracts
 
-- **Featured inference:** `featured = block.featured ?? (blocks.length === 1 && blocks[0].type === "video")` — a lone video is always full-bleed.
+- **Featured inference:** `featured = block.featured ?? (blocks.length === 1 && blocks[0].type === "video")` — a lone video is always featured; featured videos render at true 16:9 inset by the global page gutter (`ContentWrapper variant="full"`).
 - **Unknown slug:** `notFound()` renders the 404; metadata for unknown slugs is noindex.
 - **Static generation:** every catalog slug is pre-rendered at build time.
 
@@ -71,7 +71,7 @@ constraints:
 ## Requirement alignment
 
 - `REQ-PDET-001` → [`app/projects/[slug]/page.tsx`](../../../app/projects/[slug]/page.tsx) + #ProjectContent: header + ordered block rendering + 404
-- `REQ-PDET-002` → @Media Delivery #VideoBlock: Mux playback, featured full-bleed, muted autoplay, fixture fallback, accessible titles
+- `REQ-PDET-002` → @Media Delivery #VideoBlock: Mux playback, gutter-framed 16:9 featured rendering, Mux poster before playback, muted autoplay, fixture fallback, accessible titles
 - `REQ-PDET-003` → #TextBlock / #ImageBlock: reading measure, aspect/fit options, captions, lazy loading
 - `REQ-PDET-004` → closing `Section` in the page route: "Discuss a project" CTA + back-to-projects link
 
