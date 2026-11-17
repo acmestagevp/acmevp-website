@@ -80,6 +80,34 @@ export const projects: Project[] = [
 	// YouTube channels but cannot be hosted directly, so it plays via the
 	// privacy-enhanced youtube-nocookie.com embed.
 	{
+		slug: "sec-player",
+		title: "Soaring Eagle Casino",
+		subtitle: "Player",
+		thumbnail: "/images/projects/sec-player.jpg",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "mux", playbackId: "SJBVfRVmHVkZWFFF1mIKq2SLziSrJhfV2GIXEFYRQbs" },
+				featured: true,
+			},
+		],
+	},
+	{
+		slug: "sec-weekend",
+		title: "Soaring Eagle Casino",
+		subtitle: "Weekend",
+		thumbnail: "/images/projects/sec-weekend.jpg",
+		publicationState: "publishable",
+		content: [
+			{
+				type: "video",
+				source: { kind: "mux", playbackId: "01YXeOJP02egY7Hs9C41su7ElVmMxdlY02sprMkJ4MFVS00" },
+				featured: true,
+			},
+		],
+	},
+	{
 		slug: "mn-lottery-jumanji",
 		title: "MN Lottery",
 		subtitle: "Jumanji Campaign",

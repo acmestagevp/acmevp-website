@@ -7,7 +7,7 @@ const Footer = () => {
 	return (
 		<footer>
 			<Section variant="custom" className="site-footer" border>
-				<ContentWrapper>
+				<ContentWrapper variant="wide">
 					<div className="relative z-10 flex flex-col justify-center">
 						<div className="footer-columns mb-8 flex flex-col lg:flex-row lg:justify-between">
 							<div className="text-center lg:text-left">
@@ -25,12 +25,23 @@ const Footer = () => {
 								</p>
 							</div>
 							<div className="text-center lg:text-left">
+								<h2 className="my-4 text-2xl">Tasty Lighting Supply</h2>
+								<p className="text-secondary hover:text-neutral-300">
+									<p className="text-secondary hover:text-neutral-300">
+										<a href="mailto:Orders@TastyLighting.com">Orders@TastyLighting.com</a>
+									</p>
+									<p className="text-secondary hover:text-neutral-300">
+										<a href="tel:6128755074">(612) 875-5074</a>
+									</p>
+								</p>
+							</div>
+							<div className="text-center lg:text-left">
 								<h2 className="my-4 text-2xl">Contact</h2>
 								<p className="text-secondary hover:text-neutral-300">
 									<a href="mailto:info@acmevp.com">info@acmevp.com</a>
 								</p>
 								<p className="text-secondary hover:text-neutral-300">
-									<a href="tel:(612) 385-0488">(612) 385-0488</a>
+									<a href="tel:6123850488">(612) 385-0488</a>
 								</p>
 							</div>
 						</div>

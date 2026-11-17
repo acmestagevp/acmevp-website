@@ -1,0 +1,23 @@
+{
+	"status": "ready",
+	"originalFilePath": "videos\\sec-weekend.mp4",
+	"provider": "mux",
+	"providerMetadata": {
+		"mux": {
+			"uploadId": "HGJIhhxrM9pdhZ0102RwIqhQ02Q4hgqTOTAQK6p9Qd5il00",
+			"assetId": "59c7dnP1802WmveiAl3mjd9xpuVWME22R9ofUAlcOVE00",
+			"playbackId": "01YXeOJP02egY7Hs9C41su7ElVmMxdlY02sprMkJ4MFVS00"
+		}
+	},
+	"createdAt": 1794944864102,
+	"updatedAt": 1794944888014,
+	"size": 169223167,
+	"sources": [
+		{
+			"src": "https://stream.mux.com/01YXeOJP02egY7Hs9C41su7ElVmMxdlY02sprMkJ4MFVS00.m3u8",
+			"type": "application/x-mpegURL"
+		}
+	],
+	"poster": "https://image.mux.com/01YXeOJP02egY7Hs9C41su7ElVmMxdlY02sprMkJ4MFVS00/thumbnail.webp",
+	"blurDataURL": "data:image/webp;base64,UklGRq4AAABXRUJQVlA4IKIAAAAwAgCdASoQAAkAAQAcJbACdDBRAU1yzeU5+AD+/bo1hCP+KlBv17bwe5eto/2dgPCGfLvBxYW9Q6jXpoH+PrFdXZDl7b9kuJ7xXzywft2/fy+8l53GLXiT4lyuczxDur+Jm8i0fS9a++RJmZtYGGtx+7loSEZ7y7J3/ImY5nJGZf3q64OP+aYN/1N2a7WuetH9/1R/49ZcJ83v+Du/HwAAAAA="
+}
